@@ -1,0 +1,1214 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup1_checks_show_how">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup3_checks_show_catag">
+    </Component>
+    <Container class="javax.swing.JFrame" name="jFrame1_modify_checks_to_anothor_stat">
+      <Properties>
+        <Property name="defaultCloseOperation" type="int" value="2"/>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jPanel11" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jDateChooser2_checks_change2" min="-2" pref="233" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="jComboBox1_checks_status" pref="233" max="32767" attributes="0"/>
+                                              <Component id="jDateChooser1_checks_change_1" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="171" max="-2" attributes="0"/>
+                                  <Component id="jButton1_checks_change_order" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="0" pref="28" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jPanel11" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jDateChooser1_checks_change_1" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jDateChooser2_checks_change2" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboBox1_checks_status" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="jButton1_checks_change_order" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="46" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JComboBox" name="jComboBox1_checks_status">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="18" style="1"/>
+            </Property>
+            <Property name="maximumRowCount" type="int" value="14"/>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { })" type="code"/>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Default Cursor"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="AutoCompleteDecorator.decorate(jComboBox1_checks_status);&#xa;jComboBox1_checks_status.removeAllItems();&#xa;try{&#xa;r = conn_obj.conn_exec(&quot;select status from check_status &quot;);//&#x644;&#x627;&#x646;&#x647;&#x627; &#x62b;&#x648;&#x627;&#x628;&#x62a; &#x641;&#x64a; &#x627;&#x644;&#x62f;&#x627;&#x62a;&#x627; &#x628;&#x64a;&#x633; &#x648;&#x647;&#x64a; &#x627;&#x644;&#x645;&#x648;&#x627;&#x642;&#x639; &#x648;&#x646;&#x648;&#x639; &#x627;&#x644;&#x632;&#x628;&#x627;&#x626;&#x646;&#xa;            while (r.next()) {&#xa;                jComboBox1_checks_status.addItem(r.getString(1));&#xa;&#xa;            }&#xa;}catch(SQLException s)&#xa;{&#xa;&#xa;}"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel3">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="18" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="cc" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="&#x62d;&#x627;&#x644;&#x629; &#x627;&#x644;&#x634;&#x643;:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel2">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="18" style="0"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="&#x645;&#x646; &#x62a;&#x627;&#x631;&#x64a;&#x62e; :"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel4">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="18" style="0"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="&#x627;&#x644;&#x649; &#x62a;&#x627;&#x631;&#x64a;&#x62e;:"/>
+          </Properties>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser2_checks_change2">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="0" type="rgb"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                <BevelBorder/>
+              </Border>
+            </Property>
+            <Property name="dateFormatString" type="java.lang.String" value="yyyy/MM/dd"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jDateChooser2_checks_change2.setDate(get_date_jdate());"/>
+          </AuxValues>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1_checks_change_1">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="0" type="rgb"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                <BevelBorder/>
+              </Border>
+            </Property>
+            <Property name="dateFormatString" type="java.lang.String" value="yyyy/MM/dd"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jDateChooser1_checks_change_1.setDate(get_date_jdate());"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton1_checks_change_order">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="18" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="&#x62a;&#x646;&#x641;&#x64a;&#x630;"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1_checks_change_orderActionPerformed"/>
+          </Events>
+        </Component>
+        <Container class="javax.swing.JPanel" name="jPanel11">
+          <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                <BevelBorder/>
+              </Border>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel5" pref="356" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel5" pref="46" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel5">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="18" style="0"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="&#x645;&#x633;&#x62d;&#x648;&#x628;&#x627;&#x62a; &#x632;&#x628;&#x648;&#x646; &#x645;&#x646; &#x62a;&#x627;&#x631;&#x64a;&#x62e; &#x627;&#x644;&#x649; &#x62a;&#x627;&#x631;&#x64a;&#x62e;"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup1_search_checks">
+    </Component>
+    <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
+      <SubComponents>
+        <Menu class="javax.swing.JMenu" name="jMenu1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="File"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="14" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&#x627;&#x633;&#x62a;&#x631;&#x62c;&#x627;&#x639; &#x627;&#x644;&#x628;&#x64a;&#x627;&#x646;&#x627;&#x62a;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem9">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="14" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&#x627;&#x639;&#x627;&#x62f;&#x629; &#x627;&#x644;&#x628;&#x64a;&#x627;&#x646;&#x627;&#x62a;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem9ActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenu2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Edit"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&#x62a;&#x639;&#x62f;&#x64a;&#x644; &#x62d;&#x627;&#x644;&#x629; &#x634;&#x64a;&#x643;&#x627;&#x62a; &#x628;&#x62a;&#x627;&#x631;&#x64a;&#x62e;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem3ActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+      </SubComponents>
+    </Menu>
+  </NonVisualComponents>
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="title" type="java.lang.String" value="&#x625;&#x62f;&#x627;&#x631;&#x629; &#x627;&#x644;&#x634;&#x64a;&#x643;&#x627;&#x62a;"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
+  </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowStateChanged" listener="java.awt.event.WindowStateListener" parameters="java.awt.event.WindowEvent" handler="formWindowStateChanged"/>
+  </Events>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jToolBar1" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jTabbedPane_checks" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jToolBar1" min="-2" pref="39" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jTabbedPane_checks" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JToolBar" name="jToolBar1">
+      <Properties>
+        <Property name="rollover" type="boolean" value="true"/>
+      </Properties>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="jPanel1">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="66" red="0" type="rgb"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                <BevelBorder/>
+              </Border>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="1239" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="33" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+        </Container>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JTabbedPane" name="jTabbedPane_checks">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+            <BevelBorder/>
+          </Border>
+        </Property>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Default Cursor"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="24" style="0"/>
+        </Property>
+      </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="" postCode="jTabbedPane_checks.getInputContext().selectInputMethod(new Locale(&quot;ar&quot;,&quot;JO&quot; ));"/>
+      </AccessibilityProperties>
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jTabbedPane_checksStateChanged"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jTabbedPane_checks.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="jPanel5_show_all_checks">
+          <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                <BevelBorder/>
+              </Border>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="cc" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="36" style="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="&#x62c;&#x645;&#x64a;&#x639; &#x627;&#x644;&#x634;&#x64a;&#x643;&#x627;&#x62a;">
+                <Property name="tabTitle" type="java.lang.String" value="&#x62c;&#x645;&#x64a;&#x639; &#x627;&#x644;&#x634;&#x64a;&#x643;&#x627;&#x62a;"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jScrollPane3" pref="965" max="32767" attributes="0"/>
+                          <Component id="jPanel7" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="13" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jPanel2" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jScrollPane3" min="-2" pref="342" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jPanel7" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="jTable1_show_checks">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Arial" size="18" style="1"/>
+                    </Property>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;&#x631;&#x642;&#x645; &#x627;&#x644;&#x634;&#x643;&quot;, &quot;&#x642;&#x64a;&#x645;&#x629; &#x627;&#x644;&#x634;&#x643;&quot;, &quot;&#x62a;&#x627;&#x631;&#x64a;&#x62e; &#x627;&#x644;&#x634;&#x643;&quot;, &#xa;    }&#xa;) {&#xa;    Class[] types = new Class [] {&#xa;        java.lang.Long.class, java.lang.Float.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class&#xa;    };&#xa;&#xa;    public Class getColumnClass(int columnIndex) {&#xa;        return types [columnIndex];&#xa;    }&#xa;}" type="code"/>
+                    </Property>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                      </TableColumnModel>
+                    </Property>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Default Cursor"/>
+                    </Property>
+                    <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="rowHeight" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="25" type="code"/>
+                    </Property>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="render_jtable2();//fayez modifications &#x644;&#x644;&#x62a;&#x63a;&#x64a;&#x631; &#x639;&#x644;&#x649; &#x627;&#x644;&#x648;&#x627;&#x646; &#x627;&#x644;&#x62c;&#x62f;&#x648;&#x644;"/>
+                    <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="checks_jTable3"/>
+                  </AuxValues>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="jPanel2">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                    <BevelBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jPanel3" alignment="1" max="32767" attributes="0"/>
+                              <Component id="jPanel8" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jPanel8" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Container class="javax.swing.JPanel" name="jPanel3">
+                  <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                        <TitledBorder title="&#x634;&#x631;&#x643;&#x629; &#x627;&#x644;&#x634;&#x627;&#x64a;&#x628;">
+                          <Font PropertyName="font" name="Arial" size="24" style="1"/>
+                          <Color PropertyName="color" blue="0" green="0" id="red" palette="1" red="ff" type="palette"/>
+                        </TitledBorder>
+                      </Border>
+                    </Property>
+                  </Properties>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jButton2_add_checks" alignment="1" pref="209" max="32767" attributes="0"/>
+                          <Component id="jButton3_modify_check" alignment="1" max="32767" attributes="0"/>
+                          <Component id="jButton4_remove_check" alignment="1" max="32767" attributes="0"/>
+                          <Component id="jButton5_statistics" alignment="1" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jButton2_add_checks" min="-2" pref="52" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jButton3_modify_check" min="-2" pref="52" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jButton4_remove_check" min="-2" pref="52" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jButton5_statistics" min="-2" pref="52" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JButton" name="jButton2_add_checks">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="18" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="&#x625;&#x636;&#x627;&#x641;&#x629; &#x634;&#x64a;&#x643;&#x627;&#x62a;"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2_add_checksActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="jButton3_modify_check">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="18" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="&#x62a;&#x639;&#x62f;&#x64a;&#x644; &#x634;&#x64a;&#x643;&#x627;&#x62a;"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3_modify_checkActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="jButton4_remove_check">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="18" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="&#x645;&#x633;&#x62d; &#x634;&#x64a;&#x643;&#x627;&#x62a;"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4_remove_checkActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="jButton5_statistics">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="18" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="&#x625;&#x62d;&#x635;&#x627;&#x621;&#x627;&#x62a;"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5_statisticsActionPerformed"/>
+                      </Events>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JPanel" name="jPanel8">
+                  <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                        <TitledBorder position="2" title="&#x628;&#x62d;&#x62b;">
+                          <Font PropertyName="font" name="Arial" size="18" style="1"/>
+                          <Color PropertyName="color" blue="99" green="0" red="0" type="rgb"/>
+                        </TitledBorder>
+                      </Border>
+                    </Property>
+                  </Properties>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jTextField2_search_about_check" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="jRadioButton1_check_num" max="32767" attributes="0"/>
+                                          <Component id="jRadioButton2_check_date" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="jRadioButton5_check_value" alignment="1" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jTextField2_search_about_check" min="-2" pref="49" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <Component id="jRadioButton1_check_num" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jRadioButton2_check_date" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jRadioButton5_check_value" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="199" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JTextField" name="jTextField2_search_about_check">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="cc" green="ff" red="0" type="rgb"/>
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="24" style="1"/>
+                        </Property>
+                        <Property name="horizontalAlignment" type="int" value="4"/>
+                        <Property name="toolTipText" type="java.lang.String" value="&#x625;&#x636;&#x63a;&#x637; Enter"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField2_search_about_checkActionPerformed"/>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField2_search_about_checkKeyReleased"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JRadioButton" name="jRadioButton1_check_num">
+                      <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="buttonGroup1_search_checks"/>
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="18" style="0"/>
+                        </Property>
+                        <Property name="label" type="java.lang.String" value="&#x631;&#x642;&#x645; &#x627;&#x644;&#x634;&#x643;"/>
+                      </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jRadioButton1_check_num.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JRadioButton" name="jRadioButton2_check_date">
+                      <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="buttonGroup1_search_checks"/>
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="18" style="0"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="&#x627;&#x644;&#x62a;&#x627;&#x631;&#x64a;&#x62e;"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton2_check_dateActionPerformed"/>
+                      </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jRadioButton2_check_date.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JRadioButton" name="jRadioButton5_check_value">
+                      <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="buttonGroup1_search_checks"/>
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="18" style="0"/>
+                        </Property>
+                        <Property name="label" type="java.lang.String" value="&#x627;&#x644;&#x642;&#x64a;&#x645;&#x629;"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton5_check_valueActionPerformed"/>
+                      </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jRadioButton5_check_value.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);"/>
+                      </AuxValues>
+                    </Component>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="jPanel7">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                    <BevelBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
+                              <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="195" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Container class="javax.swing.JPanel" name="jPanel9">
+                  <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                        <TitledBorder justification="2" title="&#x646;&#x645;&#x637; &#x639;&#x631;&#x636; &#x627;&#x644;&#x634;&#x64a;&#x643;&#x627;&#x62a;">
+                          <Font PropertyName="font" name="Arial" size="18" style="1"/>
+                          <Color PropertyName="color" blue="0" green="0" red="cc" type="rgb"/>
+                        </TitledBorder>
+                      </Border>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="checks_jPanel9"/>
+                  </AuxValues>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jRadioButton3_as_check_date" alignment="1" pref="156" max="32767" attributes="0"/>
+                                      <Component id="jRadioButton4_as_check_num" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jRadioButton6_as_check_value" alignment="1" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="jRadioButton7_as_check_stat" alignment="1" min="-2" pref="156" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jRadioButton3_as_check_date" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jRadioButton4_as_check_num" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jRadioButton6_as_check_value" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jRadioButton7_as_check_stat" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JRadioButton" name="jRadioButton3_as_check_date">
+                      <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="buttonGroup1_checks_show_how"/>
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="18" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="cf" green="31" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="selected" type="boolean" value="true"/>
+                        <Property name="text" type="java.lang.String" value="&#x62d;&#x633;&#x628; &#x62a;&#x627;&#x631;&#x64a;&#x62e; &#x627;&#x644;&#x634;&#x64a;&#x643;"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton3_as_check_dateActionPerformed"/>
+                      </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jRadioButton3_as_check_date.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JRadioButton" name="jRadioButton4_as_check_num">
+                      <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="buttonGroup1_checks_show_how"/>
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="18" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="cf" green="31" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="&#x62d;&#x633;&#x628; &#x631;&#x642;&#x645; &#x627;&#x644;&#x634;&#x64a;&#x643;"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton4_as_check_numActionPerformed"/>
+                      </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jRadioButton4_as_check_num.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JRadioButton" name="jRadioButton6_as_check_value">
+                      <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="buttonGroup1_checks_show_how"/>
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="18" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="cf" green="31" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="&#x62d;&#x633;&#x628; &#x642;&#x64a;&#x645;&#x629; &#x627;&#x644;&#x634;&#x64a;&#x643;"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton6_as_check_valueActionPerformed"/>
+                      </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jRadioButton6_as_check_value.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JRadioButton" name="jRadioButton7_as_check_stat">
+                      <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="buttonGroup1_checks_show_how"/>
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="18" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="cf" green="31" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="&#x62d;&#x633;&#x628; &#x62d;&#x627;&#x644;&#x629; &#x627;&#x644;&#x634;&#x64a;&#x643;"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton7_as_check_statActionPerformed"/>
+                      </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jRadioButton7_as_check_stat.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);"/>
+                      </AuxValues>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JPanel" name="jPanel10">
+                  <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                        <TitledBorder justification="2" title="&#x639;&#x631;&#x636; &#x627;&#x644;&#x634;&#x64a;&#x643;&#x627;&#x62a; &#x627;&#x644;&#x62a;&#x627;&#x644;&#x64a;&#x629; :">
+                          <Font PropertyName="font" name="Arial" size="18" style="1"/>
+                          <Color PropertyName="color" blue="0" green="0" red="cc" type="rgb"/>
+                        </TitledBorder>
+                      </Border>
+                    </Property>
+                  </Properties>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jRadioButton8_show_all_checks" alignment="1" pref="156" max="32767" attributes="0"/>
+                                      <Component id="jRadioButton9_show_Maqtoo3a" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jRadioButton10_show_Mashooba" alignment="1" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="jRadioButton11_show_Raj3a" alignment="1" min="-2" pref="156" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jRadioButton8_show_all_checks" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jRadioButton9_show_Maqtoo3a" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jRadioButton10_show_Mashooba" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jRadioButton11_show_Raj3a" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JRadioButton" name="jRadioButton8_show_all_checks">
+                      <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="buttonGroup3_checks_show_catag"/>
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="18" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="cf" green="31" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="selected" type="boolean" value="true"/>
+                        <Property name="text" type="java.lang.String" value="&#x62c;&#x645;&#x64a;&#x639; &#x627;&#x644;&#x634;&#x64a;&#x643;&#x627;&#x62a;"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton8_show_all_checksActionPerformed"/>
+                      </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jRadioButton3_as_check_date.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JRadioButton" name="jRadioButton9_show_Maqtoo3a">
+                      <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="buttonGroup3_checks_show_catag"/>
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="18" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="cf" green="31" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="&#x645;&#x642;&#x637;&#x648;&#x639;&#x629; &#x63a; &#x645;&#x633;&#x62d;&#x648;&#x628;&#x629;"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton9_show_Maqtoo3aActionPerformed"/>
+                      </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jRadioButton4_as_check_num.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JRadioButton" name="jRadioButton10_show_Mashooba">
+                      <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="buttonGroup3_checks_show_catag"/>
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="18" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="cf" green="31" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="&#x645;&#x633;&#x62d;&#x648;&#x628;&#x629;"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton10_show_MashoobaActionPerformed"/>
+                      </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jRadioButton6_as_check_value.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JRadioButton" name="jRadioButton11_show_Raj3a">
+                      <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="buttonGroup3_checks_show_catag"/>
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="18" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="cf" green="31" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="&#x631;&#x627;&#x62c;&#x639;&#x629;"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton11_show_Raj3aActionPerformed"/>
+                      </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jRadioButton7_as_check_stat.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);"/>
+                      </AuxValues>
+                    </Component>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel6_to_modify_cheks">
+          <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                <BevelBorder/>
+              </Border>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="18" style="1"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="componentHidden" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="jPanel6_to_modify_cheksComponentHidden"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="&#x62a;&#x639;&#x62f;&#x64a;&#x644; &#x634;&#x64a;&#x643;&#x627;&#x62a;">
+                <Property name="tabTitle" type="java.lang.String" value="&#x62a;&#x639;&#x62f;&#x64a;&#x644; &#x634;&#x64a;&#x643;&#x627;&#x62a;"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jScrollPane4" alignment="0" pref="1233" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jButton11_modify_checks_order" min="-2" pref="228" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="594" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jScrollPane4" min="-2" pref="277" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="jButton11_modify_checks_order" min="-2" pref="51" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane4">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="jTable4_to_modify_checks">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Arial" size="18" style="1"/>
+                    </Property>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;&#xa;    },&#xa;    new String [] {&#xa;        &quot;&#x631;&#x642;&#x645; &#x627;&#x644;&#x634;&#x643;&quot;, &quot;&#x642;&#x64a;&#x645;&#x629; &#x627;&#x644;&#x634;&#x643;&quot;, &quot;&#x62a;&#x627;&#x631;&#x64a;&#x62e; &#x627;&#x644;&#x634;&#x643;&quot;, &quot;&#x62d;&#x627;&#x644;&#x629; &#x627;&#x644;&#x634;&#x643;&quot;,  &quot;&#x627;&#x644;&#x628;&#x646;&#x643;&quot;, &quot;&#x645;&#x644;&#x627;&#x62d;&#x638;&#x629;&quot;,&quot;ID&quot;&#xa;    }&#xa;) {&#xa;    Class[] types = new Class [] {&#xa;        java.lang.Long.class, java.lang.Float.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class&#xa;    };&#xa;    boolean[] canEdit = new boolean [] {&#xa;        false, false, false, true, false, false&#xa;    };&#xa;&#xa;    public Class getColumnClass(int columnIndex) {&#xa;        return types [columnIndex];&#xa;    }&#xa;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xa;        return canEdit [columnIndex];&#xa;    }&#xa;}" type="code"/>
+                    </Property>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                      </TableColumnModel>
+                    </Property>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Default Cursor"/>
+                    </Property>
+                    <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="rowHeight" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="25" type="code"/>
+                    </Property>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="render_jtable2();//fayez modifications &#x644;&#x644;&#x62a;&#x63a;&#x64a;&#x631; &#x639;&#x644;&#x649; &#x627;&#x644;&#x648;&#x627;&#x646; &#x627;&#x644;&#x62c;&#x62f;&#x648;&#x644;&#xa;&#xa;TableColumn fayezColumn3;&#xa;fayezColumn3 = jTable4_to_modify_checks.getColumnModel().getColumn(3);&#xa;fayezColumn3.setCellEditor(new DefaultCellEditor(check_statusBox));&#xa;jTable4_to_modify_checks.putClientProperty(&quot;terminateEditOnFocusLost&quot;, true);"/>
+                  </AuxValues>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JButton" name="jButton11_modify_checks_order">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="24" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="cc" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&#x62a;&#x62d;&#x62f;&#x64a;&#x62b; &#x627;&#x644;&#x62a;&#x639;&#x62f;&#x64a;&#x644;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton11_modify_checks_orderActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>

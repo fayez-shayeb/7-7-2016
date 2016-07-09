@@ -29,7 +29,6 @@ public class add_remove_customers extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        add_bill_to_bill_yes_or_no = new javax.swing.ButtonGroup();
         jPanel2_customers_names = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel7 = new javax.swing.JPanel();
@@ -318,7 +317,6 @@ public class add_remove_customers extends javax.swing.JFrame {
         jLabel146.setForeground(new java.awt.Color(204, 0, 0));
         jLabel146.setText("إدخال فاتورة لفاتورة:");
 
-        add_bill_to_bill_yes_or_no.add(jCheckBox17);
         jCheckBox17.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jCheckBox17.setText("ممكن بحدود رصيد سابق ؟");
         jCheckBox17.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -331,11 +329,15 @@ public class add_remove_customers extends javax.swing.JFrame {
         jTextField9.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        add_bill_to_bill_yes_or_no.add(jCheckBox16);
         jCheckBox16.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jCheckBox16.setSelected(true);
         jCheckBox16.setText("ممنوع");
         jCheckBox16.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jCheckBox16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox16ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel73Layout = new javax.swing.GroupLayout(jPanel73);
         jPanel73.setLayout(jPanel73Layout);
@@ -640,10 +642,61 @@ public class add_remove_customers extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        //        String name = jTextField5.getText().trim();
-        //        String address = jTextField6.getText().trim();
-        //        String phone = jTextField7.getText().trim();
-        //        String catagory_name = jComboBox5.getSelectedItem().toString().trim();
+        String name = jTextField1.getText().trim();
+        String address = jTextField2.getText().trim();
+        String address2 = jTextField3.getText().trim();
+        String mobile = jTextField4.getText().trim();
+        String phone = jTextField5.getText().trim();
+        String Email = jTextField6.getText().trim();
+        String Social_media = jTextField7.getText().trim();
+        String catagory_name = jComboBox5.getSelectedItem().toString().trim();
+        String mechanism1,mechanism2,mechanism3;
+        int check_days_limit=0;
+        boolean add_bill_to_bill;
+        int what_the_pre_account;
+        int checks_under_collection_limit;
+        boolean sms,email,social_media;
+        String note;
+        
+        if(jCheckBox13.isSelected())
+        {
+            mechanism1=jCheckBox13.getText();
+        }
+        if(jCheckBox14.isSelected())
+        {
+            mechanism2=jCheckBox14.getText();
+        }
+        if(jCheckBox15.isSelected())
+        {
+            mechanism3=jCheckBox15.getText();
+            check_days_limit=Integer.parseInt(jTextField8.getText().trim());
+        }
+        
+         if(jCheckBox16.isSelected())
+        {
+            add_bill_to_bill=false;
+            check_days_limit=Integer.parseInt(jTextField8.getText().trim());
+        }
+         else if(jCheckBox17.isSelected()){
+             add_bill_to_bill=false;
+             what_the_pre_account=Integer.parseInt(jTextField9.getText().trim());
+         }
+         
+         checks_under_collection_limit=Integer.parseInt(jTextField10.getText().trim());
+         if(jCheckBox18.isSelected())
+        {
+            sms=true;
+        }
+          if(jCheckBox19.isSelected())
+        {
+            email=true;
+        }
+           if(jCheckBox20.isSelected())
+        {
+            social_media=true;
+        }
+        note=jTextArea3.getText();
+         
         //        String stm = "insert into customers (customer_name,customer_tell,customer_location,customer_catagory_id)values('" + name + "','" + phone + "','" + address + "',(select catagory_id from customer_catagory where catagory_name='" + catagory_name + "'))";
         //        try {
             //            //////** لمنع ادخال اسم فارغ الى اسماء  الموردين
@@ -738,6 +791,19 @@ public class add_remove_customers extends javax.swing.JFrame {
       }
     }//GEN-LAST:event_jCheckBox17ActionPerformed
 
+    private void jCheckBox16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox16ActionPerformed
+     if(jCheckBox16.isSelected())
+      {
+        jCheckBox17.setEnabled(false);
+        jTextField9.setEnabled(false);
+      }
+      else
+      {
+         jCheckBox17.setEnabled(true);
+        jTextField9.setEnabled(true);
+      }  
+    }//GEN-LAST:event_jCheckBox16ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -777,7 +843,6 @@ public class add_remove_customers extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup add_bill_to_bill_yes_or_no;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton29;
     private javax.swing.JCheckBox jCheckBox13;

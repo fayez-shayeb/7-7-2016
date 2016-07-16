@@ -9509,13 +9509,16 @@ if(!catagory_name.equals("------"))
             String word = jTextField27.getText().trim();
             int table4RowCount = jTable4.getRowCount();
 
-            for (int i = jTable4.getSelectedRow() + 1; i < table4RowCount; i++) {
+            for (int i = jTable4.getSelectedRow() + 1; i <= table4RowCount; i++) {
 
                 if (findMe(word, jTable4.getValueAt(i, 0).toString())) {
                     jTable4.scrollRectToVisible(jTable4.getCellRect(i, 0, true));
                     jTable4.setRowSelectionInterval(i, i);
                     i = jTable4.getRowCount();
 
+                }else
+                {
+                    jTable4.setRowSelectionInterval(0, 0);
                 }
             }
         }

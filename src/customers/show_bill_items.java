@@ -183,7 +183,7 @@ String y;
 for(int i=0;i<jTable1.getModel().getRowCount();i++)
 {
     y = String.valueOf((String)jTable1.getModel().getValueAt(i, 0));
-    jTable1.getModel().setValueAt(get_vendor_account_sum(y),i,1);
+    jTable1.getModel().setValueAt(get_customer_account_sum(y),i,1);
      
 }
 table_accpunt_sum();
@@ -204,7 +204,7 @@ String y;
 for(int i=0;i<jTable1.getModel().getRowCount();i++)
 {
     y = String.valueOf((String)jTable1.getModel().getValueAt(i, 0));
-     jTable1.getModel().setValueAt(get_vendor_account_sum(y),i,1);
+     jTable1.getModel().setValueAt(get_customer_account_sum(y),i,1);
 }
 table_accpunt_sum();
 
@@ -325,26 +325,42 @@ if (SwingUtilities.isRightMouseButton(evt)) {
     }
     
     
-    float get_vendor_account_sum(String vendor_name)
-    {
-    try {
-     r=obj.conn_exec("select customer_id from customers where customer_name='"+vendor_name+"'");
-     r.next();
-     int vendor_id=r.getInt(1);
-r=obj.conn_exec("select sum (bill_value) from customer_bills where bill_customer_id="+vendor_id+" and accounted=false");
-r.next();
-float sum_bills_values=r.getFloat(1);
-r=obj.conn_exec("select sum (payment_value) from customer_payments where customer_id_fk="+vendor_id+" and accounted=false");
-r.next();
-float sum_payments=r.getFloat(1);
+    float get_customer_account_sum(String vendor_name) {
+        {
+            try {
+                r = obj.conn_exec("select customer_id from customers where customer_name='" + vendor_name + "'");
+                r.next();
+                int customer_id = r.getInt(1);
+                r = obj.conn_exec("select sum (bill_value) from customer_bills where bill_customer_id=" + customer_id + " and accounted=false ");
+                r.next();
+                float sum_bills_values = r.getFloat(1);
+                r = obj.conn_exec("select sum (payment_value) from customer_payments where customer_id_fk=" + customer_id + " and accounted=false ");
+                r.next();
+                float sum_payments = r.getFloat(1);
+                r = obj.conn_exec("select sum (discount_value) from customer_discount where customer_id_fk=" + customer_id + " and accounted=false ");
+                r.next();
+                float sum_discount = r.getFloat(1);
+                r = obj.conn_exec("select sum (return_bill_value) from return_customer_bills where return_bill_customer_id=" + customer_id + " and accounted=false  ");
+                r.next();
+                float sum_returns = r.getFloat(1);
+                r = obj.conn_exec("select sum (check_value+return_commission) from returned_checks where customer_id_fk=" + customer_id + " and accounted=false");
+                r.next();
+                float sum_returns_checks = r.getFloat(1);
+                
+                float result=sum_bills_values - sum_payments -sum_discount- sum_returns+sum_returns_checks;
+                return (Math.round(result*100)/100.0f);
+            } catch (SQLException ex) {
+                Joptionpane_message(ex.getMessage() + ex.getSQLState());
+                Logger.getLogger(customers.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                Joptionpane_message(ex.getMessage());
+                Logger.getLogger(customers.class.getName()).log(Level.SEVERE, null, ex);
 
-return (sum_bills_values-sum_payments);
+            }
+            return 0;
+        }
+    }
 
-    } catch (SQLException ex) {
-        Logger.getLogger(customers.class.getName()).log(Level.SEVERE, null, ex);
-    }
-   return 0;
-    }
     public void remove_comboBox()
     {
         jComboBox1.setVisible(false);
@@ -375,4 +391,8 @@ return (sum_bills_values-sum_payments);
        
          
      }
+     public void Joptionpane_message(String message) {
+        JOptionPane.showMessageDialog(this, message);
+
+    }
 }

@@ -2666,7 +2666,7 @@ public class customers extends javax.swing.JFrame {
 
                 ) {
                     Class[] types = new Class [] {
-                        java.lang.String.class,java.lang.String.class, java.lang.Float.class, java.lang.Float.class, java.lang.Float.class, java.lang.Float.class,java.lang.Float.class,java.lang.String.class
+                        java.lang.String.class,java.lang.String.class, java.lang.Float.class, java.lang.Float.class, java.lang.Float.class, java.lang.Float.class,java.lang.String.class,java.lang.String.class
                     };
 
                     public Class getColumnClass(int columnIndex) {
@@ -8325,7 +8325,8 @@ public class customers extends javax.swing.JFrame {
     }//GEN-LAST:event_delete_recordActionPerformed
 
     private void show_itemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_show_itemsActionPerformed
-        show_bill_items();
+         int point = jTable3.getSelectedRow();
+        show_bill_items(jTable3.getValueAt(point, 6).toString().trim(),jTable3.getValueAt(point, 3).toString().trim());
 
     }//GEN-LAST:event_show_itemsActionPerformed
 
@@ -9583,7 +9584,9 @@ if(!catagory_name.equals("------"))
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-         backup_and_restore.start();
+    
+         Thread t = new Thread(backup_and_restore);
+ t.start();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -11262,7 +11265,7 @@ show_last_row_scroll_jtable(jTable_show_ven_account_details);
 
             conn_obj.get_con().commit();
             Joptionpane_message("لقد تم إدخال البيانات");
-            float account = get_customer_account_sum(customer_id);
+            float account = get_vendor_account_sum(customer_id);
             Joptionpane_message("حساب  " + customer + "  يساوي\n" + account + "");
 
             move_to_vendor_account();
@@ -11512,12 +11515,24 @@ show_last_row_scroll_jtable(jTable_show_ven_account_details);
     private void jTable10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable10KeyPressed
 
         if (evt.getKeyCode() == KeyEvent.VK_ENTER ) {
+if (which_component_request_searchItemName_vendor == 1) {
 
-            add_row_jtable4(jTable_bill_items,
-                jTable10.getValueAt(jTable10.getSelectedRow(), 0), jTable10.getValueAt(jTable10.getSelectedRow(), 1), jTable10.getValueAt(jTable10.getSelectedRow(), 4), 0, jTable10.getValueAt(jTable10.getSelectedRow(), 2), 0, null, jTable10.getValueAt(jTable10.getSelectedRow(), 5));
+                add_row_jtable4(jTable_bill_items,
+                    jTable10.getValueAt(jTable10.getSelectedRow(), 0), jTable10.getValueAt(jTable10.getSelectedRow(), 1), jTable10.getValueAt(jTable10.getSelectedRow(), 4), 0, jTable10.getValueAt(jTable10.getSelectedRow(), 2), 0, null, jTable10.getValueAt(jTable10.getSelectedRow(), 5));
 
-            show_last_row_scroll_jtable(jTable_bill_items);//هنا الذهاب لاخر صف مكتوب بجدول الفاتورة لامكانية رؤيته مباشرة
+                show_last_row_scroll_jtable(jTable_bill_items);//هنا الذهاب لاخر صف مكتوب بجدول الفاتورة لامكانية رؤيته مباشرة
+            } else if (which_component_request_searchItemName_vendor == 3) {//مردود مشتريات
+                DefaultTableModel tm = (DefaultTableModel) jTable_return_ven_bill_items.getModel();
+                tm.addRow(new Object[]{
+                    jTable10.getValueAt(jTable10.getSelectedRow(), 0),
+                    jTable10.getValueAt(jTable10.getSelectedRow(), 1),
+                    jTable10.getValueAt(jTable10.getSelectedRow(), 4),
+                    jTable10.getValueAt(jTable10.getSelectedRow(), 2),
+                    null,
+                    jTable10.getValueAt(jTable10.getSelectedRow(), 5)});
 
+            show_last_row_scroll_jtable(jTable_return_ven_bill_items);
+        }
             jTextField25.requestFocus();
             jTextField25.selectAll();
 
@@ -12119,15 +12134,6 @@ show_last_row_scroll_jtable(jTable_show_ven_account_details);
                 move_to_customer_vendor_account();
                 reset_panel_customer_payment();
                 write_to_file(get_date() + "     " + sqlDate.toString() + "   " + " تم إدخال دفعة الى حساب الزبون" + "    " + vendor + "    " + "بقيمة " + "    " + value + "  مجموع الحساب " + "    " + account);
-            } catch (SQLException ex) {
-                try {
-                    conn_obj.get_con().rollback();
-
-                    Joptionpane_message("لم يتم إدخال البيانات");
-                } catch (SQLException ex1) {
-                    Logger.getLogger(customers.class.getName()).log(Level.SEVERE, null, ex1);
-                }
-                Logger.getLogger(customers.class.getName()).log(Level.SEVERE, null, ex);
             } catch (Exception ex) {
                 try {
                     conn_obj.get_con().rollback();
@@ -12724,8 +12730,8 @@ else
     }//GEN-LAST:event_jMenuItem22ActionPerformed
 
     private void jMenuItem21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem21ActionPerformed
-        Currency_thread obj = new Currency_thread();
-        Thread thread1 = new Thread(obj, "Thread-1");
+        
+        Thread thread1 = new Thread(currency);
         thread1.start();
 
     }//GEN-LAST:event_jMenuItem21ActionPerformed
@@ -12785,7 +12791,7 @@ if(safe == JOptionPane.YES_OPTION){
         d = jDateChooser10.getDate();
         java.sql.Date date2 = new java.sql.Date(d.getTime());
 String stm = "select value as القيمة,date as التاريخ,movement as الحركة,vendor_name as اسم_الزبون,(select location_name from public.location where location_id=ddfv.location) from(  ";
-String payments_movement= "select vendor_payments.payment_value as value,null,vendor_payments.payment_date as date,'دفعة' as movement,vendor_payments.vendor_id_fk,vendor_payments.record_time,vendors.vendor_id,vendors.vendor_name\n"
+String payments_movement= "select vendor_payments.payment_value as value,null as location,vendor_payments.payment_date as date,'دفعة' as movement,vendor_payments.vendor_id_fk,vendor_payments.record_time,vendors.vendor_id,vendors.vendor_name\n"
                     + "from vendor_payments \n"
                     + "\n"
                     + "join vendors\n"
@@ -12798,13 +12804,13 @@ String bills_movement="select vendor_bills.bill_value as value,vendor_bills.bill
                     + "join vendors\n"
                     + "on vendors.vendor_id=vendor_bills.bill_vendor_id\n"
                     + "where vendor_bills.bill_date >= '" + date + "' and vendor_bills.bill_date <= '" + date2 + "'  ";
-String return_bill_movement="select return_bill_value as value,null,return_bill_date as date,'م-مبيعات' as movement,return_bill_vendor_id,record_time,vendors.vendor_id,vendors.vendor_name\n"
+String return_bill_movement="select return_bill_value as value,null as location,return_bill_date as date,'م-مبيعات' as movement,return_bill_vendor_id,record_time,vendors.vendor_id,vendors.vendor_name\n"
                     + "from return_vendor_bills \n"
                     + "\n"
                     + "join vendors\n"
                     + "on vendors.vendor_id=return_bill_vendor_id\n"
                     + "where return_bill_date >= '" + date + "' and return_bill_date <= '" + date2 + "'  ";
-String discount_movements="select discount_value as value,null,discount_date as date,'خصم' as movement,vendor_id_fk,record_time,vendors.vendor_id,vendors.vendor_name\n"
+String discount_movements="select discount_value as value,null as location,discount_date as date,'خصم' as movement,vendor_id_fk,record_time,vendors.vendor_id,vendors.vendor_name\n"
                     + "from vendor_discount \n"
                     + "\n"
                     + "join vendors\n"
@@ -12885,71 +12891,9 @@ String discount_movements="select discount_value as value,null,discount_date as 
     
         ActionListener menuListener = new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                try {
-                    int point = jTable9.getSelectedRow();
-                    jComboBox3.setSelectedItem(jTable9.getValueAt(point, 4).toString().trim());//لجعل جدول الحسابات صحيحا ... ولكي تكتمل البيانات صحيحية في طباعة الفاتورة مهم جدا هذه الخطوة
-                    String bill_id = jTable9.getValueAt(point, 3).toString().trim();
-                    r = conn_obj.conn_exec("select discount_ratio,discount_amount,round(CAST(bill_value as numeric),1)as bill,bill_note,bill_date  from  customer_bills where bill_id=" + bill_id + "");
-                    r.next();
-                    String bill_date = "تاريخ الفاتورة :  " + r.getString("bill_date");
-                    String dis_ratio = "نسبة خصم الفاتورة بالمئة = " + r.getString("discount_ratio") + " %";
-                    String dis_value = "قيمة الخصم المباشر على الفاتورة = " + r.getString("discount_amount");
-                    String bill_value = "قيمة الفاتورة النهائي يساوي =  " + r.getString("bill");
-                    String bill_note = "ملاحظات =  " + r.getString("bill_note");
-                    /////////////////////////////////////////////////// show bill items in jtable////////////
-                    r = conn_obj.conn_exec("select item_note as ملاحظة ,(SELECT round(CAST(price*item_quantity as numeric),1) as المبلغ),price as السعر_بعد,discount_ratio as نسبة_الخصم,item_price as السعر,item_bonus as بونص,item_quantity as الكمية,unit_name as الوحدة,item_name as اسم_الصنف from ("
-                            + "SELECT \n"
-                            + "items.main_items.item_name,\n"
-                            + "items.main_items.item_id,\n"
-                            + "\n"
-                            + "items.item_units.unit_name,\n"
-                            + "items.item_units.unit_id,\n"
-                            + "\n"
-                            + "customer_bills_items.id,customer_bills_items.item_id,customer_bills_items.item_bonus,\n"
-                            + "customer_bills_items.item_note,customer_bills_items.item_unit,\n"
-                            + "customer_bills_items.item_price,customer_bills_items.item_quantity,\n"
-                            + "customer_bills_items.bill_id,customer_bills_items.discount_ratio,\n"
-                            + "(1-customer_bills_items.discount_ratio/100)*customer_bills_items.item_price as price\n"
-                            + "FROM items.main_items,items.item_units,customer_bills_items\n"
-                            + "WHERE\n"
-                            + "items.main_items.item_id = customer_bills_items.item_id\n"
-                            + "AND\n"
-                            + "items.item_units.unit_id = customer_bills_items.item_unit\n"
-                            + "AND\n"
-                            + "customer_bills_items.bill_id=" + bill_id + " order by customer_bills_items.id)as dvfc");
+                  int point = jTable9.getSelectedRow();
+        show_bill_items(jTable9.getValueAt(point, 3).toString().trim(),jTable9.getValueAt(point, 2).toString().trim());
 
-                    jPanel14.setVisible(true);
-
-                    customer_bill.pack();
-                    jTable6.getColumnModel().getColumn(2).setCellRenderer(new CustomTableCellRenderer());
-                    jTable6.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-                    jTable6.getColumnModel().getColumn(1).setPreferredWidth(150);
-                    jLabel31.setText(dis_ratio);
-                    jLabel32.setText(dis_value);
-                    jLabel33.setText(bill_value);
-                    jLabel39.setText(bill_date);
-                    jLabel57.setText(bill_note);
-                    //
-                    jTextField20.setText("");
-                    r2 = conn_obj2.conn_exec("select * from bill_note_to_print where bill_id_fk= " + bill_id + "");
-                    if (r2.next()) {
-                        jTextField20.setText(r2.getString(3));
-                    }
-                    //
-                    jTable6.getTableHeader().setFont(new Font("arial", Font.BOLD, 20));
-
-                    jTable6.setModel(DbUtils.resultSetToTableModel(r));
-
-                    jTable6.getColumnModel().getColumn(8).setMinWidth(200);
-                    int width = (int) get_screen_dimension().getWidth() - 80;
-                    int height = (int) get_screen_dimension().getHeight() - 100;
-                    customer_bill.setSize(width, height);
-                    customer_bill.setVisible(true);
-                    jButton20.requestFocus();
-
-                } catch (Exception ex) {
-                    Joptionpane_message(ex.getMessage());
-                }
             }
         };
         ActionListener printListener = new ActionListener() {
@@ -13954,7 +13898,7 @@ public void check_two_input_vendor(int vendor_id, java.sql.Date date) throws Exc
                         + "FROM customer_bills,location\n"
                         + "           where bill_customer_id=(select customer_id as cus_name from customers where customer_name='" + vendor + "') and accounted=false and bill_location_id=location_id\n"
                         + "                        UNION\n"
-                        + "SELECT round((return_bill_value::numeric),2)::float8 as القيمة,record_time,return_bill_location_id,location.location_id,return_bill_note as ملاحظة,'ف-مرتجع' as الحركة,location.location_name as المكان,return_bill_date as التاريخ,return_bill_id as رقم_القيد,return_bill_num as رقم_الفاتورة\n"
+                        + "SELECT round((return_bill_value::numeric),2)::float8 as القيمة,record_time,return_bill_location_id,location.location_id,return_bill_note as ملاحظة,'م-مبيعات' as الحركة,location.location_name as المكان,return_bill_date as التاريخ,return_bill_id as رقم_القيد,return_bill_num as رقم_الفاتورة\n"
                         + "FROM return_customer_bills,location\n"
                         + "           where return_bill_customer_id=(select customer_id as cus_name from customers where customer_name='" + vendor + "') and accounted=false and return_bill_location_id=location_id\n"
                         + "                        UNION\n"
@@ -13992,7 +13936,7 @@ public void check_two_input_vendor(int vendor_id, java.sql.Date date) throws Exc
                         } else if (jTable3.getValueAt(i, 3).equals("خصم")) {
                             float value = -1 * Float.parseFloat(jTable3.getModel().getValueAt(i, 1).toString());
                             jTable3.setValueAt(String.format("%.2f", value), i, 0);
-                        }else if (jTable3.getValueAt(i, 3).equals("ف-مرتجع")) {
+                        }else if (jTable3.getValueAt(i, 3).equals("م-مبيعات")) {
                             float value = -1 * Float.parseFloat(jTable3.getModel().getValueAt(i, 1).toString());
                             jTable3.setValueAt(String.format("%.2f", value), i, 0);
                         }
@@ -14013,7 +13957,7 @@ public void check_two_input_vendor(int vendor_id, java.sql.Date date) throws Exc
                             float pre_value = Float.parseFloat(jTable3.getModel().getValueAt(i - 1, 0).toString());
                             float value2 = Float.parseFloat(jTable3.getModel().getValueAt(i, 1).toString());
                             jTable3.setValueAt(String.format("%.2f", pre_value - value2), i, 0);
-                        } else if (jTable3.getValueAt(i, 3).equals("ف-مرتجع")) {
+                        } else if (jTable3.getValueAt(i, 3).equals("م-مبيعات")) {
                             float pre_value = Float.parseFloat(jTable3.getModel().getValueAt(i - 1, 0).toString());
                             float value2 = Float.parseFloat(jTable3.getModel().getValueAt(i, 1).toString());
                             jTable3.setValueAt(String.format("%.2f", pre_value - value2), i, 0);
@@ -14590,15 +14534,15 @@ int bill_loc_id=r.getInt("return_bill_location_id");
         }
     }
 String movement_name_to_print="";
-    public void show_bill_items() {
-        int point = jTable3.getSelectedRow();
+    public void show_bill_items(String move_id,String move_name) {
+    
 //اذا الحركة فاتورة
-        if (jComboBox3.getSelectedIndex() != 0 && jTable3.getValueAt(point, 3).toString().trim().equals("فاتورة"))//لحتى ما تعمل اكسبشن لما يختار اشي على الجدول بدون ما يكون فيندور محدد
+        if (move_name.equals("فاتورة"))//لحتى ما تعمل اكسبشن لما يختار اشي على الجدول بدون ما يكون فيندور محدد
         {
-            jPanel14.setVisible(true);
+            
             try {
                 movement_name_to_print="any_thing";
-                String bill_id = jTable3.getValueAt(point, 6).toString().trim();
+                String bill_id = move_id;
                 r = conn_obj.conn_exec("select discount_ratio,discount_amount,round(CAST(bill_value as numeric),1)as bill,bill_note,bill_date  from  customer_bills where bill_id=" + bill_id + "");
                 r.next();
                 String bill_date = "تاريخ الفاتورة :  " + r.getString("bill_date");
@@ -14662,10 +14606,10 @@ String movement_name_to_print="";
                 Joptionpane_message(ex.getMessage());
             }
         } //اذا الحركة دفعة يتغير 
-        else if (jComboBox3.getSelectedIndex() != 0 && jTable3.getValueAt(point, 3).toString().trim().equals("دفعة")) {
+        else if (move_name.equals("دفعة")) {
 
             try {
-                String payment_id = jTable3.getValueAt(point, 6).toString().trim();
+                String payment_id = move_id;
                 jframe_to_modify_payment = new modify_customer_payment(this, payment_id);
                 r = conn_obj.conn_exec("select * from  customer_payments where payment_id=" + payment_id + "");
                 r.next();
@@ -14712,12 +14656,11 @@ String movement_name_to_print="";
 
         }
         //اذا الحركة فاتورة ارجاع
-        else if (jComboBox3.getSelectedIndex() != 0 && jTable3.getValueAt(point, 3).toString().trim().equals("ف-مرتجع"))//لحتى ما تعمل اكسبشن لما يختار اشي على الجدول بدون ما يكون فيندور محدد
+        else if ( move_name.equals("م-مبيعات"))//لحتى ما تعمل اكسبشن لما يختار اشي على الجدول بدون ما يكون فيندور محدد
         {
-            jPanel14.setVisible(true);
             try {
-                movement_name_to_print="ف-مرتجع";
-                String bill_id = jTable3.getValueAt(point, 6).toString().trim();
+                //movement_name_to_print="ف-مرتجع";
+                String bill_id = move_id;
                 r = conn_obj.conn_exec("select round(CAST(return_bill_value as numeric),1)as bill,return_bill_note,return_bill_date  from  return_customer_bills where return_bill_id=" + bill_id + "");
                 r.next();
                 String bill_date = "تاريخ الفاتورة :  " + r.getString("return_bill_date");
@@ -14774,10 +14717,10 @@ String movement_name_to_print="";
             }
         }
         //اذا الحركة شك مرتجع
-        else if (jComboBox3.getSelectedIndex() != 0 && jTable3.getValueAt(point, 3).toString().trim().equals("شك-مرتجع"))//لحتى ما تعمل اكسبشن لما يختار اشي على الجدول بدون ما يكون فيندور محدد
+        else if (move_name.equals("شك-مرتجع"))//لحتى ما تعمل اكسبشن لما يختار اشي على الجدول بدون ما يكون فيندور محدد
         {
           try {
-            String check_id = jTable3.getValueAt(point, 6).toString().trim();
+            String check_id = move_id;
             returned_checks re = new returned_checks(check_id,this);
             r = conn_obj.conn_exec("select * from  returned_checks where id=" + check_id + "");
             r.next();
@@ -16259,33 +16202,9 @@ public void return_customer_jTable(JTable table) {
     }
 
     public void show_customers_accounts(String customer_like_name_or_location) {
-       // r = conn_obj.conn_exec("SELECT customer_name as الاسم,1 as الرصيد ,1 as  تاريخ_اخر_فاتورة   from customers where customer_name like '%" + customer_like_name_or_location + "%' OR customer_location like '%" + customer_like_name_or_location + "%' order by customer_name");
-     
-        try {  
-            String stm="select DISTINCT customer_name as  الاسم  ,1 as الرصيد ,1 as  تاريخ_اخر_فاتورة     from (select customers.customer_name,customers.customer_location,customers.customer_catagory_id,user_privileg_on_customer_catag.user_id_fk,user_privileg_on_customer_catag.customer_catagory_fk \n" +
-"from customers,user_privileg_on_customer_catag\n" +
-"where \n" +
-" user_privileg_on_customer_catag.user_id_fk=(select user_id from users where user_name like '"+user_name+"') and\n" +
-" customer_catagory_id=customer_catagory_fk and\n" +
-" (customer_name like '%" + customer_like_name_or_location + "%' OR customer_location like '%" + customer_like_name_or_location + "%' ) order by customer_name)as dd";
-    
-            System.out.println(stm);
-r = conn_obj.conn_exec(stm);
-   
-            show_obj = new show_bill_items();
-            show_obj.show_ven_cus_accounts(r);
-            String y;
-            for (int i = 0; i < show_obj.jTable1.getModel().getRowCount(); i++) {
-                y = String.valueOf((String) show_obj.jTable1.getModel().getValueAt(i, 0));
-                show_obj.jTable1.getModel().setValueAt(get_customer_account_sum(y), i, 1);
-                show_obj.jTable1.getModel().setValueAt(show_date_of_last_customer_bill(y), i, 2);
-            }
-            show_obj.table_accpunt_sum();
 
-        } catch (Exception ex) {
-            Joptionpane_message(ex.getMessage());
-            Joptionpane_message(ex.getMessage());
-        }
+            show_obj = new show_bill_items();
+     
 
     }
     //validate date
@@ -16303,12 +16222,12 @@ r = conn_obj.conn_exec(stm);
     }
 
     public void reset_return_customer_bill() {
-        jComboBox8.setSelectedIndex(0);
-        jTextField34.setText("0");
-        jTextField30.setText("");
-        jTextArea5.setText("");
-        jDateChooser6.setDate(get_date_jdate());
-        DefaultTableModel model = (DefaultTableModel) jTable12.getModel();
+        jComboBox_van_name_return_bill.setSelectedIndex(0);
+        jTextField_return_ven_bill_value.setText("0");
+        jTextField_return_ven_bil_numberl.setText("");
+        jTextArea_return_ven_bill_note.setText("");
+        jDateChooser_return_ven_bill_date.setDate(get_date_jdate());
+        DefaultTableModel model = (DefaultTableModel) jTable_return_ven_bill_items.getModel();
         model.setRowCount(0);
         /////////////////////////////////////////reset jtable4///////////////
 

@@ -1175,7 +1175,9 @@ try {
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
         searchItemName.pack();
         searchItemName.setLocationRelativeTo(this);
-        searchItemName.setVisible(true);        // TODO add your handling code here:
+        searchItemName.setVisible(true); 
+        searchItemName.setState(NORMAL);
+        jTextField4.requestFocus();
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void jTextField18FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField18FocusLost
@@ -1778,7 +1780,7 @@ jTable4.setValueAt(price, jTable4.getSelectedRow(), 4);
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField27;
     public javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    public javax.swing.JTextField jTextField4;
     private javax.swing.JFrame searchCustomerName;
     private javax.swing.JFrame searchItemName;
     // End of variables declaration//GEN-END:variables

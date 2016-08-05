@@ -140,6 +140,7 @@ public class customers extends javax.swing.JFrame {
     sale_point sale_point_obj;
     String user_name; 
     add_remove_customers add_remove_customers_object;
+    print_customer_move_table print_customer_move_table_object;
     
     //by default false
     boolean see_profit,see_cost,delete_entry,modify_entry,check_lose,search_in_buy_bills,discount_cus,discount_ven,
@@ -8257,55 +8258,10 @@ public class customers extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        /*
-         try {
-         Print_by_POI_method_to_EXCEL_file(jTable3, jComboBox3.getSelectedItem().toString());
-         } catch (IOException ex) {
-         Logger.getLogger(customers.class.getName()).log(Level.SEVERE, null, ex);
-         }
-         */
-        int number = 0;
-        JTextField field1 = new JTextField("");
-        JPanel panel = new JPanel(new GridLayout(0, 1));
-        Checkbox c = new Checkbox("طباعة الكل ؟");
-        Checkbox details = new Checkbox("طباعة تفصيلية؟");
-        JLabel x = new JLabel("أدخل عدد الحركات للطباعة");
-        x.setFont(FayezFont);
-        panel.add(x);
-        panel.add(field1);
-        panel.add(c);
-        panel.add(details);
-        panel.setFont(FayezFont);
-        int result = JOptionPane.showConfirmDialog(null, panel, "?",
-                JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-        if (result == JOptionPane.OK_OPTION) {
-            if (c.getState() == true) {
-                number = jTable3.getRowCount();
-            } else {
-                String Num = field1.getText();
-                number = Integer.parseInt(Num);
-                if (number > jTable3.getRowCount()) {
-                    Joptionpane_message("العدد المختار أكبر من عدد صفوف الجدول!");
-                }
-            }
-            try {
-                if (c.getState() == true && details.getState() == false) {
-                    print_jtable(number, null);
-                } else if (c.getState() == true && details.getState() == true) {
-                    print_jtable_with_details(number, null);
-                } else if (c.getState() == false && details.getState() == true) {
-                    print_jtable_with_details(number, null);
-                } else if (c.getState() == false && details.getState() == false) {
-                    print_jtable(number, null);
-                } else {
-                    print_jtable(number, null);
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(customers.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            System.out.println("Cancelled");
-        }
+        
+        print_customer_move_table_object=new print_customer_move_table(this);
+        print_customer_move_table_object.setVisible(true);
+        print_customer_move_table_object.setLocationRelativeTo(this);
 
     }//GEN-LAST:event_jButton10ActionPerformed
 
@@ -8460,7 +8416,7 @@ public class customers extends javax.swing.JFrame {
                         jframe_to_modify_payment.setVisible(true);
                         jframe_to_modify_payment.prepare_payment_sum();
                          
-                    } else if (jTable3.getValueAt(point, 3).toString().trim().equals("ف-مرتجع")) {
+                    } else if (jTable3.getValueAt(point, 3).toString().trim().equals("م-مبيعات")) {
              //reset_jpanel_1();//لحتى لما يفرغ البيانات في جدول الفاتورة يفرغها والجدول وكل المربعات فارغة
                         //jTabbedPane1.setSelectedIndex(0);
                         String bill_id = jTable3.getValueAt(point, 6).toString().trim();
@@ -9024,7 +8980,7 @@ String html = "<body> ";
 
         html += "<table align=\"center\" border=\"1\" style=\"width:5px\" cellspacing=\"0\" cellpadding=\"1\" style=\"font-size: 8px\">"  + "\n";
        
-        if(movement_name_to_print=="ف-مرتجع")
+        if(movement_name_to_print=="م-مبيعات")
             html+=build_html_for_return_bill(row,col);
         else//فاتورة عادية
         {    /////
@@ -9741,7 +9697,7 @@ else
                 throw new Exception("لا يمكن ان تساوي الفاتورة القيمة صفر او فارغ");
             }
 
-            if (value != prepare_bill_ven_jtable12_returns()) {
+            if (value != prepare_bill_customer_returns()) {
                 if (check_yes_or_no_question("محموع الفاتورة الفعلي لا يساوي المجموع الموجود؟") == false) {
                     throw new Exception("تم الالغاء!!");
                 }
@@ -9922,15 +9878,15 @@ else
             }
             try {
                 if (c.getState() == true && details.getState() == false) {
-                    print_jtable(number, "save_to_file");
+                    print_jtable(number,0, "save_to_file");
                 } else if (c.getState() == true && details.getState() == true) {
-                    print_jtable_with_details(number, "save_to_file");
+                    print_jtable_with_details(number,0, "save_to_file");
                 } else if (c.getState() == false && details.getState() == true) {
-                    print_jtable_with_details(number, "save_to_file");
+                    print_jtable_with_details(number,0, "save_to_file");
                 } else if (c.getState() == false && details.getState() == false) {
-                    print_jtable(number, "save_to_file");
+                    print_jtable(number,0, "save_to_file");
                 } else {
-                    print_jtable(number, "save_to_file");
+                    print_jtable(number,0, "save_to_file");
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(customers.class.getName()).log(Level.SEVERE, null, ex);
@@ -10962,7 +10918,7 @@ show_last_row_scroll_jtable(jTable_show_ven_account_details);
                 } else if (c.getState() == false && details.getState() == false) {
                     print_vendor_jtable(number, null);
                 } else {
-                    print_jtable(number, null);
+                    print_jtable(number,0, null);
                 }
             } catch (SQLException ex) {
                 
@@ -11010,15 +10966,15 @@ show_last_row_scroll_jtable(jTable_show_ven_account_details);
             }
             try {
                 if (c.getState() == true && details.getState() == false) {
-                    print_jtable(number, "save_to_file");
+                    print_jtable(number,0, "save_to_file");
                 } else if (c.getState() == true && details.getState() == true) {
-                    print_jtable_with_details(number, "save_to_file");
+                    print_jtable_with_details(number,0, "save_to_file");
                 } else if (c.getState() == false && details.getState() == true) {
-                    print_jtable_with_details(number, "save_to_file");
+                    print_jtable_with_details(number,0, "save_to_file");
                 } else if (c.getState() == false && details.getState() == false) {
-                    print_jtable(number, "save_to_file");
+                    print_jtable(number,0, "save_to_file");
                 } else {
-                    print_jtable(number, "save_to_file");
+                    print_jtable(number,0, "save_to_file");
                 }
             } catch (SQLException ex) {
             }
@@ -11273,7 +11229,7 @@ show_last_row_scroll_jtable(jTable_show_ven_account_details);
             write_to_file(get_date() + "     " + sqlDate.toString() + " " + "  إدخال فاتورةمرتجعات  لحساب الزبون  " + customer + " " + "بقيمة " + " "
                 + Float.toString(value) + " " + "الرصيد = " + " " + Float.toString(account));
 
-            reset_return_customer_bill();
+            reset_return_vendor_bill();
 
         } catch (Exception ex) {
             try {
@@ -12790,8 +12746,13 @@ if(safe == JOptionPane.YES_OPTION){
         java.sql.Date date = new java.sql.Date(d.getTime());
         d = jDateChooser10.getDate();
         java.sql.Date date2 = new java.sql.Date(d.getTime());
+             //   وضعنا الرقم 
+            //   -0.211524 
+            ///   مكان الموقع في قيد خصم للمورد و قيد الدفعة للمورد
+            //           وهو رقم تعجيزي لا يمكن ان يحصل ان يكون ال اي دي لموقع هذا الرقم
+ 
 String stm = "select value as القيمة,date as التاريخ,movement as الحركة,vendor_name as اسم_الزبون,(select location_name from public.location where location_id=ddfv.location) from(  ";
-String payments_movement= "select vendor_payments.payment_value as value,null as location,vendor_payments.payment_date as date,'دفعة' as movement,vendor_payments.vendor_id_fk,vendor_payments.record_time,vendors.vendor_id,vendors.vendor_name\n"
+String payments_movement= "select vendor_payments.payment_value as value,-0.211524 as location,vendor_payments.payment_date as date,'دفعة' as movement,vendor_payments.vendor_id_fk,vendor_payments.record_time,vendors.vendor_id,vendors.vendor_name\n"
                     + "from vendor_payments \n"
                     + "\n"
                     + "join vendors\n"
@@ -12804,13 +12765,13 @@ String bills_movement="select vendor_bills.bill_value as value,vendor_bills.bill
                     + "join vendors\n"
                     + "on vendors.vendor_id=vendor_bills.bill_vendor_id\n"
                     + "where vendor_bills.bill_date >= '" + date + "' and vendor_bills.bill_date <= '" + date2 + "'  ";
-String return_bill_movement="select return_bill_value as value,null as location,return_bill_date as date,'م-مبيعات' as movement,return_bill_vendor_id,record_time,vendors.vendor_id,vendors.vendor_name\n"
+String return_bill_movement="select return_bill_value as value,return_vendor_bills.return_bill_id as location,return_bill_date as date,'ف-مرتجع' as movement,return_bill_vendor_id,record_time,vendors.vendor_id,vendors.vendor_name\n"
                     + "from return_vendor_bills \n"
                     + "\n"
                     + "join vendors\n"
                     + "on vendors.vendor_id=return_bill_vendor_id\n"
                     + "where return_bill_date >= '" + date + "' and return_bill_date <= '" + date2 + "'  ";
-String discount_movements="select discount_value as value,null as location,discount_date as date,'خصم' as movement,vendor_id_fk,record_time,vendors.vendor_id,vendors.vendor_name\n"
+String discount_movements="select discount_value as value,-0.211524 as location,discount_date as date,'خصم' as movement,vendor_id_fk,record_time,vendors.vendor_id,vendors.vendor_name\n"
                     + "from vendor_discount \n"
                     + "\n"
                     + "join vendors\n"
@@ -14056,7 +14017,7 @@ public void check_two_input_vendor(int vendor_id, java.sql.Date date) throws Exc
                         + "FROM customer_bills,location\n"
                         + "           where bill_customer_id=(select customer_id as cus_name from customers where customer_name='" + vendor + "')  and bill_location_id=location_id\n"
                         + "                        UNION\n"
-                        + "SELECT round((return_bill_value::numeric),2)::float8 as القيمة,record_time,return_bill_location_id,location.location_id,return_bill_note as ملاحظة,'ف-مرتجع' as الحركة,location.location_name as المكان,return_bill_date as التاريخ,return_bill_id as رقم_القيد,return_bill_num as رقم_الفاتورة\n"
+                        + "SELECT round((return_bill_value::numeric),2)::float8 as القيمة,record_time,return_bill_location_id,location.location_id,return_bill_note as ملاحظة,'م-مبيعات' as الحركة,location.location_name as المكان,return_bill_date as التاريخ,return_bill_id as رقم_القيد,return_bill_num as رقم_الفاتورة\n"
                         + "FROM return_customer_bills,location\n"
                         + "           where return_bill_customer_id=(select customer_id as cus_name from customers where customer_name='" + vendor + "')  and return_bill_location_id=location_id\n"
                         + "                        UNION\n"
@@ -14094,7 +14055,7 @@ public void check_two_input_vendor(int vendor_id, java.sql.Date date) throws Exc
                         } else if (jTable3.getValueAt(i, 3).equals("خصم")) {
                             float value = -1 * Float.parseFloat(jTable3.getModel().getValueAt(i, 1).toString());
                             jTable3.setValueAt(String.format("%.2f", value), i, 0);
-                        }else if (jTable3.getValueAt(i, 3).equals("ف-مرتجع")) {
+                        }else if (jTable3.getValueAt(i, 3).equals("م-مبيعات")) {
                             float value = -1 * Float.parseFloat(jTable3.getModel().getValueAt(i, 1).toString());
                             jTable3.setValueAt(String.format("%.2f", value), i, 0);
                         }
@@ -14115,7 +14076,7 @@ public void check_two_input_vendor(int vendor_id, java.sql.Date date) throws Exc
                             float pre_value = Float.parseFloat(jTable3.getModel().getValueAt(i - 1, 0).toString());
                             float value2 = Float.parseFloat(jTable3.getModel().getValueAt(i, 1).toString());
                             jTable3.setValueAt(String.format("%.2f", pre_value - value2), i, 0);
-                        } else if (jTable3.getValueAt(i, 3).equals("ف-مرتجع")) {
+                        } else if (jTable3.getValueAt(i, 3).equals("م-مبيعات")) {
                             float pre_value = Float.parseFloat(jTable3.getModel().getValueAt(i - 1, 0).toString());
                             float value2 = Float.parseFloat(jTable3.getModel().getValueAt(i, 1).toString());
                             jTable3.setValueAt(String.format("%.2f", pre_value - value2), i, 0);
@@ -14253,7 +14214,7 @@ int bill_loc_id=r.getInt("bill_location_id");
             }
             
         }
-        else if (bill_or_payment.equals("ف-مرتجع")) {
+        else if (bill_or_payment.equals("م-مبيعات")) {
             try {
                 /////////////////////////////للتأكد من ان القيد المحذوف ليس مصفر//////////////////////////////////////////////
                 r = conn_obj.conn_exec("select accounted from return_customer_bills where return_bill_id=" + id_int + "");
@@ -15310,7 +15271,7 @@ boolean check_if_accounted_ven(int id, String type) throws SQLException {
         table.scrollRectToVisible(table.getCellRect(table.getRowCount() - 1, 0, true));
     }
 
-     public void print_jtable(int num_of_move, String status) throws SQLException {
+     public void print_jtable(int start_row,int end_row, String status) throws SQLException {
         ///////////////////
         int row = jTable3.getRowCount();
         int col = jTable3.getColumnCount();
@@ -15334,9 +15295,8 @@ boolean check_if_accounted_ven(int id, String type) throws SQLException {
         //html += "<th bgcolor=" + "#00FF00" + ">" + jTable3.getColumnName(4) + "</th>"; المكان
         html += "<th bgcolor=" + "#00FF00" + ">" + jTable3.getColumnName(5) + "</th>";
         //html += "<th bgcolor=" + "#00FF00" + ">" + jTable3.getColumnName(7) + "</th>";رقم الفاتورة
-
         html += "</tr>" + "\n";
-        for (int i = row - num_of_move; i < row; i++) {
+         for (int i = row - start_row; i < row-end_row; i++) {
             html += "<tr>" + "\n";
             for (int x = 0; x < col-2; x++) {// انتبه -2 لحذف رقم القيد ورقم الفاتورة
                 if (x != 6 && x != 4) {//لا تساوي 6 لحذف عامود رقم القيد 
@@ -15410,11 +15370,13 @@ boolean check_if_accounted_ven(int id, String type) throws SQLException {
         }
     }
 
-    public void print_jtable_with_details(int num_of_move, String status) throws SQLException {
+    public void print_jtable_with_details(int start_row,int end_row, String status) throws SQLException {
         ///////////////////
         int row = jTable3.getRowCount();
         int col = jTable3.getColumnCount();
         float account_sum = 0;
+        
+        
 
         String html = "<body>"
                 + "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>"
@@ -15439,7 +15401,7 @@ boolean check_if_accounted_ven(int id, String type) throws SQLException {
         html += "<th bgcolor=" + "#00FF00" + ">" + jTable3.getColumnName(7) + "</th>";
 
         html += "</tr>" + "\n";
-        for (int i = row - num_of_move; i < row; i++) {
+        for (int i = row - start_row; i < row-end_row; i++) {
             html += "<tr>" + "\n";
             for (int x = 0; x < col; x++) {
                 if (x != 6) {
@@ -16202,11 +16164,45 @@ public void return_customer_jTable(JTable table) {
     }
 
     public void show_customers_accounts(String customer_like_name_or_location) {
+       // r = conn_obj.conn_exec("SELECT customer_name as الاسم,1 as الرصيد ,1 as  تاريخ_اخر_فاتورة   from customers where customer_name like '%" + customer_like_name_or_location + "%' OR customer_location like '%" + customer_like_name_or_location + "%' order by customer_name");
+
+        try {
+             
+        String[] locations_or_names = customer_like_name_or_location.split("--");
+        String stm="";
+        for (int i=0; i < locations_or_names.length; i++) {
+            if(i!=0)
+                stm+="union all ";//نتجنب اول مرة
+            
+            stm+="(select DISTINCT customer_name as  الاسم  ,1 as الرصيد ,1 as  تاريخ_اخر_فاتورة     from (select customers.customer_name,customers.customer_location,customers.customer_catagory_id,user_privileg_on_customer_catag.user_id_fk,user_privileg_on_customer_catag.customer_catagory_fk \n"
+                    + "from customers,user_privileg_on_customer_catag\n"
+                    + "where \n"
+                    + " user_privileg_on_customer_catag.user_id_fk=(select user_id from users where user_name like '" + user_name + "') and\n"
+                    + " customer_catagory_id=customer_catagory_fk and\n"
+                    + " (customer_name like '%" + locations_or_names[i] + "%' OR customer_location like '%" + locations_or_names[i] + "%' ) order by customer_name)as dd)";
+        }
+            //String stm = 
+
+            System.out.println(stm);
+            r = conn_obj.conn_exec(stm);
 
             show_obj = new show_bill_items();
-     
+            show_obj.show_ven_cus_accounts(r);
+            String y;
+            for (int i = 0; i < show_obj.jTable1.getModel().getRowCount(); i++) {
+                y = String.valueOf((String) show_obj.jTable1.getModel().getValueAt(i, 0));
+                show_obj.jTable1.getModel().setValueAt(get_customer_account_sum(y), i, 1);
+                show_obj.jTable1.getModel().setValueAt(show_date_of_last_customer_bill(y), i, 2);
+            }
+            show_obj.table_accpunt_sum();
+
+        } catch (Exception ex) {
+            Joptionpane_message(ex.getMessage());
+            Joptionpane_message(ex.getMessage());
+        }
 
     }
+
     //validate date
     final static String DATE_FORMAT = "yyyy-MM-dd";
 
@@ -16222,12 +16218,13 @@ public void return_customer_jTable(JTable table) {
     }
 
     public void reset_return_customer_bill() {
-        jComboBox_van_name_return_bill.setSelectedIndex(0);
-        jTextField_return_ven_bill_value.setText("0");
-        jTextField_return_ven_bil_numberl.setText("");
-        jTextArea_return_ven_bill_note.setText("");
-        jDateChooser_return_ven_bill_date.setDate(get_date_jdate());
-        DefaultTableModel model = (DefaultTableModel) jTable_return_ven_bill_items.getModel();
+        jComboBox8.setSelectedIndex(0);
+        jComboBox9.setSelectedIndex(0);
+        jTextField34.setText("0");
+        jTextField30.setText("");
+        jTextArea5.setText("");
+        jDateChooser6.setDate(get_date_jdate());
+        DefaultTableModel model = (DefaultTableModel) jTable12.getModel();
         model.setRowCount(0);
         /////////////////////////////////////////reset jtable4///////////////
 

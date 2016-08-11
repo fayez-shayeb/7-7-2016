@@ -110,9 +110,9 @@ public class customers extends javax.swing.JFrame {
     ResultSet r2;
     PreparedStatement pst = null;
     String scanner_path = "C:\\Users\\shayeb\\Documents\\Scanned Documents";
-    String file_loc = "d:\\Dropbox\\backup_2015\\";
+    String file_loc = "backup_2015\\";
     //String file_loc = "d:\\Dropbox\\kufraai\\backup\\";
-    String write_to_file_loc = "d:\\Dropbox\\movements_2015\\";
+    String write_to_file_loc = "movements_2015\\";
     //String write_to_file_loc="D:\\Dropbox\\kufraai\\movements\\";
     show_bill_items show_obj = null;
     Font FayezFont = new FontUIResource(new Font("Arial", Font.BOLD, 18));
@@ -9542,7 +9542,7 @@ if(!catagory_name.equals("------"))
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
     
          Thread t = new Thread(backup_and_restore);
- t.start();
+        t.start();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -12709,6 +12709,7 @@ jButton5.doClick();        // TODO add your handling code here:
 int safe = JOptionPane.showConfirmDialog(null, "هل تريد بالتأكيد اغلاق البرنامج ؟", "Exit Confirmation", JOptionPane.YES_NO_CANCEL_OPTION);
 
 if(safe == JOptionPane.YES_OPTION){
+    do_you_want_to_make_backup();
     setDefaultCloseOperation(EXIT_ON_CLOSE);//yes
 
 } else if (safe == JOptionPane.CANCEL_OPTION) {
@@ -18252,4 +18253,12 @@ public String build_html_for_return_bill(int row,int col)
                 account_zero=true;
             
  }
+    public void do_you_want_to_make_backup() {
+        int safe = JOptionPane.showConfirmDialog(null, "هل تريد عمل نسخة احتياطية قبل الاغلاق؟", "Exit Confirmation", JOptionPane.YES_NO_CANCEL_OPTION);
+
+        if (safe == JOptionPane.YES_OPTION) {
+            Thread t = new Thread(backup_and_restore);
+            t.start();
+        }
+    }
 }

@@ -208,11 +208,11 @@ public class login_form extends javax.swing.JFrame{
         jMenu3.add(jRadioButtonMenuItem1);
 
         connectio_type_group.add(jRadioButtonMenuItem2);
-        jRadioButtonMenuItem2.setText("192.168.2.117");
+        jRadioButtonMenuItem2.setText("200.200.200.117");
         jMenu3.add(jRadioButtonMenuItem2);
 
         connectio_type_group.add(jRadioButtonMenuItem3);
-        jRadioButtonMenuItem3.setText("37.34.80.15");
+        jRadioButtonMenuItem3.setText("213.6.71.174");
         jMenu3.add(jRadioButtonMenuItem3);
 
         jMenu2.add(jMenu3);

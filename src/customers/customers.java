@@ -90,6 +90,8 @@ import functions.telephone;
 import functions.currency;
 import functions.sale_point;
 import java.awt.Robot;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import javax.print.PrintServiceLookup;
 import javax.swing.JPasswordField;
 import javax.swing.JPopupMenu;
@@ -8783,7 +8785,7 @@ if(which_component_request_searchItemName!=8){
                         + "            items.item_relations.item_unit=items.item_units.unit_id order by rank desc)as one";
                 r = conn_obj.conn_exec(stm);
 
-                System.out.println(stm);
+                //System.out.println(stm);
                 jTable7.setModel(DbUtils.resultSetToTableModel(r));
                 jTable7.getColumnModel().getColumn(1).setMaxWidth(130);
                 jTable7.getColumnModel().getColumn(2).setMaxWidth(150);
@@ -10522,26 +10524,26 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
 
-        /*
+        
         try {
-            String v_name = (String) jComboBox1.getSelectedItem();
+            String v_name = (String) jCombo_vendor_name.getSelectedItem();
             if (v_name.equals("------")) {
                 throw new IOException("خطأ في اسم المورد");
             }
-            r = conn_obj.conn_exec("select last_value from customer_bills_counter");
+            r = conn_obj.conn_exec("select last_value from vendor_bills_counter");
             r.next();
             StringSelection stringSelection = new StringSelection(String.valueOf(r.getInt(1) + 1 + "-" + (String) jComboBox1.getSelectedItem()));
             Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
             clpbrd.setContents(stringSelection, null);
             Runtime.getRuntime().exec("C:\\Windows\\system32\\wfs.exe");
         } catch (SQLException ex) {
-            Logger.getLogger(vendors.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(customers.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Joptionpane_message(ex.getMessage());
-            Logger.getLogger(vendors.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(customers.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        */
+        
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jTextField_bill_before_disActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_bill_before_disActionPerformed
@@ -10990,7 +10992,7 @@ show_last_row_scroll_jtable(jTable_show_ven_account_details);
     }//GEN-LAST:event_jButton56ActionPerformed
 
     private void jPanel_ven_acount_detailsComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel_ven_acount_detailsComponentShown
-        System.out.println("حسابات الزبون");
+       // System.out.println("حسابات الزبون");
         create_customer_account_table();
         show_last_row_scroll_jtable(jTable_show_ven_account_details);        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel_ven_acount_detailsComponentShown
@@ -11179,7 +11181,7 @@ show_last_row_scroll_jtable(jTable_show_ven_account_details);
             stm_exec = "select location_id from location where location_name='" + jComboBox_return_ven_store.getSelectedItem().toString() + "'";
 
             r = conn_obj.conn_exec(stm_exec);
-            System.out.println(stm_exec);
+           // System.out.println(stm_exec);
             r.next();
             String location_id = r.getString("location_id");
 
@@ -11208,7 +11210,7 @@ show_last_row_scroll_jtable(jTable_show_ven_account_details);
                 + "items.item_units.unit_id=items.item_relations.item_unit )as anyThing";
                 r = conn_obj.conn_exec(stm_exec);
                 r.next();
-                System.out.println(stm_exec);
+             //   System.out.println(stm_exec);
                 double quantity = r.getDouble("quantity") * -1;
                 int item_id = r.getInt("main_item_id");
                 String store_to_update = "store_id_" + location_id;//store_id_1
@@ -11450,7 +11452,7 @@ show_last_row_scroll_jtable(jTable_show_ven_account_details);
 
             show_last_row_scroll_jtable(jTable_return_ven_bill_items);
         } else if (which_component_request_searchItemName_vendor == 5) {
-                System.out.println("thisss");
+               // System.out.println("thisss");
             DefaultTableModel tm = (DefaultTableModel) jTable16.getModel();
             tm.addRow(new Object[]{
                 jTable10.getValueAt(jTable10.getSelectedRow(), 0),
@@ -11496,7 +11498,7 @@ if (which_component_request_searchItemName_vendor == 1) {
     }//GEN-LAST:event_jTable10KeyPressed
 
     private void jPanel_add_ven_billComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel_add_ven_billComponentShown
-        System.out.println(jPanel_add_ven_bill.getComponentCount());        // TODO add your handling code here:
+     //   System.out.println(jPanel_add_ven_bill.getComponentCount());        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel_add_ven_billComponentShown
 
     private void show_items_venActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_show_items_venActionPerformed
@@ -11822,7 +11824,7 @@ if (which_component_request_searchItemName_vendor == 1) {
             stm_exec = "select location_id from location where location_name='" + jComboBox13.getSelectedItem().toString() + "'";
 
             r = conn_obj.conn_exec(stm_exec);
-            System.out.println(stm_exec);
+           // System.out.println(stm_exec);
             r.next();
             String location_id = r.getString("location_id");
 
@@ -11902,7 +11904,7 @@ if (which_component_request_searchItemName_vendor == 1) {
     }//GEN-LAST:event_jTextField32ActionPerformed
 
     private void jButton65ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton65ActionPerformed
-        System.out.println("thisssss1");
+       // System.out.println("thisssss1");
         which_component_request_searchItemName_vendor = 5;
         search_ven_ItemName.pack();
         search_ven_ItemName.setLocationRelativeTo(this);
@@ -12073,7 +12075,7 @@ if (which_component_request_searchItemName_vendor == 1) {
                 stm += "INSERT INTO customer_discount (discount_value,customer_id_fk,discount_date) VALUES("+discount_value+","+vendor_id+",'"+sqlDate+"');";
             }
             //الانتهاء من ادخال قيد الخصم
-            System.out.println(stm);
+          //  System.out.println(stm);
             conn_obj.exec(stm);
             conn_obj.get_con().commit();
             /*
@@ -12483,7 +12485,7 @@ if (which_component_request_searchItemName_vendor == 1) {
             r = conn_obj.conn_exec("select item_unit from items.main_items where item_id='" + item_id + "'");
             r.next();
             int item_unit=r.getInt(1);
-            System.out.println("old="+ item_unit+"new ="+unit_id_old);
+       //     System.out.println("old="+ item_unit+"new ="+unit_id_old);
             if(unit_id_old==item_unit)
             {
                 Joptionpane_message("التغيير سيكون على الوحدة الرئيسية");
@@ -12818,7 +12820,7 @@ String discount_movements="select discount_value as value,-0.211524 as location,
             }
         }
         stm+=" order by record_time )as ddfv order by التاريخ";
-            System.out.println(stm);
+           // System.out.println(stm);
         r = conn_obj.conn_exec(stm);
             jTable18.setModel(DbUtils.resultSetToTableModel(r));
             jLabel142.setText(summary);
@@ -12854,6 +12856,7 @@ String discount_movements="select discount_value as value,-0.211524 as location,
         ActionListener menuListener = new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                   int point = jTable9.getSelectedRow();
+                  if (jTable9.getValueAt(point, 2).toString().trim().equals("فاتورة"))
         show_bill_items(jTable9.getValueAt(point, 3).toString().trim(),jTable9.getValueAt(point, 2).toString().trim());
 
             }
@@ -12863,6 +12866,7 @@ String discount_movements="select discount_value as value,-0.211524 as location,
                 try {
                     int point = jTable9.getSelectedRow();
                     String bill_id = jTable9.getValueAt(point, 3).toString().trim();
+                    if (jTable9.getValueAt(point, 2).toString().trim().equals("فاتورة"))
                     print_customer_bill(bill_id);
                 } catch (Exception ex) {
                     Joptionpane_message(ex.getMessage());
@@ -14169,7 +14173,7 @@ int bill_loc_id=r.getInt("bill_location_id");
                         + "items.item_relations.item_unit=" + r.getInt("item_unit") + ";";
                 
                            
-                System.out.println(stm_exec);
+            //    System.out.println(stm_exec);
                 r2 = conn_obj2.conn_exec(stm_exec);
                 r2.next();
                 double quantity = r2.getDouble("quantity");
@@ -14349,7 +14353,7 @@ int bill_loc_id=r.getInt("bill_location_id");
                         + "items.item_relations.item_unit=" + r.getInt("item_unit") + ";";
                 
                            
-                System.out.println(stm_exec);
+              //  System.out.println(stm_exec);
                 r2 = conn_obj2.conn_exec(stm_exec);
                 r2.next();
                 double quantity = r2.getDouble("quantity")*-1;
@@ -17955,6 +17959,7 @@ public String build_html_for_return_bill(int row,int col)
                 String dis_value = "قيمة الخصم المباشر على الفاتورة = " + r.getString("discount_amount");
                 String bill_value="قيمة الفاتورة النهائي يساوي =  "+ r.getString("bill");
                 String customer_name=r.getString("customer_name");
+                System.out.println(customer_name);
                 String html = "<body> ";
         html += "<table align=\"center\" border=\"1\" style=\"width:5px\" cellspacing=\"0\" cellpadding=\"1\" style=\"font-size: 8px\">" + "\n";
         html += "<tr>" + "\n";

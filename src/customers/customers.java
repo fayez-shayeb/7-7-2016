@@ -3214,7 +3214,7 @@ public class customers extends javax.swing.JFrame {
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(16, Short.MAX_VALUE))
+                        .addContainerGap(338, Short.MAX_VALUE))
                 );
 
                 jTabbedPane1.addTab("إضافة فاتورة", jPanel3);
@@ -3324,7 +3324,7 @@ public class customers extends javax.swing.JFrame {
 
                 jLabel14.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
                 jLabel14.setForeground(new java.awt.Color(204, 0, 0));
-                jLabel14.setText("قيمة الفاتورة:");
+                jLabel14.setText("قيمة الدفعة:");
 
                 jLabel21.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
                 jLabel21.setForeground(new java.awt.Color(204, 0, 0));
@@ -3337,7 +3337,6 @@ public class customers extends javax.swing.JFrame {
                 jTextField12.setBackground(new java.awt.Color(204, 255, 204));
                 jTextField12.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
                 jTextField12.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-                jTextField12.setText("0");
                 jTextField12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
                 jTextField12.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
                 jTextField12.addActionListener(new java.awt.event.ActionListener() {
@@ -3649,7 +3648,7 @@ public class customers extends javax.swing.JFrame {
                             .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(33, Short.MAX_VALUE))
+                            .addContainerGap(355, Short.MAX_VALUE))
                     );
 
                     jTabbedPane1.addTab("الدفعات للزبائن", jPanel5);
@@ -4181,7 +4180,7 @@ public class customers extends javax.swing.JFrame {
                             .addComponent(jButton29, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(73, Short.MAX_VALUE))
+                        .addContainerGap(395, Short.MAX_VALUE))
                 );
 
                 jTabbedPane2.getAccessibleContext().setAccessibleName("");
@@ -4261,7 +4260,7 @@ public class customers extends javax.swing.JFrame {
                             .addComponent(jButton25))
                         .addGap(55, 55, 55)
                         .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(214, Short.MAX_VALUE))
+                        .addContainerGap(536, Short.MAX_VALUE))
                 );
 
                 jTabbedPane1.addTab("أصناف نواقص", jPanel16);
@@ -4491,7 +4490,7 @@ public class customers extends javax.swing.JFrame {
                     .addGroup(jPanel17Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(65, Short.MAX_VALUE))
+                        .addContainerGap(387, Short.MAX_VALUE))
                 );
 
                 jTabbedPane1.addTab("إحصائيات", jPanel17);
@@ -4818,7 +4817,7 @@ public class customers extends javax.swing.JFrame {
                         .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel32, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(88, Short.MAX_VALUE))
+                        .addContainerGap(410, Short.MAX_VALUE))
                 );
 
                 jTabbedPane1.addTab("فاتورة مرتجعات", jPanel31);
@@ -5276,7 +5275,7 @@ public class customers extends javax.swing.JFrame {
                         .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(34, Short.MAX_VALUE))
+                        .addContainerGap(356, Short.MAX_VALUE))
                 );
 
                 jTabbedPane_vendor_action.addTab("فاتورة مشتريات", jPanel_add_ven_bill);
@@ -5721,7 +5720,7 @@ public class customers extends javax.swing.JFrame {
                             .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jButton45, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(30, Short.MAX_VALUE))
+                            .addContainerGap(352, Short.MAX_VALUE))
                     );
 
                     AutoCompleteDecorator.decorate(jComboBox_ven_name_pay);
@@ -5914,7 +5913,7 @@ public class customers extends javax.swing.JFrame {
                                 .addComponent(jPanel41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jScrollPane25, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(86, Short.MAX_VALUE))
+                        .addContainerGap(408, Short.MAX_VALUE))
                 );
 
                 jTabbedPane_vendor_action.addTab("جدول حساب المورد", jPanel_ven_acount_details);
@@ -6021,7 +6020,7 @@ public class customers extends javax.swing.JFrame {
                             .addGroup(jPanel_add_venLayout.createSequentialGroup()
                                 .addGap(8, 8, 8)
                                 .addComponent(jButton_add_new_ven, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(108, Short.MAX_VALUE))
+                        .addContainerGap(430, Short.MAX_VALUE))
                 );
 
                 jTabbedPane4.addTab("إضافة اسم ", jPanel_add_ven);
@@ -6134,7 +6133,7 @@ public class customers extends javax.swing.JFrame {
                         .addComponent(jPanel42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35)
                         .addComponent(jButton57, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(32, Short.MAX_VALUE))
+                        .addContainerGap(354, Short.MAX_VALUE))
                 );
 
                 jTabbedPane4.addTab("تعديل إسم", jPanel_modify_ven_name);
@@ -6178,7 +6177,7 @@ public class customers extends javax.swing.JFrame {
                             .addComponent(jLabel93))
                         .addGap(48, 48, 48)
                         .addComponent(jButton58, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(96, Short.MAX_VALUE))
+                        .addContainerGap(418, Short.MAX_VALUE))
                 );
 
                 jTabbedPane4.addTab("حذف اسم", jPanel_del_ven_name);
@@ -6536,7 +6535,7 @@ public class customers extends javax.swing.JFrame {
                         .addComponent(jScrollPane27, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel43, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(88, Short.MAX_VALUE))
+                        .addContainerGap(410, Short.MAX_VALUE))
                 );
 
                 jTabbedPane_vendor_action.addTab("مردود مشتريات", jPanel_return_ven_bill);
@@ -6720,7 +6719,7 @@ public class customers extends javax.swing.JFrame {
                 .addGroup(jPanel66Layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jPanel67, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(85, Short.MAX_VALUE))
+                    .addContainerGap(407, Short.MAX_VALUE))
             );
 
             jTabbedPane_vendor_action.addTab("إحصائيات", jPanel66);
@@ -7075,7 +7074,7 @@ public class customers extends javax.swing.JFrame {
                     .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(7, 7, 7)
                     .addComponent(jPanel55, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(155, Short.MAX_VALUE))
+                    .addContainerGap(477, Short.MAX_VALUE))
             );
 
             jScrollPane34.setViewportView(jPanel54);
@@ -7143,7 +7142,7 @@ public class customers extends javax.swing.JFrame {
                             .addComponent(jTextField6_search_item, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(jButton12_print_quant, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(199, Short.MAX_VALUE))
+                    .addContainerGap(521, Short.MAX_VALUE))
             );
 
             jTabbedPane3_Items.addTab("احصاء كميات", jPanel57);
@@ -7417,7 +7416,7 @@ public class customers extends javax.swing.JFrame {
 
             jComboBox6_to_new_item_name.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
             try {
-                r=conn_obj.conn_exec("select unit_name,unit_id from items.item_units ");
+                r=conn_obj.conn_exec("select unit_name,unit_id from items.item_units order by unit_name");
                 while(r.next())
                 jComboBox6_to_new_item_name.addItem(r.getString(1));
             } catch (SQLException ex) {
@@ -7706,7 +7705,7 @@ public class customers extends javax.swing.JFrame {
                         .addComponent(jLabel133))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(jButton15_add_new_unit)
-                    .addContainerGap(223, Short.MAX_VALUE))
+                    .addContainerGap(545, Short.MAX_VALUE))
             );
 
             jTabbedPane5.addTab("إضافة وحدة", jPanel12_units);
@@ -7763,7 +7762,7 @@ public class customers extends javax.swing.JFrame {
                         .addComponent(jLabel19_unit_id))
                     .addGap(14, 14, 14)
                     .addComponent(jButton16_modify_unit_name)
-                    .addContainerGap(196, Short.MAX_VALUE))
+                    .addContainerGap(518, Short.MAX_VALUE))
             );
 
             jTabbedPane5.addTab("تعديل وحدة", jPanel13_units);
@@ -7815,7 +7814,7 @@ public class customers extends javax.swing.JFrame {
                     .addComponent(jTextField15_remove_unit, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(14, 14, 14)
                     .addComponent(jButton17_remove_unit)
-                    .addContainerGap(190, Short.MAX_VALUE))
+                    .addContainerGap(512, Short.MAX_VALUE))
             );
 
             jTabbedPane5.addTab("حذف وحدة", jPanel14_unit);
@@ -8114,7 +8113,7 @@ public class customers extends javax.swing.JFrame {
 
             setJMenuBar(jMenuBar1);
 
-            setSize(new java.awt.Dimension(1316, 798));
+            setSize(new java.awt.Dimension(1316, 1120));
             setLocationRelativeTo(null);
         }// </editor-fold>//GEN-END:initComponents
 
@@ -8908,9 +8907,12 @@ renderer_jTable_obj.Renderer(jTable7);
                 show_last_row_scroll_jtable(jTable15);
             }
 
-        }
+            
+            
         jTextField4.requestFocus();
         jTextField4.selectAll();
+        }
+        
 
     }//GEN-LAST:event_jTable7MousePressed
 
@@ -9500,7 +9502,7 @@ if(!catagory_name.equals("------"))
         if(see_profit==true)
         for (int i = 0; i < m.getRowCount(); i++) {
             try {
-                r = conn_obj.conn_exec("select value \n"
+                String stm="select value \n"
                         + "                    from\n"
                         + "                    ( \n"
                         + "                    select \n"
@@ -9518,7 +9520,9 @@ if(!catagory_name.equals("------"))
                         + "                                AND\n"
                         + "                                items.item_units.unit_name='" + m.getValueAt(i, 1) + "'\n"
                         + "                                \n"
-                        + "                               )  as alias");
+                        + "                               )  as alias";
+                System.out.println(stm);
+                r = conn_obj.conn_exec(stm);
                 r.next();
                 double price = Double.parseDouble(m.getValueAt(i, 6).toString());
                 double value = r.getDouble("value");
@@ -12495,6 +12499,7 @@ if (which_component_request_searchItemName_vendor == 1) {
                 stm+="update customer_bills_items set item_unit ="+unit_id_new+" where item_id="+item_id+" and item_unit="+unit_id_old+" ;";
                 stm+="update vendor_bills_items set item_unit ="+unit_id_new+" where item_id="+item_id+" and item_unit="+unit_id_old+";";
                 conn_obj.exec(stm);
+                Joptionpane_message("تم تحويل اسم الوحدة");
             }
             else
             {
@@ -12504,9 +12509,10 @@ if (which_component_request_searchItemName_vendor == 1) {
                 stm+="update customer_bills_items set item_unit ="+unit_id_new+" where item_id="+item_id+" and item_unit="+unit_id_old+" ;";
                 stm+="update vendor_bills_items set item_unit ="+unit_id_new+" where item_id="+item_id+" and item_unit="+unit_id_old+";";
                 conn_obj.exec(stm);
+                Joptionpane_message("تم تحويل اسم الوحدة");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(customers.class.getName()).log(Level.SEVERE, null, ex);
+            Joptionpane_message(ex.getMessage());
         }
 
         /*
@@ -12547,9 +12553,25 @@ if (which_component_request_searchItemName_vendor == 1) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER ) {
 
             String word=jTextField12_search_items2.getText().trim();
-            r=conn_obj.conn_exec("(select items.main_items.item_id,items.main_items.item_name from items.main_items\n" +
-                "                        where items.main_items.item_name LIKE '%"+word+"%')");
-            //jTable4.getTableHeader().setFont(new Font("arial", Font.BOLD, 20));
+            String stm ="select item_id as id,item_name as الاسم \n"
+                        + " from \n"
+                        + "( select    "
+                        + "            items.main_items.item_name,items.main_items.item_id,\n"
+                        + "            items.items_ranking.rank_item_id,items.items_ranking.rank \n"
+                        + "            \n"
+                        + "            from items.main_items,items.items_ranking\n"
+                        + "            where \n"
+                        + "            items.main_items.item_name LIKE '%" + word + "%'     \n"
+                        + "            AND \n"
+                        + "            "
+                        + "            items.main_items.item_id = items.items_ranking.rank_item_id \n"
+                        + "             \n"
+                        + "             order by rank desc)as one";
+            
+            System.out.println(stm);
+            r=conn_obj.conn_exec(stm);
+            
+            jTable17.getTableHeader().setFont(new Font("arial", Font.BOLD, 16));
             jTable17.setModel(DbUtils.resultSetToTableModel(r));
             jFrame1_items.pack();
             jFrame1_items.setLocationRelativeTo(this);
@@ -16292,7 +16314,7 @@ public void return_customer_jTable(JTable table) {
         JOptionPane.showMessageDialog(this,ex.getMessage());
     }
     Bank_jcomboBox.setFont(new java.awt.Font("Arial", 1, 18));
-     AutoCompleteDecorator.decorate(Bank_jcomboBox);
+    // AutoCompleteDecorator.decorate(Bank_jcomboBox);
 
     
 

@@ -13320,7 +13320,8 @@ insert_bill_to_customer_jtable4(true);
         }
         else
         {
-            iconnn.setVisible(false);
+//            if(iconnn.isVisible())
+//            iconnn.setVisible(false);
         }
 
     }//GEN-LAST:event_jTable7MouseMoved

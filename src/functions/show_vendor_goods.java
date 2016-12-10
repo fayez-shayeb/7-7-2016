@@ -170,7 +170,7 @@ db_Connection conn_obj = new db_Connection();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
-String stm="select name as اسم_الصنف,'' as العدد    from(\n" +
+String stm="select name as اسم_الصنف,'' as العدد ,store   from(\n" +
 "select \n" +
 "vendors.vendor_id,vendors.vendor_name,\n" +
 "\n" +
@@ -179,17 +179,22 @@ String stm="select name as اسم_الصنف,'' as العدد    from(\n" +
 "vendor_bills_items.bill_id as bill_idd, vendor_bills_items.item_id ,\n" +
 "\n" +
 "items.main_items.item_id, items.main_items.item_name as name,\n" +
-"items.items_ranking.rank_item_id,items.items_ranking.rank\n" +
+"items.items_ranking.rank_item_id,items.items_ranking.rank,\n" +
 "\n" +
-"from vendors,vendor_bills,vendor_bills_items,items.main_items,items.items_ranking\n" +
+"\n" +
+"items.inventory.item_id,items.inventory.store_id_1 as store\n" +
+"\n" +
+"from vendors,vendor_bills,vendor_bills_items,items.main_items,items.items_ranking,items.inventory\n" +
 "\n" +
 "where\n" +
 "vendors.vendor_id=vendor_bills.bill_vendor_id and\n" +
 "vendor_bills.bill_id=vendor_bills_items.bill_id and\n" +
 "vendor_bills_items.item_id=items.main_items.item_id and\n" +
 "rank_item_id=vendor_bills_items.item_id and\n" +
+"items.inventory.item_id=items.main_items.item_id and\n" +
 "vendor_name='"+jComboBox1.getSelectedItem().toString().trim()+"' \n" +
-") as ff  GROUP BY name ORDER BY COUNT(*) DESC ";
+") as ff  GROUP BY name,store ORDER BY COUNT(*) DESC ";
+        System.out.println(stm);
         r = conn_obj.conn_exec(stm);
   
 

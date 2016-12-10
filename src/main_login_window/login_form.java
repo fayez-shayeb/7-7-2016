@@ -16,6 +16,11 @@ import javax.swing.UIManager;
 import functions.*;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import javax.swing.JRadioButtonMenuItem;
 
 
 /*
@@ -47,6 +52,7 @@ public class login_form extends javax.swing.JFrame{
     }
         
         initComponents();
+        connection_choices();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -70,9 +76,6 @@ public class login_form extends javax.swing.JFrame{
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
-        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
-        jRadioButtonMenuItem2 = new javax.swing.JRadioButtonMenuItem();
-        jRadioButtonMenuItem3 = new javax.swing.JRadioButtonMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Login");
@@ -196,25 +199,6 @@ public class login_form extends javax.swing.JFrame{
         jMenu2.setText("Edit");
 
         jMenu3.setText("connection");
-
-        connectio_type_group.add(jRadioButtonMenuItem1);
-        jRadioButtonMenuItem1.setSelected(true);
-        jRadioButtonMenuItem1.setText("localhost");
-        jRadioButtonMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jRadioButtonMenuItem1);
-
-        connectio_type_group.add(jRadioButtonMenuItem2);
-        jRadioButtonMenuItem2.setText("200.200.200.117");
-        jMenu3.add(jRadioButtonMenuItem2);
-
-        connectio_type_group.add(jRadioButtonMenuItem3);
-        jRadioButtonMenuItem3.setText("213.6.71.174");
-        jMenu3.add(jRadioButtonMenuItem3);
-
         jMenu2.add(jMenu3);
 
         jMenuBar1.add(jMenu2);
@@ -245,6 +229,7 @@ Cursor defaultCursor = Cursor.getDefaultCursor();
         //System.out.println(main_conn_obj.url);
     connection_type();
 db_Connection main_conn_obj=new db_Connection();
+
         ResultSet r=main_conn_obj.conn_exec("select * from users ");
         try {
             int found=0;
@@ -278,10 +263,6 @@ db_Connection main_conn_obj=new db_Connection();
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField1ActionPerformed
-
-    private void jRadioButtonMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonMenuItem1ActionPerformed
 
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
 int key = evt.getKeyCode();
@@ -318,9 +299,6 @@ int key = evt.getKeyCode();
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField jPasswordField1;
-    public javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
-    public javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
-    public javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem3;
     public javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 public void check_program_expiration()
@@ -358,15 +336,10 @@ PrintWriter writer = null;
          writer = new PrintWriter(file_name+".txt", "UTF-8");
          
          String type="";
+        
+         writer.println(connectio_type_group.getSelection().getActionCommand());//localhost or the IP
          
-         if (jRadioButtonMenuItem1.isSelected()) {
-             type= jRadioButtonMenuItem1.getText();
-         } else if (jRadioButtonMenuItem2.isSelected()) {
-             type= jRadioButtonMenuItem2.getText();
-         } else if (jRadioButtonMenuItem3.isSelected()) {
-             type= jRadioButtonMenuItem3.getText();
-         }
-         writer.println(type);//localhost or the IP
+         
          writer.println(jTextField1.getText().trim());//user_name
          writer.close();
      } catch (FileNotFoundException ex) {
@@ -383,5 +356,35 @@ PrintWriter writer = null;
      }
       
   }
+  
+    public void connection_choices() {
+        try {
+      // Open the file
+            FileInputStream fstream = new FileInputStream("connections.txt");
+            BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
+
+            String strLine;
+
+//Read File Line By Line
+            while ((strLine = br.readLine()) != null) {
+                JRadioButtonMenuItem jRadioButtonMenuItem_connection = new javax.swing.JRadioButtonMenuItem();
+                jRadioButtonMenuItem_connection = new javax.swing.JRadioButtonMenuItem();
+
+                connectio_type_group.add(jRadioButtonMenuItem_connection);
+
+                jRadioButtonMenuItem_connection.setSelected(true);
+
+                jRadioButtonMenuItem_connection.setText(strLine);
+                jRadioButtonMenuItem_connection.setActionCommand(strLine);//important 
+
+                jMenu3.add(jRadioButtonMenuItem_connection);
+            }
+
+//Close the input stream
+            br.close();
+        } catch (IOException e) {
+
+        }
+    }
 
 }

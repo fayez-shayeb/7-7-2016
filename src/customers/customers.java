@@ -95,6 +95,8 @@ import java.awt.datatransfer.StringSelection;
 import javax.print.PrintServiceLookup;
 import javax.swing.JPasswordField;
 import javax.swing.JPopupMenu;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellRenderer;
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -131,6 +133,7 @@ public class customers extends javax.swing.JFrame {
     TableModelListener fayez;
     JComboBox Bank_jcomboBox=new JComboBox();
     String stm_to_return_quantity_to_store="";
+    String ven_stm_to_return_quantity_to_store="";
     search_check s;
     checks checks_obj=new checks();
     public JComboBox item_Units;//for items
@@ -143,6 +146,7 @@ public class customers extends javax.swing.JFrame {
     String user_name; 
     add_remove_customers add_remove_customers_object;
     print_customer_move_table print_customer_move_table_object;
+    image_icon iconnn;
     
     //by default false
     boolean see_profit,see_cost,delete_entry,modify_entry,check_lose,search_in_buy_bills,discount_cus,discount_ven,
@@ -252,6 +256,15 @@ public class customers extends javax.swing.JFrame {
                 //return false;
                 return  column==2 || column==3 || column==4  ? true : false;
             }
+
+            @Override
+            //  Returning the Class of each column will allow different
+            //  renderers to be used based on Class
+            public Class getColumnClass(int column)
+            {
+                return getValueAt(0, column).getClass();
+            }
+
         };
         jCheckBox2 = new javax.swing.JCheckBox();
         jPopupMenu2 = new javax.swing.JPopupMenu();
@@ -646,6 +659,7 @@ public class customers extends javax.swing.JFrame {
             jLabel84 = new javax.swing.JLabel();
             jComboBox_ven_name_pay = new javax.swing.JComboBox();
             jButton_Tahseel_details = new javax.swing.JButton();
+            jButton74 = new javax.swing.JButton();
             jPanel_ven_acount_details = new javax.swing.JPanel();
             jScrollPane24 = new javax.swing.JScrollPane();
             jScrollPane25 = new javax.swing.JScrollPane();
@@ -847,6 +861,7 @@ public class customers extends javax.swing.JFrame {
             jMenuItem20 = new javax.swing.JMenuItem();
             jMenuItem11 = new javax.swing.JMenuItem();
             jMenuItem23 = new javax.swing.JMenuItem();
+            jMenuItem24 = new javax.swing.JMenuItem();
             jMenu6 = new javax.swing.JMenu();
             jMenuItem21 = new javax.swing.JMenuItem();
             jMenuItem22 = new javax.swing.JMenuItem();
@@ -1169,19 +1184,22 @@ public class customers extends javax.swing.JFrame {
                 }
             });
 
-            jTable7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-            jTable7.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
             /*
-            jTable7.setModel(new javax.swing.table.DefaultTableModel(
-                new Object [][] {
-
-                },
-                new String [] {
-
-                }
-            ));
             */
+            jTable7.getTableHeader().setFont(new Font("Arial",Font.BOLD,16));
             jTable7.setRowHeight(30);
+            jTable7.setFont(new java.awt.Font("Arial", 0, 18));
+            ////////////////////////
+            jTable7.setGridColor(new java.awt.Color(255, 0, 0));
+            jTable7.setShowGrid(true);
+            //////////////////////////
+            jTable7.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+            /////////////////////////
+            jTable7.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+                public void mouseMoved(java.awt.event.MouseEvent evt) {
+                    jTable7MouseMoved(evt);
+                }
+            });
             jTable7.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mousePressed(java.awt.event.MouseEvent evt) {
                     jTable7MousePressed(evt);
@@ -3214,7 +3232,7 @@ public class customers extends javax.swing.JFrame {
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(338, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 );
 
                 jTabbedPane1.addTab("إضافة فاتورة", jPanel3);
@@ -3648,7 +3666,7 @@ public class customers extends javax.swing.JFrame {
                             .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(355, Short.MAX_VALUE))
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     );
 
                     jTabbedPane1.addTab("الدفعات للزبائن", jPanel5);
@@ -4180,7 +4198,7 @@ public class customers extends javax.swing.JFrame {
                             .addComponent(jButton29, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(395, Short.MAX_VALUE))
+                        .addContainerGap(43, Short.MAX_VALUE))
                 );
 
                 jTabbedPane2.getAccessibleContext().setAccessibleName("");
@@ -4260,7 +4278,7 @@ public class customers extends javax.swing.JFrame {
                             .addComponent(jButton25))
                         .addGap(55, 55, 55)
                         .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(536, Short.MAX_VALUE))
+                        .addContainerGap(184, Short.MAX_VALUE))
                 );
 
                 jTabbedPane1.addTab("أصناف نواقص", jPanel16);
@@ -4490,7 +4508,7 @@ public class customers extends javax.swing.JFrame {
                     .addGroup(jPanel17Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(387, Short.MAX_VALUE))
+                        .addContainerGap(35, Short.MAX_VALUE))
                 );
 
                 jTabbedPane1.addTab("إحصائيات", jPanel17);
@@ -4817,7 +4835,7 @@ public class customers extends javax.swing.JFrame {
                         .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel32, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(410, Short.MAX_VALUE))
+                        .addContainerGap(58, Short.MAX_VALUE))
                 );
 
                 jTabbedPane1.addTab("فاتورة مرتجعات", jPanel31);
@@ -5275,7 +5293,7 @@ public class customers extends javax.swing.JFrame {
                         .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(356, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 );
 
                 jTabbedPane_vendor_action.addTab("فاتورة مشتريات", jPanel_add_ven_bill);
@@ -5319,6 +5337,11 @@ public class customers extends javax.swing.JFrame {
                 jTextField_ven_pay_cash.setText("0");
                 jTextField_ven_pay_cash.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
                 jTextField_ven_pay_cash.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+                jTextField_ven_pay_cash.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        jTextField_ven_pay_cashActionPerformed(evt);
+                    }
+                });
                 jTextField_ven_pay_cash.addKeyListener(new java.awt.event.KeyAdapter() {
                     public void keyReleased(java.awt.event.KeyEvent evt) {
                         jTextField_ven_pay_cashKeyReleased(evt);
@@ -5677,12 +5700,21 @@ public class customers extends javax.swing.JFrame {
                         }
                     });
 
+                    jButton74.setText("طباعة");
+                    jButton74.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                            jButton74ActionPerformed(evt);
+                        }
+                    });
+
                     javax.swing.GroupLayout jPanel_ven_payLayout = new javax.swing.GroupLayout(jPanel_ven_pay);
                     jPanel_ven_pay.setLayout(jPanel_ven_payLayout);
                     jPanel_ven_payLayout.setHorizontalGroup(
                         jPanel_ven_payLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel_ven_payLayout.createSequentialGroup()
-                            .addGap(157, 157, 157)
+                            .addGap(60, 60, 60)
+                            .addComponent(jButton74)
+                            .addGap(18, 18, 18)
                             .addComponent(jButton_Tahseel_details)
                             .addGap(18, 18, 18)
                             .addComponent(jLabel_in_Tahseel, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -5715,12 +5747,13 @@ public class customers extends javax.swing.JFrame {
                                 .addComponent(jComboBox_ven_name_pay, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jButton_search_ven_name_pay, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel_in_Tahseel)
-                                .addComponent(jButton_Tahseel_details))
+                                .addComponent(jButton_Tahseel_details)
+                                .addComponent(jButton74))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jButton45, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(352, Short.MAX_VALUE))
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     );
 
                     AutoCompleteDecorator.decorate(jComboBox_ven_name_pay);
@@ -5913,7 +5946,7 @@ public class customers extends javax.swing.JFrame {
                                 .addComponent(jPanel41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jScrollPane25, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(408, Short.MAX_VALUE))
+                        .addContainerGap(56, Short.MAX_VALUE))
                 );
 
                 jTabbedPane_vendor_action.addTab("جدول حساب المورد", jPanel_ven_acount_details);
@@ -6020,7 +6053,7 @@ public class customers extends javax.swing.JFrame {
                             .addGroup(jPanel_add_venLayout.createSequentialGroup()
                                 .addGap(8, 8, 8)
                                 .addComponent(jButton_add_new_ven, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(430, Short.MAX_VALUE))
+                        .addContainerGap(87, Short.MAX_VALUE))
                 );
 
                 jTabbedPane4.addTab("إضافة اسم ", jPanel_add_ven);
@@ -6133,7 +6166,7 @@ public class customers extends javax.swing.JFrame {
                         .addComponent(jPanel42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35)
                         .addComponent(jButton57, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(354, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 );
 
                 jTabbedPane4.addTab("تعديل إسم", jPanel_modify_ven_name);
@@ -6177,7 +6210,7 @@ public class customers extends javax.swing.JFrame {
                             .addComponent(jLabel93))
                         .addGap(48, 48, 48)
                         .addComponent(jButton58, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(418, Short.MAX_VALUE))
+                        .addContainerGap(75, Short.MAX_VALUE))
                 );
 
                 jTabbedPane4.addTab("حذف اسم", jPanel_del_ven_name);
@@ -6535,7 +6568,7 @@ public class customers extends javax.swing.JFrame {
                         .addComponent(jScrollPane27, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel43, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(410, Short.MAX_VALUE))
+                        .addContainerGap(58, Short.MAX_VALUE))
                 );
 
                 jTabbedPane_vendor_action.addTab("مردود مشتريات", jPanel_return_ven_bill);
@@ -6719,7 +6752,7 @@ public class customers extends javax.swing.JFrame {
                 .addGroup(jPanel66Layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jPanel67, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(407, Short.MAX_VALUE))
+                    .addContainerGap(55, Short.MAX_VALUE))
             );
 
             jTabbedPane_vendor_action.addTab("إحصائيات", jPanel66);
@@ -7074,7 +7107,7 @@ public class customers extends javax.swing.JFrame {
                     .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(7, 7, 7)
                     .addComponent(jPanel55, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(477, Short.MAX_VALUE))
+                    .addContainerGap(125, Short.MAX_VALUE))
             );
 
             jScrollPane34.setViewportView(jPanel54);
@@ -7142,7 +7175,7 @@ public class customers extends javax.swing.JFrame {
                             .addComponent(jTextField6_search_item, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(jButton12_print_quant, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(521, Short.MAX_VALUE))
+                    .addContainerGap(169, Short.MAX_VALUE))
             );
 
             jTabbedPane3_Items.addTab("احصاء كميات", jPanel57);
@@ -7705,7 +7738,7 @@ public class customers extends javax.swing.JFrame {
                         .addComponent(jLabel133))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(jButton15_add_new_unit)
-                    .addContainerGap(545, Short.MAX_VALUE))
+                    .addContainerGap(193, Short.MAX_VALUE))
             );
 
             jTabbedPane5.addTab("إضافة وحدة", jPanel12_units);
@@ -7762,7 +7795,7 @@ public class customers extends javax.swing.JFrame {
                         .addComponent(jLabel19_unit_id))
                     .addGap(14, 14, 14)
                     .addComponent(jButton16_modify_unit_name)
-                    .addContainerGap(518, Short.MAX_VALUE))
+                    .addContainerGap(166, Short.MAX_VALUE))
             );
 
             jTabbedPane5.addTab("تعديل وحدة", jPanel13_units);
@@ -7814,7 +7847,7 @@ public class customers extends javax.swing.JFrame {
                     .addComponent(jTextField15_remove_unit, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(14, 14, 14)
                     .addComponent(jButton17_remove_unit)
-                    .addContainerGap(512, Short.MAX_VALUE))
+                    .addContainerGap(160, Short.MAX_VALUE))
             );
 
             jTabbedPane5.addTab("حذف وحدة", jPanel14_unit);
@@ -8069,6 +8102,14 @@ public class customers extends javax.swing.JFrame {
             });
             jMenu2.add(jMenuItem23);
 
+            jMenuItem24.setText("مجموع شكات غير مجيرة");
+            jMenuItem24.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jMenuItem24ActionPerformed(evt);
+                }
+            });
+            jMenu2.add(jMenuItem24);
+
             jMenuBar1.add(jMenu2);
 
             jMenu6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -8113,7 +8154,7 @@ public class customers extends javax.swing.JFrame {
 
             setJMenuBar(jMenuBar1);
 
-            setSize(new java.awt.Dimension(1316, 1120));
+            setSize(new java.awt.Dimension(1316, 768));
             setLocationRelativeTo(null);
         }// </editor-fold>//GEN-END:initComponents
 
@@ -8389,6 +8430,27 @@ public class customers extends javax.swing.JFrame {
                         //conn_obj.exec("DELETE FROM customer_bills where bill_id="+bill_id+"");
                     } else if (jTable3.getValueAt(point, 3).toString().trim().equals("دفعة")) {
                         String payment_id = jTable3.getValueAt(point, 6).toString().trim();
+                         r = conn_obj.conn_exec("select check_no,check_value,vendor_payment_id from customer_checks where check_payment_id ="+payment_id+" \n"
+                    + "and \n"
+                    + "vendor_payment_id is not null ;");
+                        if (r.next()) {//معناها انو في شكات مجيرة لتاجر من ضمن الشكات المراد تعديلها
+
+                            String message = "";//تحمل اظهار اسم المورد الذي معه الشك او اسماء الموردين اللي معهم الشكات
+                            do {
+                                r2 = conn_obj2.conn_exec("select vendor_payments.vendor_id_fk,vendor_payments.payment_id,vendor_payments.payment_date,\n"
+                                        + "       vendors.vendor_id,vendors.vendor_name\n"
+                                        + "\n"
+                                        + "       from vendors,vendor_payments\n"
+                                        + "\n"
+                                        + "where     vendors.vendor_id= vendor_id_fk and\n"
+                                        + "           payment_id =" + r.getInt("vendor_payment_id") + "");
+                                r2.next();
+                                message+="يوجد شك في هذه الدفعة مجير للمورد  "+r2.getString("vendor_name")+" بتاريخ : "+r2.getString("payment_date")+"رقم الشك: "+r.getString("check_no")+"\n";
+                                
+                            } while (r.next());
+                            throw new Exception(message+"قبل تعديل هذه الدفعة يجب الغاء المجير منها من الشيكات");
+
+                        }
                         jframe_to_modify_payment = new modify_customer_payment(this, payment_id);
                         r = conn_obj.conn_exec("select * from  customer_payments where payment_id=" + payment_id + "");
                         r.next();
@@ -8523,7 +8585,6 @@ public class customers extends javax.swing.JFrame {
 
                 }
             } catch (Exception ex) {
-                Logger.getLogger(customers.class.getName()).log(Level.SEVERE, null, ex);
                 Joptionpane_message(ex.getMessage());
             }
         }
@@ -8761,23 +8822,27 @@ public class customers extends javax.swing.JFrame {
         searchItemName.setState(NORMAL);
         jTextField4.requestFocus();
     }//GEN-LAST:event_jButton21ActionPerformed
-
+ImageIcon[] images;//حطيناها هون لحتى نستخدمها في تكبير الصورة عند المرور عن الصورة في البحث عن الاصناف
     private void jTextField4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyPressed
         int key = evt.getKeyCode();
         if (evt.getSource() == jTextField4) {
             if (key == KeyEvent.VK_ENTER) {
-if(which_component_request_searchItemName!=8){
-    String stm="select item_name as الاسم,unit_name as الوحدة,item_price_hole  as السعر,1 as الكمية,'' as ملاحظات\n"
+                
+if(which_component_request_searchItemName!=8){//زبائن
+    String stm="select item_name as الاسم,unit_name as الوحدة,item_price_hole  as السعر,1 as الكمية,'' as ملاحظات , store_id_1 as Q,itemmm_iddd as image \n"
                         + "from\n"
                         + "( select    items.item_units.unit_name,items.item_units.unit_id,\n"
-                        + "            items.main_items.item_name,items.main_items.item_id,\n"
+                        + "            items.main_items.item_name,items.main_items.item_id as itemmm_iddd,\n"
+                        + "            items.inventory.store_id_1,items.inventory.item_id,\n"
                         + "            items.items_ranking.rank_item_id,items.items_ranking.rank,\n"
                         + "            items.item_relations.item_id,items.item_relations.item_unit,items.item_relations.item_price_hole\n"
-                        + "            from items.item_units,items.main_items,items.item_relations,items.items_ranking\n"
+                        + "            from items.item_units,items.main_items,items.item_relations,items.items_ranking,items.inventory\n"
                         + "            where \n"
                         + "            items.main_items.item_name LIKE '%" + jTextField4.getText().trim() + "%'     \n"
                         + "            AND \n"
                         + "            items.item_relations.item_id= items.main_items.item_id \n"
+                        + "            AND \n"
+                        + "            items.inventory.item_id= items.main_items.item_id \n"
                         + "            AND \n"
                         + "            items.main_items.item_id = items.items_ranking.rank_item_id \n"
                         + "            and \n"
@@ -8792,8 +8857,16 @@ if(which_component_request_searchItemName!=8){
                 jTable7.getColumnModel().getColumn(4).setMinWidth(150);
                 jTextField4.selectAll();
     jTable7.changeSelection(0, 3, false, false);
+ 
+    images = new ImageIcon[jTable7.getRowCount()];
+    for (int i = 0; i < images.length; i++) {
+        images[i] = new ImageIcon("C:\\Users\\Fayez\\Documents\\items_images\\" + jTable7.getValueAt(i, 6).toString() + ".jpg");
+
+        jTable7.setValueAt(images[i], i, 6);
+    }
+ //renderer_jTable_obj.Renderer(jTable7);   
 }
-else{
+else{//موردين
     
                 r = conn_obj.conn_exec("select item_name as الاسم,unit_name as الوحدة,to_char(value, 'FM9999999999.00') as السعر_علينا,relation as علاقتها_بالرئيسية,1 as الكمية,'' as ملاحظات\n" +
 "                    from\n" +
@@ -8823,9 +8896,10 @@ else{
                 jTable7.getColumnModel().getColumn(4).setMinWidth(70);
                 jTable7.getColumnModel().getColumn(5).setMinWidth(200);
                 jTextField4.selectAll();
-
-}
+                
 renderer_jTable_obj.Renderer(jTable7);
+}
+
             }
         }
     }//GEN-LAST:event_jTextField4KeyPressed
@@ -8837,41 +8911,64 @@ renderer_jTable_obj.Renderer(jTable7);
             if (which_component_request_searchItemName == 1) {
                 if (jCheckBox2.isSelected()) {//الدخول للتسعيرة الاخيرة للزبون ماشرة
                     try {
-                        String item_name, item_unit, customer = "";
+                        String item_name, new_item_unit, customer = "";
                         item_name = jTable7.getValueAt(jTable7.getSelectedRow(), 0).toString();
-                        item_unit = jTable7.getValueAt(jTable7.getSelectedRow(), 1).toString();
+                        new_item_unit = jTable7.getValueAt(jTable7.getSelectedRow(), 1).toString();
                         customer = jComboBox1.getSelectedItem().toString();
-                        r = conn_obj.conn_exec("select \n"
-                                + "unit_name,unit_id,\n"
-                                + "items.main_items.item_name,items.main_items.item_id,\n"
-                                + "customer_name,customer_id,\n"
-                                + "bill_customer_id,public.customer_bills.bill_id,\n"
-                                + "public.customer_bills_items.bill_id,public.customer_bills_items.item_id,public.customer_bills_items.item_unit,public.customer_bills_items.item_price\n"
-                                + "\n"
-                                + "from\n"
-                                + "items.item_units,\n"
-                                + "items.main_items,\n"
-                                + "public.customers,\n"
-                                + "public.customer_bills,\n"
-                                + "public.customer_bills_items\n"
-                                + "\n"
-                                + "where \n"
-                                + "items.item_units.unit_name= '" + item_unit + "'  and\n"
-                                + "items.main_items.item_name= '" + item_name + "' and\n"
-                                + "public.customers.customer_name= '" + customer + "' and\n"
-                                + "public.customer_bills.bill_customer_id=public.customers.customer_id and\n"
-                                + "public.customer_bills.bill_id=public.customer_bills_items.bill_id and\n"
-                                + "public.customer_bills_items.item_id=items.main_items.item_id and\n"
-                                + "public.customer_bills_items.item_unit=items.item_units.unit_id ;\n"
-                                + "\n"
-                                + "");
+                        r = conn_obj.conn_exec("select \n" +
+"                               unit_name,unit_id,\n" +
+"                               items.main_items.item_name,items.main_items.item_id,\n" +
+"                               customer_name,customer_id,\n" +
+"                                bill_customer_id,public.customer_bills.bill_id,public.customer_bills.bill_date,\n" +
+"                                public.customer_bills_items.bill_id,public.customer_bills_items.item_id,public.customer_bills_items.item_unit,public.customer_bills_items.item_price\n" +
+"                                \n" +
+"                                from\n" +
+"                                items.item_units,\n" +
+"                                items.main_items,\n" +
+"                                public.customers,\n" +
+"                                public.customer_bills,\n" +
+"                                public.customer_bills_items\n" +
+"                                \n" +
+"                                where \n" +
+"                                items.main_items.item_name= '"+item_name+"' and\n" +
+"                                public.customers.customer_name= '"+customer+"' and\n" +
+"                                public.customer_bills.bill_customer_id=public.customers.customer_id and\n" +
+"                                public.customer_bills.bill_id=public.customer_bills_items.bill_id and\n" +
+"                                public.customer_bills_items.item_id=items.main_items.item_id and\n" +
+"                                public.customer_bills_items.item_unit=items.item_units.unit_id \n" +
+"                                order by bill_date;");
+                        
+    
+
+                        
                         if (!r.next()) {
                             add_row_jtable4(jTable4,
                                     jTable7.getValueAt(jTable7.getSelectedRow(), 0), jTable7.getValueAt(jTable7.getSelectedRow(), 1), jTable7.getValueAt(jTable7.getSelectedRow(), 3), 0, jTable7.getValueAt(jTable7.getSelectedRow(), 2), 0, null, jTable7.getValueAt(jTable7.getSelectedRow(), 4));
                         } else {
                             r.last();
+
+                            int old_unit_id = r.getInt("unit_id");
+                            
+                            int item_id = r.getInt("item_id");
+                            
+                            float last_price = r.getFloat("item_price");
+                            
+                            r2 = conn_obj2.conn_exec("select unit_id from items.item_units where unit_name ='" + new_item_unit + "';");
+                            r2.next();
+                            int new_unit_id = r2.getInt("unit_id");
+                            
+                            r2 = conn_obj2.conn_exec("select item_relation from items.item_relations where item_id =" + item_id + "  and item_unit =" + old_unit_id + "  ;");
+                            r2.next();
+                            float old_unit_relation = r2.getFloat("item_relation");
+                            
+                            r2 = conn_obj2.conn_exec("select item_relation from items.item_relations where item_id =" + item_id + "  and item_unit =" + new_unit_id + "  ;");
+                            r2.next();
+                            float new_unit_relation = r2.getFloat("item_relation");
+                            
+              float new_price=last_price/(old_unit_relation/new_unit_relation);
+              
                             add_row_jtable4(jTable4,
-                                    jTable7.getValueAt(jTable7.getSelectedRow(), 0), jTable7.getValueAt(jTable7.getSelectedRow(), 1), jTable7.getValueAt(jTable7.getSelectedRow(), 3), 0, r.getDouble("item_price"), 0, null, jTable7.getValueAt(jTable7.getSelectedRow(), 4));
+                                    jTable7.getValueAt(jTable7.getSelectedRow(), 0), jTable7.getValueAt(jTable7.getSelectedRow(), 1), jTable7.getValueAt(jTable7.getSelectedRow(), 3), 0,new_price , 0, null, jTable7.getValueAt(jTable7.getSelectedRow(), 4));
                         }
                     } catch (SQLException ex) {
                         Logger.getLogger(customers.class.getName()).log(Level.SEVERE, null, ex);
@@ -8884,7 +8981,39 @@ renderer_jTable_obj.Renderer(jTable7);
             } else if (which_component_request_searchItemName == 2) {
                 search_in_customer_bills_about_item();
             } else if (which_component_request_searchItemName == 3) {
-                DefaultTableModel tm = (DefaultTableModel) jTable12.getModel();
+                try {
+                        String item_name, new_item_unit, customer = "";
+                        item_name = jTable7.getValueAt(jTable7.getSelectedRow(), 0).toString();
+                        new_item_unit = jTable7.getValueAt(jTable7.getSelectedRow(), 1).toString();
+                        customer = jComboBox8.getSelectedItem().toString();
+                        r = conn_obj.conn_exec("select \n" +
+"                               unit_name,unit_id,\n" +
+"                               items.main_items.item_name,items.main_items.item_id,\n" +
+"                               customer_name,customer_id,\n" +
+"                                bill_customer_id,public.customer_bills.bill_id,public.customer_bills.bill_date,\n" +
+"                                public.customer_bills_items.bill_id,public.customer_bills_items.item_id,public.customer_bills_items.item_unit,public.customer_bills_items.item_price\n" +
+"                                \n" +
+"                                from\n" +
+"                                items.item_units,\n" +
+"                                items.main_items,\n" +
+"                                public.customers,\n" +
+"                                public.customer_bills,\n" +
+"                                public.customer_bills_items\n" +
+"                                \n" +
+"                                where \n" +
+"                                items.main_items.item_name= '"+item_name+"' and\n" +
+"                                public.customers.customer_name= '"+customer+"' and\n" +
+"                                public.customer_bills.bill_customer_id=public.customers.customer_id and\n" +
+"                                public.customer_bills.bill_id=public.customer_bills_items.bill_id and\n" +
+"                                public.customer_bills_items.item_id=items.main_items.item_id and\n" +
+"                                public.customer_bills_items.item_unit=items.item_units.unit_id \n" +
+"                                order by bill_date;");
+                        
+    
+
+                        
+                        if (!r.next()) {
+                            DefaultTableModel tm = (DefaultTableModel) jTable12.getModel();
                 tm.addRow(new Object[]{
                     jTable7.getValueAt(jTable7.getSelectedRow(), 0),
                     jTable7.getValueAt(jTable7.getSelectedRow(), 1),
@@ -8893,6 +9022,38 @@ renderer_jTable_obj.Renderer(jTable7);
                     null,
                     jTable7.getValueAt(jTable7.getSelectedRow(), 4)});
 
+                        } else {
+                            r.last();
+
+                            int old_unit_id = r.getInt("unit_id");
+                            
+                            int item_id = r.getInt("item_id");
+                            
+                            float last_price = r.getFloat("item_price");
+                            
+                            r2 = conn_obj2.conn_exec("select unit_id from items.item_units where unit_name ='" + new_item_unit + "';");
+                            r2.next();
+                            int new_unit_id = r2.getInt("unit_id");
+                            
+                            r2 = conn_obj2.conn_exec("select item_relation from items.item_relations where item_id =" + item_id + "  and item_unit =" + old_unit_id + "  ;");
+                            r2.next();
+                            float old_unit_relation = r2.getFloat("item_relation");
+                            
+                            r2 = conn_obj2.conn_exec("select item_relation from items.item_relations where item_id =" + item_id + "  and item_unit =" + new_unit_id + "  ;");
+                            r2.next();
+                            float new_unit_relation = r2.getFloat("item_relation");
+                            
+              float new_price=last_price/(old_unit_relation/new_unit_relation);
+              
+               DefaultTableModel tm = (DefaultTableModel) jTable12.getModel();
+                tm.addRow(new Object[]{
+                    item_name,new_item_unit,jTable7.getValueAt(jTable7.getSelectedRow(), 3),new_price,null,jTable7.getValueAt(jTable7.getSelectedRow(), 4)
+                });
+              
+                         }
+                    } catch (SQLException ex) {
+                        Logger.getLogger(customers.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 show_last_row_scroll_jtable(jTable12);
             } else if (which_component_request_searchItemName == 5) {
                 DefaultTableModel tm = (DefaultTableModel) jTable15.getModel();
@@ -8923,38 +9084,58 @@ renderer_jTable_obj.Renderer(jTable7);
         for (int i = 0; i < jTable4.getRowCount(); i++) {
             if (jTable4.getValueAt(i, 1) != null && jTable4.getValueAt(i, 0) != null) {
                 try {
-                    String item_name, item_unit, customer = "";
+                    //المبدأ هو
+                    String item_name, new_item_unit, customer = "";
                     item_name = jTable4.getValueAt(i, 0).toString();
-                    item_unit = jTable4.getValueAt(i, 1).toString();
+                    new_item_unit = jTable4.getValueAt(i, 1).toString();
                     customer = jComboBox1.getSelectedItem().toString();
-                    String stm="select \n"
-                            + "unit_name,unit_id,\n"
-                            + "items.main_items.item_name,items.main_items.item_id,\n"
-                            + "customer_name,customer_id,\n"
-                            + "bill_customer_id,public.customer_bills.bill_id,\n"
-                            + "public.customer_bills_items.bill_id,public.customer_bills_items.item_id,public.customer_bills_items.item_unit,public.customer_bills_items.item_price\n"
-                            + "\n"
-                            + "from\n"
-                            + "items.item_units,\n"
-                            + "items.main_items,\n"
-                            + "public.customers,\n"
-                            + "public.customer_bills,\n"
-                            + "public.customer_bills_items\n"
-                            + "\n"
-                            + "where \n"
-                            + "items.item_units.unit_name= '" + item_unit + "'  and\n"
-                            + "items.main_items.item_name= '" + item_name + "' and\n"
-                            + "public.customers.customer_name= '" + customer + "' and\n"
-                            + "public.customer_bills.bill_customer_id=public.customers.customer_id and\n"
-                            + "public.customer_bills.bill_id=public.customer_bills_items.bill_id and\n"
-                            + "public.customer_bills_items.item_id=items.main_items.item_id and\n"
-                            + "public.customer_bills_items.item_unit=items.item_units.unit_id ;\n"
-                            + "\n"
-                            + "";
+                    String stm="select \n" +
+"                               unit_name,unit_id,\n" +
+"                               items.main_items.item_name,items.main_items.item_id,\n" +
+"                               customer_name,customer_id,\n" +
+"                                bill_customer_id,public.customer_bills.bill_id,public.customer_bills.bill_date,\n" +
+"                                public.customer_bills_items.bill_id,public.customer_bills_items.item_id,public.customer_bills_items.item_unit,public.customer_bills_items.item_price\n" +
+"                                \n" +
+"                                from\n" +
+"                                items.item_units,\n" +
+"                                items.main_items,\n" +
+"                                public.customers,\n" +
+"                                public.customer_bills,\n" +
+"                                public.customer_bills_items\n" +
+"                                \n" +
+"                                where \n" +
+"                                items.main_items.item_name= '"+item_name+"' and\n" +
+"                                public.customers.customer_name= '"+customer+"' and\n" +
+"                                public.customer_bills.bill_customer_id=public.customers.customer_id and\n" +
+"                                public.customer_bills.bill_id=public.customer_bills_items.bill_id and\n" +
+"                                public.customer_bills_items.item_id=items.main_items.item_id and\n" +
+"                                public.customer_bills_items.item_unit=items.item_units.unit_id \n" +
+"                                order by bill_date;";
                     r = conn_obj.conn_exec(stm);
                     if (r.next()) {
                         r.last();
-                        jTable4.setValueAt(r.getDouble("item_price"), i, 4);
+
+                        int old_unit_id = r.getInt("unit_id");
+
+                        int item_id = r.getInt("item_id");
+
+                        float last_price = r.getFloat("item_price");
+
+                        r2 = conn_obj2.conn_exec("select unit_id from items.item_units where unit_name ='" + new_item_unit + "';");
+                        r2.next();
+                        int new_unit_id = r2.getInt("unit_id");
+
+                        r2 = conn_obj2.conn_exec("select item_relation from items.item_relations where item_id =" + item_id + "  and item_unit =" + old_unit_id + "  ;");
+                        r2.next();
+                        float old_unit_relation = r2.getFloat("item_relation");
+
+                        r2 = conn_obj2.conn_exec("select item_relation from items.item_relations where item_id =" + item_id + "  and item_unit =" + new_unit_id + "  ;");
+                        r2.next();
+                        float new_unit_relation = r2.getFloat("item_relation");
+
+                        float new_price = last_price / (old_unit_relation / new_unit_relation);
+
+                        jTable4.setValueAt(new_price, i, 4);
                     }
                 } catch (SQLException ex) {
                     Logger.getLogger(customers.class.getName()).log(Level.SEVERE, null, ex);
@@ -9052,7 +9233,7 @@ String html = "<body> ";
         note = jTextField20.getText().trim().toString();
         if (!note.equals("")) {
             int point = jTable3.getSelectedRow();
-            String bill_id = jTable3.getValueAt(point, 6).toString().trim();
+            String bill_id = jTable3.getValueAt(point, 2).toString().trim();
             try {
                 r = conn_obj.conn_exec("select * from bill_note_to_print where bill_id_fk= " + bill_id + "");
                 if (!r.next()) {//اذا ملاحظة الفاتورة اضيفت لاول مرة 
@@ -9064,8 +9245,10 @@ String html = "<body> ";
 
             }
             html += "<p align=\"center\"> ملاحظة:" + note + " </p>" + "\n";
+           
         }
-
+        html += "<p align=\"right\"> اسم الزبون مستلم البضاعة</p>" + "\n";
+        html += "<p align=\"right\"> اسم السائق </p>" + "\n";
         html += "</body>" + "\n";
         /////////////////////////////////
 
@@ -9340,7 +9523,7 @@ if(!catagory_name.equals("------"))
             }
 
             jPopupMenu2.show(evt.getComponent(), evt.getX(), evt.getY());
-        } //////اذا نريد التسعيرة الاخيرة للصنف
+        } //////اذا نريد التسعيرة الاخيرة للصنف1111
         else if (SwingUtilities.isRightMouseButton(evt) && jTable4.columnAtPoint(evt.getPoint()) == 4) {//if right click and column price
 
             try {
@@ -9398,6 +9581,7 @@ if(!catagory_name.equals("------"))
                     });
                     jPopupMenu2.add(item);
                 }
+                /////////////////////////////////////////////////////////222
                 //add jMenue with item see_cost 
                 JMenu menu_cost = new JMenu("السعر علينا");
                 jPopupMenu2.insert(menu_cost, 0);
@@ -9424,6 +9608,34 @@ if(!catagory_name.equals("------"))
                 if(see_cost==true)
                 menu_cost.add(r.getString(3));
                 ////End add jMenue hold item_Cost
+                
+                //اضافة منيو متوسط سعر المباع لاخر 30 مرة
+                JMenu average_sell_price = new JMenu("متوسط سعر البيع");
+                jPopupMenu2.insert(average_sell_price, 1);
+                r = conn_obj.conn_exec("select (sum (res)*(select items.item_relations.item_relation from items.item_relations where item_id=(select item_id from items.main_items where item_name = '"+item_name+"' ) and item_unit = (select unit_id from items.item_units where unit_name = '"+item_unit+"' )))/20  as final_res \n"
+                        + "from \n"
+                        + "(\n"
+                        + "select customers.customer_id,customers.customer_catagory_id,\n"
+                        + "customer_bills.bill_customer_id,customer_bills.bill_id,\n"
+                        + "customer_bills_items.bill_id,customer_bills_items.item_unit,customer_bills_items.item_price,customer_bills_items.item_id,\n"
+                        + "items.item_relations.item_id,items.item_relations.item_unit,items.item_relations.item_relation,\n"
+                        + "item_price/item_relation as res\n"
+                        + "\n"
+                        + "from customer_bills_items ,items.item_relations,customers,customer_bills\n"
+                        + "\n"
+                        + "where \n"
+                        + "--لا تساوي متفرقات مثل محل برقيم وجنين\n"
+                        + "customers.customer_catagory_id !=10 and\n"
+                        + "customer_bills.bill_customer_id=customers.customer_id and\n"
+                        + "customer_bills.bill_id=customer_bills_items.bill_id and\n"
+                        + "customer_bills_items.item_id=(select item_id from items.main_items where item_name = '"+item_name+"' ) and\n"
+                        + "items.item_relations.item_id=customer_bills_items.item_id \n"
+                        + "and  items.item_relations.item_unit=customer_bills_items.item_unit \n"
+                        + "limit 20 \n"
+                        + ")as dvgh");
+                r.next();
+                average_sell_price.add(r.getString("final_res"));
+                ////انتهاء اضافة منيو متوسط سعر المباع لاخر 30 مرة
             } catch (SQLException ex) {
                 Logger.getLogger(customers.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -9639,44 +9851,61 @@ else
     }//GEN-LAST:event_jTextField35ActionPerformed
 
     private void jButton37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton37ActionPerformed
-       for (int i = 0; i < jTable12.getRowCount(); i++) {
+         for (int i = 0; i < jTable12.getRowCount(); i++) {
             if (jTable12.getValueAt(i, 1) != null && jTable12.getValueAt(i, 0) != null) {
                 try {
-                    String item_name, item_unit, customer = "";
+                    //المبدأ هو
+                    String item_name, new_item_unit, customer = "";
                     item_name = jTable12.getValueAt(i, 0).toString();
-                    item_unit = jTable12.getValueAt(i, 1).toString();
+                    new_item_unit = jTable12.getValueAt(i, 1).toString();
                     customer = jComboBox8.getSelectedItem().toString();
-                    r = conn_obj.conn_exec("select \n"
-                            + "unit_name,unit_id,\n"
-                            + "items.main_items.item_name,items.main_items.item_id,\n"
-                            + "customer_name,customer_id,\n"
-                            + "bill_customer_id,public.customer_bills.bill_id,\n"
-                            + "public.customer_bills_items.bill_id,public.customer_bills_items.item_id,public.customer_bills_items.item_unit,public.customer_bills_items.item_price\n"
-                            + "\n"
-                            + "from\n"
-                            + "items.item_units,\n"
-                            + "items.main_items,\n"
-                            + "public.customers,\n"
-                            + "public.customer_bills,\n"
-                            + "public.customer_bills_items\n"
-                            + "\n"
-                            + "where \n"
-                            + "items.item_units.unit_name= '" + item_unit + "'  and\n"
-                            + "items.main_items.item_name= '" + item_name + "' and\n"
-                            + "public.customers.customer_name= '" + customer + "' and\n"
-                            + "public.customer_bills.bill_customer_id=public.customers.customer_id and\n"
-                            + "public.customer_bills.bill_id=public.customer_bills_items.bill_id and\n"
-                            + "public.customer_bills_items.item_id=items.main_items.item_id and\n"
-                            + "public.customer_bills_items.item_unit=items.item_units.unit_id ;\n"
-                            + "\n"
-                            + "");
-                    if (!r.next()) {
-                        r = conn_obj.conn_exec("select item_price_hole from items.item_relations where item_id=(select item_id from items.main_items where item_name = '" + item_name + "') and item_unit=(select unit_id from items.item_units where unit_name='" + item_unit + "')");
-                        r.next();
-                        jTable12.setValueAt(r.getString(1), i, 3);
-                    } else {
+                    String stm="select \n" +
+"                               unit_name,unit_id,\n" +
+"                               items.main_items.item_name,items.main_items.item_id,\n" +
+"                               customer_name,customer_id,\n" +
+"                                bill_customer_id,public.customer_bills.bill_id,public.customer_bills.bill_date,\n" +
+"                                public.customer_bills_items.bill_id,public.customer_bills_items.item_id,public.customer_bills_items.item_unit,public.customer_bills_items.item_price\n" +
+"                                \n" +
+"                                from\n" +
+"                                items.item_units,\n" +
+"                                items.main_items,\n" +
+"                                public.customers,\n" +
+"                                public.customer_bills,\n" +
+"                                public.customer_bills_items\n" +
+"                                \n" +
+"                                where \n" +
+"                                items.main_items.item_name= '"+item_name+"' and\n" +
+"                                public.customers.customer_name= '"+customer+"' and\n" +
+"                                public.customer_bills.bill_customer_id=public.customers.customer_id and\n" +
+"                                public.customer_bills.bill_id=public.customer_bills_items.bill_id and\n" +
+"                                public.customer_bills_items.item_id=items.main_items.item_id and\n" +
+"                                public.customer_bills_items.item_unit=items.item_units.unit_id \n" +
+"                                order by bill_date;";
+                    r = conn_obj.conn_exec(stm);
+                    if (r.next()) {
                         r.last();
-                        jTable12.setValueAt(r.getString("item_price"), i, 3);
+
+                        int old_unit_id = r.getInt("unit_id");
+
+                        int item_id = r.getInt("item_id");
+
+                        float last_price = r.getFloat("item_price");
+
+                        r2 = conn_obj2.conn_exec("select unit_id from items.item_units where unit_name ='" + new_item_unit + "';");
+                        r2.next();
+                        int new_unit_id = r2.getInt("unit_id");
+
+                        r2 = conn_obj2.conn_exec("select item_relation from items.item_relations where item_id =" + item_id + "  and item_unit =" + old_unit_id + "  ;");
+                        r2.next();
+                        float old_unit_relation = r2.getFloat("item_relation");
+
+                        r2 = conn_obj2.conn_exec("select item_relation from items.item_relations where item_id =" + item_id + "  and item_unit =" + new_unit_id + "  ;");
+                        r2.next();
+                        float new_unit_relation = r2.getFloat("item_relation");
+
+                        float new_price = last_price / (old_unit_relation / new_unit_relation);
+
+                        jTable12.setValueAt(new_price, i, 4);
                     }
                 } catch (SQLException ex) {
                     Logger.getLogger(customers.class.getName()).log(Level.SEVERE, null, ex);
@@ -10039,9 +10268,9 @@ DefaultTableModel tm = (DefaultTableModel) jTable15.getModel();
                 String store_to_update = "store_id_" + location_id;//store_id_1
                 stm_exec = "update items.inventory set " + store_to_update + " = " + store_to_update + " + " + quantity + " where item_id=" + item_id + "";
                 conn_obj.exec(stm_exec);
-                conn_obj.exec(stm_to_return_quantity_to_store);
+                
             }
-
+             conn_obj.exec(stm_to_return_quantity_to_store);
             //////////////////////////////////////////////////
             check_two_input_customer(customer_id, sqlDate);
 
@@ -10154,92 +10383,159 @@ banks b=new banks();
     private void jTable7KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable7KeyReleased
 if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             jTable7.editingCanceled(null);
-            if (jCheckBox2.isSelected()) {//الدخول للتسعيرة الاخيرة للزبون ماشرة
-                try {
-                    String item_name, item_unit, customer = "";
-                    item_name = jTable7.getValueAt(jTable7.getSelectedRow(), 0).toString();
-                    item_unit = jTable7.getValueAt(jTable7.getSelectedRow(), 1).toString();
-                    customer = jComboBox1.getSelectedItem().toString();
-                    r = conn_obj.conn_exec("select \n"
-                            + "unit_name,unit_id,\n"
-                            + "items.main_items.item_name,items.main_items.item_id,\n"
-                            + "customer_name,customer_id,\n"
-                            + "bill_customer_id,public.customer_bills.bill_id,\n"
-                            + "public.customer_bills_items.bill_id,public.customer_bills_items.item_id,public.customer_bills_items.item_unit,public.customer_bills_items.item_price\n"
-                            + "\n"
-                            + "from\n"
-                            + "items.item_units,\n"
-                            + "items.main_items,\n"
-                            + "public.customers,\n"
-                            + "public.customer_bills,\n"
-                            + "public.customer_bills_items\n"
-                            + "\n"
-                            + "where \n"
-                            + "items.item_units.unit_name= '" + item_unit + "'  and\n"
-                            + "items.main_items.item_name= '" + item_name + "' and\n"
-                            + "public.customers.customer_name= '" + customer + "' and\n"
-                            + "public.customer_bills.bill_customer_id=public.customers.customer_id and\n"
-                            + "public.customer_bills.bill_id=public.customer_bills_items.bill_id and\n"
-                            + "public.customer_bills_items.item_id=items.main_items.item_id and\n"
-                            + "public.customer_bills_items.item_unit=items.item_units.unit_id ;\n"
-                            + "\n"
-                            + "");
-                    if (!r.next()) {
-                        if (which_component_request_searchItemName == 1)
-                        {
+           if (which_component_request_searchItemName == 1) {
+                if (jCheckBox2.isSelected()) {//الدخول للتسعيرة الاخيرة للزبون ماشرة
+                    try {
+                        String item_name, new_item_unit, customer = "";
+                        item_name = jTable7.getValueAt(jTable7.getSelectedRow(), 0).toString();
+                        new_item_unit = jTable7.getValueAt(jTable7.getSelectedRow(), 1).toString();
+                        customer = jComboBox1.getSelectedItem().toString();
+                        r = conn_obj.conn_exec("select \n" +
+"                               unit_name,unit_id,\n" +
+"                               items.main_items.item_name,items.main_items.item_id,\n" +
+"                               customer_name,customer_id,\n" +
+"                                bill_customer_id,public.customer_bills.bill_id,public.customer_bills.bill_date,\n" +
+"                                public.customer_bills_items.bill_id,public.customer_bills_items.item_id,public.customer_bills_items.item_unit,public.customer_bills_items.item_price\n" +
+"                                \n" +
+"                                from\n" +
+"                                items.item_units,\n" +
+"                                items.main_items,\n" +
+"                                public.customers,\n" +
+"                                public.customer_bills,\n" +
+"                                public.customer_bills_items\n" +
+"                                \n" +
+"                                where \n" +
+"                                items.main_items.item_name= '"+item_name+"' and\n" +
+"                                public.customers.customer_name= '"+customer+"' and\n" +
+"                                public.customer_bills.bill_customer_id=public.customers.customer_id and\n" +
+"                                public.customer_bills.bill_id=public.customer_bills_items.bill_id and\n" +
+"                                public.customer_bills_items.item_id=items.main_items.item_id and\n" +
+"                                public.customer_bills_items.item_unit=items.item_units.unit_id \n" +
+"                                order by bill_date;");
+                        
+    
+
+                        
+                        if (!r.next()) {
                             add_row_jtable4(jTable4,
                                     jTable7.getValueAt(jTable7.getSelectedRow(), 0), jTable7.getValueAt(jTable7.getSelectedRow(), 1), jTable7.getValueAt(jTable7.getSelectedRow(), 3), 0, jTable7.getValueAt(jTable7.getSelectedRow(), 2), 0, null, jTable7.getValueAt(jTable7.getSelectedRow(), 4));
-                        } else if (which_component_request_searchItemName == 3) {
-                            DefaultTableModel tm = (DefaultTableModel) jTable12.getModel();
-                            tm.addRow(new Object[]{
-                                jTable7.getValueAt(jTable7.getSelectedRow(), 0),
-                                jTable7.getValueAt(jTable7.getSelectedRow(), 1),
-                                jTable7.getValueAt(jTable7.getSelectedRow(), 3),
-                                jTable7.getValueAt(jTable7.getSelectedRow(), 2),
-                                null,
-                                jTable7.getValueAt(jTable7.getSelectedRow(), 4)});
-                        }
-                    } else {
-                        r.last();
-                        if (which_component_request_searchItemName == 1) {
-                            add_row_jtable4(jTable4,
-                                    jTable7.getValueAt(jTable7.getSelectedRow(), 0), jTable7.getValueAt(jTable7.getSelectedRow(), 1), jTable7.getValueAt(jTable7.getSelectedRow(), 3), 0, r.getDouble("item_price"), 0, null, jTable7.getValueAt(jTable7.getSelectedRow(), 4));
-                        } else if (which_component_request_searchItemName == 3) {
-                            DefaultTableModel tm = (DefaultTableModel) jTable12.getModel();
-                            tm.addRow(new Object[]{
-                                jTable7.getValueAt(jTable7.getSelectedRow(), 0),
-                                jTable7.getValueAt(jTable7.getSelectedRow(), 1),
-                                jTable7.getValueAt(jTable7.getSelectedRow(), 3),
-                                jTable7.getValueAt(jTable7.getSelectedRow(), 2),
-                                null,
-                                jTable7.getValueAt(jTable7.getSelectedRow(), 4)});
-                        }
+                        } else {
+                            r.last();
 
-                    }
-                } catch (SQLException ex) {
-                    Logger.getLogger(customers.class.getName()).log(Level.SEVERE, null, ex);
-                }//الانتهاء من تنفيذ التسعيرة الاخيرة
-            } else {//هنا اذا مش مختار التسعيرة الاخيرة للزبون يسعر على حساب الجدول الموجود
-                if (which_component_request_searchItemName == 1) {
+                            int old_unit_id = r.getInt("unit_id");
+                            
+                            int item_id = r.getInt("item_id");
+                            
+                            float last_price = r.getFloat("item_price");
+                            
+                            r2 = conn_obj2.conn_exec("select unit_id from items.item_units where unit_name ='" + new_item_unit + "';");
+                            r2.next();
+                            int new_unit_id = r2.getInt("unit_id");
+                            
+                            r2 = conn_obj2.conn_exec("select item_relation from items.item_relations where item_id =" + item_id + "  and item_unit =" + old_unit_id + "  ;");
+                            r2.next();
+                            float old_unit_relation = r2.getFloat("item_relation");
+                            
+                            r2 = conn_obj2.conn_exec("select item_relation from items.item_relations where item_id =" + item_id + "  and item_unit =" + new_unit_id + "  ;");
+                            r2.next();
+                            float new_unit_relation = r2.getFloat("item_relation");
+                            
+              float new_price=last_price/(old_unit_relation/new_unit_relation);
+              
+                            add_row_jtable4(jTable4,
+                                    jTable7.getValueAt(jTable7.getSelectedRow(), 0), jTable7.getValueAt(jTable7.getSelectedRow(), 1), jTable7.getValueAt(jTable7.getSelectedRow(), 3), 0,new_price , 0, null, jTable7.getValueAt(jTable7.getSelectedRow(), 4));
+                        }
+                    } catch (SQLException ex) {
+                        Logger.getLogger(customers.class.getName()).log(Level.SEVERE, null, ex);
+                    }//الانتهاء من تنفيذ التسعيرة الاخيرة
+                } else {//هنا اذا مش مختار التسعيرة الاخيرة للزبون يسعر على حساب الجدول الموجود
                     add_row_jtable4(jTable4,
                             jTable7.getValueAt(jTable7.getSelectedRow(), 0), jTable7.getValueAt(jTable7.getSelectedRow(), 1), jTable7.getValueAt(jTable7.getSelectedRow(), 3), 0, jTable7.getValueAt(jTable7.getSelectedRow(), 2), 0, null, jTable7.getValueAt(jTable7.getSelectedRow(), 4));
-                } else if (which_component_request_searchItemName == 3) {
-                    DefaultTableModel tm = (DefaultTableModel) jTable12.getModel();
-                    tm.addRow(new Object[]{
-                        jTable7.getValueAt(jTable7.getSelectedRow(), 0),
-                        jTable7.getValueAt(jTable7.getSelectedRow(), 1),
-                        jTable7.getValueAt(jTable7.getSelectedRow(), 3),
-                        jTable7.getValueAt(jTable7.getSelectedRow(), 2),
-                        null,
-                        jTable7.getValueAt(jTable7.getSelectedRow(), 4)});
                 }
+                show_last_row_scroll_jtable(jTable4);//هنا الذهاب لاخر صف مكتوب بجدول الفاتورة لامكانية رؤيته مباشرة
+            } 
+           else if (which_component_request_searchItemName == 3) {
+                try {
+                        String item_name, new_item_unit, customer = "";
+                        item_name = jTable7.getValueAt(jTable7.getSelectedRow(), 0).toString();
+                        new_item_unit = jTable7.getValueAt(jTable7.getSelectedRow(), 1).toString();
+                        customer = jComboBox8.getSelectedItem().toString();
+                        r = conn_obj.conn_exec("select \n" +
+"                               unit_name,unit_id,\n" +
+"                               items.main_items.item_name,items.main_items.item_id,\n" +
+"                               customer_name,customer_id,\n" +
+"                                bill_customer_id,public.customer_bills.bill_id,public.customer_bills.bill_date,\n" +
+"                                public.customer_bills_items.bill_id,public.customer_bills_items.item_id,public.customer_bills_items.item_unit,public.customer_bills_items.item_price\n" +
+"                                \n" +
+"                                from\n" +
+"                                items.item_units,\n" +
+"                                items.main_items,\n" +
+"                                public.customers,\n" +
+"                                public.customer_bills,\n" +
+"                                public.customer_bills_items\n" +
+"                                \n" +
+"                                where \n" +
+"                                items.main_items.item_name= '"+item_name+"' and\n" +
+"                                public.customers.customer_name= '"+customer+"' and\n" +
+"                                public.customer_bills.bill_customer_id=public.customers.customer_id and\n" +
+"                                public.customer_bills.bill_id=public.customer_bills_items.bill_id and\n" +
+"                                public.customer_bills_items.item_id=items.main_items.item_id and\n" +
+"                                public.customer_bills_items.item_unit=items.item_units.unit_id \n" +
+"                                order by bill_date;");
+                        
+    
+
+                        
+                        if (!r.next()) {
+                            DefaultTableModel tm = (DefaultTableModel) jTable12.getModel();
+                tm.addRow(new Object[]{
+                    jTable7.getValueAt(jTable7.getSelectedRow(), 0),
+                    jTable7.getValueAt(jTable7.getSelectedRow(), 1),
+                    jTable7.getValueAt(jTable7.getSelectedRow(), 3),
+                    jTable7.getValueAt(jTable7.getSelectedRow(), 2),
+                    null,
+                    jTable7.getValueAt(jTable7.getSelectedRow(), 4)});
+
+                        } else {
+                            r.last();
+
+                            int old_unit_id = r.getInt("unit_id");
+                            
+                            int item_id = r.getInt("item_id");
+                            
+                            float last_price = r.getFloat("item_price");
+                            
+                            r2 = conn_obj2.conn_exec("select unit_id from items.item_units where unit_name ='" + new_item_unit + "';");
+                            r2.next();
+                            int new_unit_id = r2.getInt("unit_id");
+                            
+                            r2 = conn_obj2.conn_exec("select item_relation from items.item_relations where item_id =" + item_id + "  and item_unit =" + old_unit_id + "  ;");
+                            r2.next();
+                            float old_unit_relation = r2.getFloat("item_relation");
+                            
+                            r2 = conn_obj2.conn_exec("select item_relation from items.item_relations where item_id =" + item_id + "  and item_unit =" + new_unit_id + "  ;");
+                            r2.next();
+                            float new_unit_relation = r2.getFloat("item_relation");
+                            
+              float new_price=last_price/(old_unit_relation/new_unit_relation);
+              
+               DefaultTableModel tm = (DefaultTableModel) jTable12.getModel();
+                tm.addRow(new Object[]{
+                    item_name,new_item_unit,jTable7.getValueAt(jTable7.getSelectedRow(), 3),new_price,null,jTable7.getValueAt(jTable7.getSelectedRow(), 4)
+                });
+              
+                        }
+                    } catch (SQLException ex) {
+                        Logger.getLogger(customers.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                show_last_row_scroll_jtable(jTable12);
             }
-            show_last_row_scroll_jtable(jTable4);//هنا الذهاب لاخر صف مكتوب بجدول الفاتورة لامكانية رؤيته مباشرة
+            show_last_row_scroll_jtable(jTable12);//هنا الذهاب لاخر صف مكتوب بجدول الفاتورة لامكانية رؤيته مباشرة
 
             jTextField4.requestFocus();
             jTextField4.selectAll();
 
-}     // TODO add your handling code here:
+}    
     }//GEN-LAST:event_jTable7KeyReleased
 
     private void jTable_bill_itemsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_bill_itemsMouseReleased
@@ -11214,8 +11510,9 @@ show_last_row_scroll_jtable(jTable_show_ven_account_details);
                 + "items.item_units.unit_id=items.item_relations.item_unit )as anyThing";
                 r = conn_obj.conn_exec(stm_exec);
                 r.next();
-             //   System.out.println(stm_exec);
+                System.out.println(stm_exec);
                 double quantity = r.getDouble("quantity") * -1;
+                System.out.println("Quantity=="+quantity);
                 int item_id = r.getInt("main_item_id");
                 String store_to_update = "store_id_" + location_id;//store_id_1
                 stm_exec = "update items.inventory set " + store_to_update + " = " + store_to_update + " + " + quantity + " where item_id=" + item_id + "";
@@ -11858,12 +12155,13 @@ if (which_component_request_searchItemName_vendor == 1) {
                 r = conn_obj.conn_exec(stm_exec);
                 r.next();
                 double quantity = r.getDouble("quantity") * -1;
+                System.out.println("Quantity_updated == "+ quantity);
                 int item_id = r.getInt("main_item_id");
                 String store_to_update = "store_id_" + location_id;//store_id_1
                 stm_exec = "update items.inventory set " + store_to_update + " = " + store_to_update + " + " + quantity + " where item_id=" + item_id + "";
                 conn_obj.exec(stm_exec);
             }
-            conn_obj.exec(stm_to_return_quantity_to_store);
+            conn_obj.exec(ven_stm_to_return_quantity_to_store);
             //////////////////////////////////////////////////
            check_two_input_vendor(customer_id, sqlDate);
 
@@ -12206,7 +12504,7 @@ if (which_component_request_searchItemName_vendor == 1) {
                 "      main_items.item_id=inventory.item_id)as s\n" +
                 "      \n" +
                 "      ";
-
+                
                 r = conn_obj.conn_exec(stm);
                 jTable2_quan_all_items.setModel(DbUtils.resultSetToTableModel(r));
                 renderer_jTable_obj.Renderer(jTable2_quan_all_items);
@@ -12977,6 +13275,56 @@ insert_bill_to_customer_jtable4(true);
         print_customer_bill(bill_id);
     }//GEN-LAST:event_direct_printActionPerformed
 
+    private void jButton74ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton74ActionPerformed
+        try {
+            jTable_ven_edorsed_checks.print();
+        } catch (PrinterException ex) {
+            Logger.getLogger(customers.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton74ActionPerformed
+
+    private void jMenuItem24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem24ActionPerformed
+       try{
+           int count=0;
+            r = conn_obj.conn_exec("select check_value from customer_checks where vendor_payment_id is  null;");
+                    while(r.next())
+                    {
+                        count+=1;
+                    }
+           r = conn_obj.conn_exec("select sum (check_value)from customer_checks where vendor_payment_id is  null;");
+                    r.next();
+                    Joptionpane_message("مجموع شكات الزبائن الغير مجيرة هو :"+ r.getFloat("sum")+"\n"+"بعدد شيكات  : "+count);
+       }catch(SQLException e)
+       {
+           
+       }
+        
+    }//GEN-LAST:event_jMenuItem24ActionPerformed
+
+    private void jTextField_ven_pay_cashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_ven_pay_cashActionPerformed
+      jButton45.doClick(); 
+    }//GEN-LAST:event_jTextField_ven_pay_cashActionPerformed
+
+    private void jTable7MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable7MouseMoved
+        int c = jTable7.columnAtPoint(evt.getPoint());
+        if (c == 6) {
+            int r = jTable7.rowAtPoint(evt.getPoint());
+            if (iconnn == null) {
+                iconnn = new image_icon(images[r]);
+                iconnn.setVisible(true);
+            } else {
+                iconnn.jLabel1.setIcon(images[r]);
+                iconnn.setVisible(true);
+
+            }
+        }
+        else
+        {
+            iconnn.setVisible(false);
+        }
+
+    }//GEN-LAST:event_jTable7MouseMoved
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -13096,6 +13444,7 @@ insert_bill_to_customer_jtable4(true);
     private javax.swing.JButton jButton71;
     private javax.swing.JButton jButton72;
     private javax.swing.JButton jButton73;
+    private javax.swing.JButton jButton74;
     private javax.swing.JButton jButton7_clear_fields1;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton8_search3;
@@ -13337,6 +13686,7 @@ insert_bill_to_customer_jtable4(true);
     private javax.swing.JMenuItem jMenuItem21;
     private javax.swing.JMenuItem jMenuItem22;
     private javax.swing.JMenuItem jMenuItem23;
+    private javax.swing.JMenuItem jMenuItem24;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
@@ -13984,7 +14334,7 @@ public void check_two_input_vendor(int vendor_id, java.sql.Date date) throws Exc
                 r = conn_obj.conn_exec("select sum (check_value+return_commission) from returned_checks where customer_id_fk=" + customer_id + " and accounted=false");
                 r.next();
                 float sum_returns_checks = r.getFloat(1);
-
+                System.err.println(sum_bills_values+"payments=="+sum_payments);
                 float result=sum_bills_values - sum_payments - sum_discount-sum_returns+sum_returns_checks;
                 return (Math.round(result*100)/100.0f);
             } catch (SQLException ex) {
@@ -14020,7 +14370,7 @@ public void check_two_input_vendor(int vendor_id, java.sql.Date date) throws Exc
                 r = conn_obj.conn_exec("select sum (check_value+return_commission) from returned_checks where customer_id_fk=" + customer_id + " and accounted=false");
                 r.next();
                 float sum_returns_checks = r.getFloat(1);
-                
+                System.err.println(sum_bills_values+"payments=="+sum_payments);
                 float result=sum_bills_values - sum_payments -sum_discount- sum_returns+sum_returns_checks;
                 return (Math.round(result*100)/100.0f);
             } catch (SQLException ex) {
@@ -15750,17 +16100,38 @@ boolean check_if_accounted_ven(int id, String type) throws SQLException {
 
     private void select_unit_in_jtable4_right_click(java.awt.event.ActionEvent evt) {
 
-        String unit_name = evt.getActionCommand().trim();
         String item_name = jTable4.getValueAt(jTable4.getSelectedRow(), 0).toString().trim();
-        jTable4.setValueAt(unit_name, jTable4.getSelectedRow(), 1);
-
+        String old_unit_name = jTable4.getValueAt(jTable4.getSelectedRow(), 1).toString().trim();
+        String new_unit_name = evt.getActionCommand().trim();
+        
+        int old_unit_name_id,new_unit_name_id,item_name_id;
+        float old_unit_relation,new_unit_relation;
+        //float last_price=
         try {
-            r = conn_obj.conn_exec("select item_price_retail from items.item_relations where \n"
-                    + "        items.item_relations.item_id=(select item_id from items.main_items where item_name='" + item_name + "')\n"
-                    + "              and   \n"
-                    + "                items.item_relations.item_unit=(select unit_id from items.item_units where unit_name='" + unit_name + "')");
+            r = conn_obj.conn_exec("select unit_id from items.item_units where unit_name ='"+old_unit_name+"';");
             r.next();
-            jTable4.setValueAt(r.getFloat("item_price_retail"), jTable4.getSelectedRow(), 4);
+            old_unit_name_id=r.getInt("unit_id");
+            
+            r = conn_obj.conn_exec("select unit_id from items.item_units where unit_name ='"+new_unit_name+"';");
+            r.next();
+            new_unit_name_id=r.getInt("unit_id");
+            
+            r = conn_obj.conn_exec("select item_id from items.main_items where item_name ='"+item_name+"';");
+            r.next();
+            item_name_id=r.getInt("item_id");
+            
+            r = conn_obj.conn_exec("select item_relation from items.item_relations where item_id ="+item_name_id+"  and item_unit ="+old_unit_name_id+"  ;");
+            r.next();
+            old_unit_relation=r.getFloat("item_relation");
+            
+            r = conn_obj.conn_exec("select item_relation from items.item_relations where item_id ="+item_name_id+"  and item_unit ="+new_unit_name_id+"  ;");
+            r.next();
+            new_unit_relation=r.getFloat("item_relation");
+            float existance_price=Float.parseFloat(jTable4.getValueAt(jTable4.getSelectedRow(), 4).toString());
+            float new_price=existance_price/(old_unit_relation/new_unit_relation);
+            System.out.println(new_price);
+            jTable4.setValueAt(new_price, jTable4.getSelectedRow(), 4);
+            jTable4.setValueAt(new_unit_name, jTable4.getSelectedRow(), 1);
         } catch (Exception e) {
             Joptionpane_message(e.getMessage());
         }
@@ -16032,7 +16403,7 @@ public void return_customer_jTable(JTable table) {
             jTextField29.setText("");
         }
         String word = (String) jTable7.getValueAt(jTable7.getSelectedRow(), 0);
-        r = conn_obj.conn_exec("select id as رقم_الفاتورة ,discount_ratio as خصم_على_الصنف ,dis as خصم_نسبة_على_الفاتورة ,customer_name as المورد,bill_date التاريخ ,item_price السعر,unit_name الوحدة,item_name الصنف from (\n"
+        r = conn_obj.conn_exec("select id as رقم_الفاتورة ,discount_ratio as خصم_على_الصنف ,dis as خصم_نسبة_على_الفاتورة ,customer_name as المورد,bill_date التاريخ ,item_price السعر,item_quantity الكمية,unit_name الوحدة,item_name الصنف from (\n"
                 + "\n"
                 + "select customers.customer_id,\n"
                 + "customers.customer_name,\n"
@@ -16043,6 +16414,7 @@ public void return_customer_jTable(JTable table) {
                 + "customer_bills_items.bill_id,\n"
                 + "customer_bills_items.item_id,\n"
                 + "customer_bills_items.item_price,\n"
+                + "customer_bills_items.item_quantity,\n"
                 + "customer_bills_items.item_bonus,\n"
                 + "customer_bills_items.discount_ratio,\n"
                 + "customer_bills_items.item_unit,\n"
@@ -16201,7 +16573,7 @@ public void return_customer_jTable(JTable table) {
             if(i!=0)
                 stm+="union all ";//نتجنب اول مرة
             
-            stm+="(select DISTINCT customer_name as  الاسم  ,1 as الرصيد ,1 as  تاريخ_اخر_فاتورة     from (select customers.customer_name,customers.customer_location,customers.customer_catagory_id,user_privileg_on_customer_catag.user_id_fk,user_privileg_on_customer_catag.customer_catagory_fk \n"
+            stm+="(select DISTINCT customer_name as  الاسم  ,1 as الرصيد ,1 as  تاريخ_اخر_فاتورة     ,customer_tell from (select customers.customer_name,customers.customer_tell,customers.customer_location,customers.customer_catagory_id,user_privileg_on_customer_catag.user_id_fk,user_privileg_on_customer_catag.customer_catagory_fk \n"
                     + "from customers,user_privileg_on_customer_catag\n"
                     + "where \n"
                     + " user_privileg_on_customer_catag.user_id_fk=(select user_id from users where user_name like '" + user_name + "') and\n"
@@ -16229,7 +16601,28 @@ public void return_customer_jTable(JTable table) {
         }
 
     }
+    
+    public void show_vendors_accounts(String vendor) {
+        r = conn_obj.conn_exec("SELECT vendor_name as الاسم,1 as الرصيد ,1 as  تاريخ_اخر_فاتورة   from vendors where vendor_name like '%" + vendor + "%'  order by vendor_name");
 
+        try {
+            
+            show_obj = new show_bill_items();
+            show_obj.show_ven_cus_accounts(r);
+            String y;
+            for (int i = 0; i < show_obj.jTable1.getModel().getRowCount(); i++) {
+                y = String.valueOf((String) show_obj.jTable1.getModel().getValueAt(i, 0));
+                show_obj.jTable1.getModel().setValueAt(get_vendor_account_sum(y), i, 1);
+            }
+            //show_obj.table_accpunt_sum();
+
+        } catch (Exception ex) {
+            Joptionpane_message(ex.getMessage());
+            Joptionpane_message(ex.getMessage());
+        }
+
+    }
+  
     //validate date
     final static String DATE_FORMAT = "yyyy-MM-dd";
 
@@ -16525,25 +16918,7 @@ public void delete_ven_name() throws SQLException, Exception {
             conn_obj.get_con().rollback();
         }
     }
-public void show_vendors_accounts(String customer_like_name_or_location) {
-        r = conn_obj.conn_exec("SELECT vendor_name as الاسم,1 as الرصيد ,1 as  تاريخ_اخر_فاتورة   from vendors where vendor_name like '%" + customer_like_name_or_location + "%' OR vendor_location like '%" + customer_like_name_or_location + "%' order by vendor_name");
-        try {
-            show_obj = new show_bill_items();
-            show_obj.show_ven_cus_accounts(r);
-            String y;
-            for (int i = 0; i < show_obj.jTable1.getModel().getRowCount(); i++) {
-                y = String.valueOf((String) show_obj.jTable1.getModel().getValueAt(i, 0));
-                show_obj.jTable1.getModel().setValueAt(get_vendor_account_sum(y), i, 1);
-                show_obj.jTable1.getModel().setValueAt(ven_show_date_of_last_customer_bill(y), i, 2);
-            }
-            show_obj.table_accpunt_sum();
 
-        } catch (Exception ex) {
-            Joptionpane_message(ex.getMessage());
-            Joptionpane_message(ex.getMessage());
-        }
-
-    }
  public String ven_show_date_of_last_customer_bill(String customer_name)
     {
         try{
@@ -16929,13 +17304,13 @@ public void show_vendors_accounts(String customer_like_name_or_location) {
         
         public void ven_prepare_stm_that_return_quantity_to_store()//عند تعديل قيد فاتورة الارجاع ننقص كميات الفاتورة من المحزون
 {
-    stm_to_return_quantity_to_store="";
+    ven_stm_to_return_quantity_to_store="";
     try {
-        r=conn_obj.conn_exec("select location_id from location where location_name='"+jComboBox11.getSelectedItem().toString()+"'");
+        r=conn_obj.conn_exec("select location_id from location where location_name='"+jComboBox13.getSelectedItem().toString()+"'");
         r.next();
         String location_id=r.getString("location_id");
         
-        for (int i = 0; i < jTable15.getRowCount(); i++) {
+        for (int i = 0; i < jTable16.getRowCount(); i++) {
             try {
                 r=conn_obj.conn_exec(""
                         + "select quantity,main_item_id from  (\n" +
@@ -16949,13 +17324,13 @@ public void show_vendors_accounts(String customer_like_name_or_location) {
                         "\n" +
                         "items.item_relations.item_id,\n" +
                         "items.item_relations.item_unit,\n" +
-                        "items.item_relations.item_relation*" +jTable15.getValueAt(i, 2) + " as quantity\n" +
+                        "items.item_relations.item_relation*" +jTable16.getValueAt(i, 2) + " as quantity\n" +
                         "\n" +
                         "from items.main_items,items.item_units,items.item_relations\n" +
                         "\n" +
                         "where \n" +
-                        "items.main_items.item_name='" + jTable15.getValueAt(i, 0) + "'  AND\n" +
-                        "items.item_units.unit_name='" + jTable15.getValueAt(i, 1) + "'  AND\n" +
+                        "items.main_items.item_name='" + jTable16.getValueAt(i, 0) + "'  AND\n" +
+                        "items.item_units.unit_name='" + jTable16.getValueAt(i, 1) + "'  AND\n" +
                         "items.main_items.item_id=items.item_relations.item_id AND\n" +
                         "items.item_units.unit_id=items.item_relations.item_unit )as anyThing");
                 r.next();
@@ -16963,7 +17338,7 @@ public void show_vendors_accounts(String customer_like_name_or_location) {
                 double quantity=r.getDouble("quantity");
                 int item_id=r.getInt("main_item_id");
                 String store_to_update="store_id_"+location_id;//store_id_1
-                stm_to_return_quantity_to_store+="update items.inventory set "+store_to_update+" = "+store_to_update+" + "+quantity+" where item_id="+item_id+";";
+                ven_stm_to_return_quantity_to_store+="update items.inventory set "+store_to_update+" = "+store_to_update+" + "+quantity+" where item_id="+item_id+";";
                 
             } catch (SQLException ex) {
                 Joptionpane_message(ex.getMessage());
@@ -17644,6 +18019,8 @@ void insert_jtable_data() throws SQLException, Exception
                         + "     set item_relation='"+jTable3_main_modify.getValueAt(i,1)+"'"
                                  +" where item_id="+jLabel16_item_id.getText().trim()+" and item_unit=(select unit_id from items.item_units where unit_name='"+jTable3_main_modify.getValueAt(i,0)+"');");
             }
+            //تعديل كميات  المخزون
+            conn_obj.exec("update items.inventory set store_id_1 = "+jTextField11_quant_now.getText()+" where item_id = "+jLabel16_item_id.getText().trim()+"");
           //  end
   conn_obj.get_con().commit();
    Joptionpane_message("تم ادخال التعديل..");
@@ -17731,12 +18108,19 @@ void insert_jtable_data() throws SQLException, Exception
                     counter++;
                     
                  }
+                //عرض الكمية من المخزون في Textfield11
+                 r=conn_obj.conn_exec("select store_id_1 from items.inventory where item_id = "+item_id+" ;");
+                 r.next();
+                 System.out.println(r.getString("store_id_1"));
+                 jTextField11_quant_now.setText(r.getString("store_id_1"));
              } catch (SQLException ex ) {
                  Logger.getLogger(customers.class.getName()).log(Level.SEVERE, null, ex);
              }
              catch (Exception ex ) {
                  Joptionpane_message(ex.getMessage());
              }
+             
+             
             }
  
  public void jcombo_item_units_names_and_currency()
@@ -18127,7 +18511,7 @@ public String build_html_for_return_bill(int row,int col)
             }
             
             ////
-            System.out.println(insert_table_content);
+            System.out.println(insert_table_content+"\n");
             conn_obj.get_st().execute(insert_table_content);
             
             //لمعرفة رقم اخر فاتورة داخلة ومن ثم طباعتها او لا
@@ -18177,6 +18561,7 @@ public String build_html_for_return_bill(int row,int col)
                 
             }
             conn_obj.exec(update_stm_inventory);
+            System.out.println(update_stm_inventory);
             //////////////////////////////////////////////////
             check_two_input_customer(customer_id, sqlDate);
 

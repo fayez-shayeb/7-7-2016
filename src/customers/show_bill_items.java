@@ -16,6 +16,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.SwingUtilities;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
@@ -253,6 +255,7 @@ if (SwingUtilities.isRightMouseButton(evt)) {
                         int selectd_row = rows_array[i] - i;
                         tm.removeRow(selectd_row);
                     }
+                    table_accpunt_sum();
                 }
             });
             jPopupMenu1.add(item);
@@ -380,14 +383,16 @@ if (SwingUtilities.isRightMouseButton(evt)) {
      }
      public void table_accpunt_sum()
      {
+         
           float sum=0;
            for(int i=0;i<jTable1.getRowCount();i++)
+           {
+               if(jTable1.getValueAt(i, 1)!=null)
              sum=sum+(Float.valueOf(jTable1.getValueAt(i, 1).toString()));
-         
-         DefaultTableModel tm = (DefaultTableModel) jTable1.getModel();
+           }
+        DefaultTableModel tm = (DefaultTableModel) jTable1.getModel();
         tm.addRow(new Object[]{null, null});
         tm.addRow(new Object[]{"المجموع",sum});
-        
        
          
      }

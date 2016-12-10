@@ -12,7 +12,9 @@ import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import net.proteanit.sql.DbUtils;
+import org.jdesktop.swingx.renderer.DefaultTableRenderer;
 
 /**
  *
@@ -48,6 +50,7 @@ public class script extends javax.swing.JFrame {
         jTable10 = new javax.swing.JTable();
         jButton15 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
+        jCheckBox2 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("سكريبت");
@@ -55,6 +58,7 @@ public class script extends javax.swing.JFrame {
         jTextArea4.setColumns(20);
         jTextArea4.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         jTextArea4.setRows(5);
+        jTextArea4.setWrapStyleWord(true);
         jScrollPane16.setViewportView(jTextArea4);
 
         jTable10.setModel(new javax.swing.table.DefaultTableModel(
@@ -68,7 +72,6 @@ public class script extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        renderer_jTable_obj.Renderer (jTable10);
         jScrollPane17.setViewportView(jTable10);
 
         jButton15.setText("execute");
@@ -85,6 +88,8 @@ public class script extends javax.swing.JFrame {
             }
         });
 
+        jCheckBox2.setText("تنسيق الجدول");
+
         javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
         jPanel29.setLayout(jPanel29Layout);
         jPanel29Layout.setHorizontalGroup(
@@ -92,15 +97,17 @@ public class script extends javax.swing.JFrame {
             .addGroup(jPanel29Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane17, javax.swing.GroupLayout.DEFAULT_SIZE, 1261, Short.MAX_VALUE)
+                    .addComponent(jScrollPane17)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
-                                .addComponent(jButton15)
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 1085, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(jPanel29Layout.createSequentialGroup()
+                                .addComponent(jCheckBox2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton15)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 1085, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -109,12 +116,16 @@ public class script extends javax.swing.JFrame {
         jPanel29Layout.setVerticalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel29Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel29Layout.createSequentialGroup()
-                        .addComponent(jButton15)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addContainerGap()
+                        .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jButton15)
+                                .addComponent(jCheckBox2))))
+                    .addGroup(jPanel29Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
                         .addComponent(jButton16)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -146,6 +157,9 @@ public class script extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+       
+        if(jCheckBox2.isSelected())
+        renderer_jTable_obj.Renderer (jTable10);
         r = conn_obj.conn_exec(jTextArea4.getText().trim());
         jTable10.setModel(DbUtils.resultSetToTableModel(r));
     }//GEN-LAST:event_jButton15ActionPerformed
@@ -196,6 +210,7 @@ public class script extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
+    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JPanel jPanel29;
     private javax.swing.JScrollPane jScrollPane16;
     private javax.swing.JScrollPane jScrollPane17;

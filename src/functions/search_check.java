@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package functions;
+import Table_render.Jtable_render;
 import customers.returned_checks;
 import customers.customers;
 import database_connection.db_Connection;
@@ -20,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 import customers.modify_vendor_payment;
+import java.awt.print.PrinterException;
 
 /**
  *
@@ -32,6 +34,7 @@ public class search_check extends javax.swing.JFrame {
     customers obj_cus;
     modify_vendor_payment obj_modify;
     returned_checks obj_return_check;
+    Jtable_render renderer_jTable_obj = new Jtable_render();
     
 
     /**
@@ -94,8 +97,14 @@ public search_check(returned_checks obj) {
         jCheckBox5 = new javax.swing.JCheckBox();
         jCheckBox6 = new javax.swing.JCheckBox();
         jCheckBox7 = new javax.swing.JCheckBox();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -201,6 +210,7 @@ public search_check(returned_checks obj) {
                 jTable1MousePressed(evt);
             }
         });
+        renderer_jTable_obj.Renderer (jTable1);
         jScrollPane1.setViewportView(jTable1);
 
         jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -241,6 +251,14 @@ public search_check(returned_checks obj) {
 
         jCheckBox7.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jCheckBox7.setText("إستثناء الشيكات المجيرة");
+
+        jButton2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jButton2.setText("طباعة");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -286,8 +304,10 @@ public search_check(returned_checks obj) {
                                                     .addComponent(jCheckBox5, javax.swing.GroupLayout.Alignment.TRAILING)))
                                             .addComponent(jCheckBox2, javax.swing.GroupLayout.Alignment.TRAILING))
                                         .addGap(18, 141, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(jButton2)
+                                        .addGap(18, 18, 18)
                                         .addComponent(jButton1)
                                         .addGap(198, 198, 198)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -330,7 +350,7 @@ public search_check(returned_checks obj) {
                             .addComponent(jLabel39)
                             .addComponent(jLabel1)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jCheckBox4, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jCheckBox5, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -347,10 +367,11 @@ public search_check(returned_checks obj) {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jCheckBox7))
+                    .addComponent(jCheckBox7)
+                    .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(60, 60, 60))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jComboBox1, jDateChooser1, jLabel1, jLabel35, jLabel36, jLabel37, jLabel38, jLabel39, jTextField1, jTextField2, jTextField3, jTextField4});
@@ -411,7 +432,7 @@ public search_check(returned_checks obj) {
             stm = stm + "and check_value =" + check_value + " \n";
         }
         if (jCheckBox7.isSelected()) {
-            stm = stm + " and vendor_payment_id is null  \n";
+            stm = stm + " and vendor_payment_id is null order by check_due_date \n";
         }
 stm+=")as s";
         r = conn_obj.conn_exec(stm);
@@ -563,6 +584,18 @@ int key = evt.getKeyCode();
         }           // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4KeyPressed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            jTable1.print();
+        } catch (PrinterException ex) {
+            Joptionpane_message(ex.getMessage());
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosed
+
     /**
      * @param args the command line arguments
      */
@@ -600,6 +633,7 @@ int key = evt.getKeyCode();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;

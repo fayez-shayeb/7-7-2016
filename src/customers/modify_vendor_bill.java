@@ -886,7 +886,7 @@ try {
             
 //انتهى تعديل الكميات ف المخازن  
             }
-            conn_obj.exec(stm_to_return_quantity_to_store);//تنفيذ هذه الجملة يحمل اعادة الكميات وتنقيصا من الكميات 
+           conn_obj.exec(stm_to_return_quantity_to_store);//تنفيذ هذه الجملة يحمل اعادة الكميات وتنقيصا من الكميات  وذلك وكأنه يلغي الفاتورة الاولى
             conn_obj.exec(insert_table_content);
             //////////////////////////////////////////////////
             check_two_input(vendor_id,sqlDate);

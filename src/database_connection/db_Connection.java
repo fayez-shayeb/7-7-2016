@@ -33,7 +33,7 @@ public final class db_Connection {
                 
                 url="jdbc:postgresql://"+get_connection_type()+":8081/shayeb_2015";
                 
-                //url="jdbc:postgresql://"+get_connection_type()+":8081/test";
+                //url="jdbc:postgresql://"+get_connection_type()+":8081/shayeb_copy_before_stat";
             } catch (FileNotFoundException ex) {
             } catch (IOException ex) {
                 Joptionpane_message(ex.getMessage());

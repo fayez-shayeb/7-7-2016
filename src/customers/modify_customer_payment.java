@@ -522,6 +522,7 @@ public class modify_customer_payment extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
 
         try {
+           
             conn_obj.get_con().setAutoCommit(false);
             String vendor = (String) jComboBox4.getSelectedItem();
             if (vendor.equals("------")) {

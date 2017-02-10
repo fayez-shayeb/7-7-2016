@@ -458,7 +458,6 @@
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField2ActionPerformed"/>
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField2KeyPressed"/>
           </Events>
         </Component>
@@ -509,7 +508,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jScrollPane9" pref="699" max="32767" attributes="0"/>
+                      <Component id="jScrollPane9" pref="900" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Component id="jCheckBox2" min="-2" max="-2" attributes="0"/>
@@ -573,7 +572,9 @@
             <Component class="javax.swing.JTable" name="jTable7">
               <Properties>
                 <Property name="font" postCode="/*"/>
-                <Property name="model" postCode="*/"/>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor" postCode="*/">
+                  <Table columnCount="0" rowCount="0"/>
+                </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0"/>
                 </Property>
@@ -584,13 +585,12 @@
               <Events>
                 <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="jTable7MouseMoved"/>
                 <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable7MousePressed"/>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTable7KeyPressed"/>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTable7KeyReleased"/>
-                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTable7KeyTyped"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JTable() {&#xa;    @Override&#xa;    public boolean isCellEditable(int row, int column) {&#xa;        // This is how we disable editing:&#xa;        //return false;&#xa;        return  column==2 || column==3 || column==4  ? true : false;&#xa;    }&#xa;&#xa;    @Override&#xa;    //  Returning the Class of each column will allow different&#xa;    //  renderers to be used based on Class&#xa;    public Class getColumnClass(int column)&#xa;    {&#xa;        return getValueAt(0, column).getClass();&#xa;    }&#xa;&#xa;}"/>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jTable7.getTableHeader().setFont(new Font(&quot;Arial&quot;,Font.BOLD,16));&#xa;        jTable7.setRowHeight(30);&#xa;        jTable7.setFont(new java.awt.Font(&quot;Arial&quot;, 0, 18));&#xa;        ////////////////////////&#xa;        jTable7.setGridColor(new java.awt.Color(255, 0, 0));&#xa;        jTable7.setShowGrid(true);&#xa;        //////////////////////////&#xa;        jTable7.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);&#xa;        /////////////////////////"/>
+                <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="((DefaultCellEditor) jTable7.getDefaultEditor(Object.class)).setClickCountToStart(1);"/>
               </AuxValues>
             </Component>
           </SubComponents>
@@ -1665,6 +1665,7 @@
               <Events>
                 <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable10MousePressed"/>
                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTable10KeyPressed"/>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTable10KeyReleased"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JTable() {&#xa;    @Override&#xa;    public boolean isCellEditable(int row, int column) {&#xa;        // This is how we disable editing:&#xa;        //return false;&#xa;        return  column==2 || column==3 || column==4 || column==5 ? true : false;&#xa;    }}"/>
@@ -2914,6 +2915,14 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem4ActionPerformed"/>
                   </Events>
                 </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem26">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="&#x643;&#x631;&#x62a; &#x627;&#x644;&#x635;&#x646;&#x641;"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem26ActionPerformed"/>
+                  </Events>
+                </MenuItem>
               </SubComponents>
             </Menu>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
@@ -3110,6 +3119,14 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem24ActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem25">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x62a;&#x62d;&#x62f;&#x64a;&#x62b;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem25ActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

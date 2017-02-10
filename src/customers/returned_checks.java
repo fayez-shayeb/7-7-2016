@@ -276,7 +276,7 @@ if (s == null) {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-if(check_id!=null)
+if(check_id!=null)//to modify check only
 {
      try {
      java.util.Date d;
@@ -328,7 +328,13 @@ if(check_id!=null)
             {
                commission=Float.valueOf(jTextField6.getText());
             }
-     
+ 
+ r=conn_obj.conn_exec("select check_to_vendor_payment_id from checks where check_id="+check_id+"");
+            if(!r.next())
+            {
+                throw new SQLException("لا يمكن ارجاع شيك غير مجير !!"+"\n بإمكانك حذف الشك من دفعة الزبون مباشرة !!");
+            }      
+      
 r=conn_obj.conn_exec("select check_id_fk from returned_checks where check_id_fk="+check_id+"");
 if(r.next())
 {
@@ -340,9 +346,12 @@ else{
         this.setVisible(false);
      c.create_customer_account_table();
 }
+    }catch(SQLException s){
+        JOptionPane.showMessageDialog(this, s.getMessage());
     }catch(Exception s){
         JOptionPane.showMessageDialog(this, "لم يتم ادخال الشيك!!!");
     }
+    
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -405,4 +414,5 @@ public Date get_date_jdate() {
         return d;
 
     }
+
 }

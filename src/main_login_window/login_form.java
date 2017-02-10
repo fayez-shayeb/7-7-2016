@@ -36,7 +36,6 @@ public class login_form extends javax.swing.JFrame{
     
  String file_name;
  customers customer_obj;
- 
 
 
     /**
@@ -221,6 +220,7 @@ public class login_form extends javax.swing.JFrame{
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      
 Cursor busyCursor = Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR);
 Cursor defaultCursor = Cursor.getDefaultCursor();
         this.setCursor(busyCursor);
@@ -233,10 +233,11 @@ db_Connection main_conn_obj=new db_Connection();
         ResultSet r=main_conn_obj.conn_exec("select * from users ");
         try {
             int found=0;
+            
             while (r.next()) {
+                
                 if (jTextField1.getText().trim().equals(r.getString(2)) && jPasswordField1.getText().trim().equals(r.getString(3))) {
                     found = 1;
-                    
                         customer_obj = new customers();
                         customer_obj.setVisible(true);
                         login_form.this.dispose();
@@ -386,5 +387,5 @@ PrintWriter writer = null;
 
         }
     }
-
+    
 }

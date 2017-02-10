@@ -222,6 +222,11 @@ db_Connection conn_obj = new db_Connection();
         jTextField4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTextField4.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextField4.setToolTipText("");
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
         jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextField4KeyPressed(evt);
@@ -960,6 +965,9 @@ try {
             String location_id=r.getString("location_id");
             
             for (int i = 0; i < jTable4.getRowCount(); i++) {
+                float quantity = Float.parseFloat(jTable4.getValueAt(i, 2).toString());
+                float bounus = Float.parseFloat(jTable4.getValueAt(i, 3).toString());
+                float net_Q=quantity+bounus;
                 r=conn_obj.conn_exec(""
                         + "select quantity,main_item_id from  (\n" +
 "select \n" +
@@ -972,7 +980,7 @@ try {
 "\n" +
 "items.item_relations.item_id,\n" +
 "items.item_relations.item_unit,\n" +
-"items.item_relations.item_relation*" +jTable4.getValueAt(i, 2) + " as quantity\n" +
+"items.item_relations.item_relation*" +net_Q + " as quantity\n" +
 "\n" +
 "from items.main_items,items.item_units,items.item_relations\n" +
 "\n" +
@@ -983,10 +991,10 @@ try {
 "items.item_units.unit_id=items.item_relations.item_unit )as anyThing");
                 r.next();
 
-                double quantity=r.getDouble("quantity")*-1;
+                double quantity_to_Decrease=r.getDouble("quantity")*-1;
                 int item_id=r.getInt("main_item_id");
                 String store_to_update="store_id_"+location_id;//store_id_1
-                conn_obj.exec("update items.inventory set "+store_to_update+" = "+store_to_update+" + "+quantity+" where item_id="+item_id+"");
+                conn_obj.exec("update items.inventory set "+store_to_update+" = "+store_to_update+" + "+quantity_to_Decrease+" where item_id="+item_id+"");
             }
             
             //////////////////////////////////////////////////
@@ -1557,7 +1565,7 @@ jTable4.setValueAt(price, jTable4.getSelectedRow(), 4);
                     + "            AND \n"
                     + "            items.main_items.item_id = items.items_ranking.rank_item_id \n"
                     + "            and \n"
-                    + "            items.item_relations.item_unit=items.item_units.unit_id order by rank desc)as one";
+                    + "            items.item_relations.item_unit=items.item_units.unit_id order by rank desc ,main_items.item_name)as one";
                     r = conn_obj.conn_exec(stm);
                     
                     jTable7.setModel(DbUtils.resultSetToTableModel(r));
@@ -1734,6 +1742,10 @@ jTable4.setValueAt(price, jTable4.getSelectedRow(), 4);
          }
     
     }//GEN-LAST:event_jTable7KeyReleased
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2233,9 +2245,13 @@ public void prepare_stm_that_return_quantity_to_store()//هذظ الفنكشن �
         r=conn_obj.conn_exec("select location_id from location where location_name='"+jComboBox2.getSelectedItem().toString()+"'");
         r.next();
         String location_id=r.getString("location_id");
-        
+        float Quantity,bounus;
         for (int i = 0; i < jTable4.getRowCount(); i++) {
             try {
+                Quantity=Float.parseFloat(jTable4.getValueAt(i, 2).toString());
+                bounus=Float.parseFloat(jTable4.getValueAt(i, 3).toString());
+                float net=Quantity+bounus;
+                System.out.println(net);
                 r=conn_obj.conn_exec(""
                         + "select quantity,main_item_id from  (\n" +
                         "select \n" +
@@ -2248,7 +2264,7 @@ public void prepare_stm_that_return_quantity_to_store()//هذظ الفنكشن �
                         "\n" +
                         "items.item_relations.item_id,\n" +
                         "items.item_relations.item_unit,\n" +
-                        "items.item_relations.item_relation*" +jTable4.getValueAt(i, 2) + " as quantity\n" +
+                        "items.item_relations.item_relation*" + net + " as quantity\n" +
                         "\n" +
                         "from items.main_items,items.item_units,items.item_relations\n" +
                         "\n" +
@@ -2259,10 +2275,10 @@ public void prepare_stm_that_return_quantity_to_store()//هذظ الفنكشن �
                         "items.item_units.unit_id=items.item_relations.item_unit )as anyThing");
                 r.next();
                 
-                double quantity=r.getDouble("quantity");
+                double quantity_to_Increase=r.getDouble("quantity");
                 int item_id=r.getInt("main_item_id");
                 String store_to_update="store_id_"+location_id;//store_id_1
-                stm_to_return_quantity_to_store+="update items.inventory set "+store_to_update+" = "+store_to_update+" + "+quantity+" where item_id="+item_id+";";
+                stm_to_return_quantity_to_store+="update items.inventory set "+store_to_update+" = "+store_to_update+" + "+quantity_to_Increase+" where item_id="+item_id+";";
                 
             } catch (SQLException ex) {
                 Logger.getLogger(modify_customer_bill.class.getName()).log(Level.SEVERE, null, ex);

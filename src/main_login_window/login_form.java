@@ -15,11 +15,13 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import functions.*;
 import java.awt.Cursor;
+import java.awt.EventQueue;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import javax.swing.JDialog;
 import javax.swing.JRadioButtonMenuItem;
 
 
@@ -229,7 +231,6 @@ Cursor defaultCursor = Cursor.getDefaultCursor();
         //System.out.println(main_conn_obj.url);
     connection_type();
 db_Connection main_conn_obj=new db_Connection();
-
         ResultSet r=main_conn_obj.conn_exec("select * from users ");
         try {
             int found=0;
@@ -387,5 +388,7 @@ PrintWriter writer = null;
 
         }
     }
+    
+
     
 }

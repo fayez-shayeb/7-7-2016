@@ -321,7 +321,7 @@ if(check_id!=null)//to modify check only
      //
      String value = jTextField3.getText().trim();
      //
-     String check_id = jTextField1.getText().trim();
+     String check_id_id = jTextField1.getText().trim();
       
      float commission =0;
       if(!jTextField6.getText().trim().equals(""))
@@ -329,19 +329,21 @@ if(check_id!=null)//to modify check only
                commission=Float.valueOf(jTextField6.getText());
             }
  
- r=conn_obj.conn_exec("select check_to_vendor_payment_id from checks where check_id="+check_id+"");
-            if(!r.next())
+ r=conn_obj.conn_exec("select vendor_payment_id from customer_checks where id="+check_id_id+"");
+            r.next();
+            int vendor_payment_id=r.getInt("vendor_payment_id");
+            if(vendor_payment_id==0)//لا يوجد 
             {
-                throw new SQLException("لا يمكن ارجاع شيك غير مجير !!"+"\n بإمكانك حذف الشك من دفعة الزبون مباشرة !!");
-            }      
+                throw new SQLException("لا يمكن ارجاع شيك غير مجير لمورد ..."+"'\n'"+"بإمكانك حذف الشيك من دفعة الزبون مباشرة");
+            }
       
-r=conn_obj.conn_exec("select check_id_fk from returned_checks where check_id_fk="+check_id+"");
+r=conn_obj.conn_exec("select check_id_fk from returned_checks where check_id_fk="+check_id_id+"");
 if(r.next())
 {
     JOptionPane.showMessageDialog(this, "هذا الشك مرجع الى حساب الزبون من قبل!!");
 }
 else{
-        conn_obj.exec("insert into returned_checks(check_id_fk,return_date,return_note,customer_id_fk,check_value,accounted,return_commission)VALUES ('"+check_id+"','"+sqlDate+"','"+note+"',(select customer_id from customers where customer_name='"+customer+"'),'"+value+"',false,"+commission+")"); 
+        conn_obj.exec("insert into returned_checks(check_id_fk,return_date,return_note,customer_id_fk,check_value,accounted,return_commission)VALUES ('"+check_id_id+"','"+sqlDate+"','"+note+"',(select customer_id from customers where customer_name='"+customer+"'),'"+value+"',false,"+commission+")"); 
         JOptionPane.showMessageDialog(this, "تم ارجاع الشيك الى حساب الزبون");
         this.setVisible(false);
      c.create_customer_account_table();

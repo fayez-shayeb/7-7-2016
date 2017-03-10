@@ -21,7 +21,9 @@ import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 import customers.modify_vendor_payment;
+import java.awt.Font;
 import java.awt.print.PrinterException;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -406,7 +408,7 @@ public search_check(returned_checks obj) {
         check_value = Float.parseFloat(jTextField3.getText().trim());
         String check_endorser = jTextField4.getText().trim();
         String stm = "select check_owner as صاحب_الشك,check_endorser as المجير,check_no as رقم_الشك,check_bank as اسم_البنك,check_due_date as تاريخ_الاستحقاق,"
-                + "check_note as ملاحظة_الشك,check_payment_id as رقم_الدفعة_المحوسب,id as ID,check_value as قيمة_الشك,vendor_payment_id as مجير_لتاجر,customer_name as  اسم_الزبون from("
+                + "check_note as ملاحظة_الشك,check_payment_id as رقم_الدفعة_المحوسب,id as ID,check_value as قيمة_الشك,vendor_payment_id as مجير_لتاجر,customer_name as اسم_الزبون from("
                 + "select customer_checks.*,customers.customer_id,customers.customer_name,customer_payments.payment_id,customer_payments.customer_id_fk\n"
                 + "from customer_checks,customer_payments,customers\n"
                 + "where \n"
@@ -437,7 +439,6 @@ public search_check(returned_checks obj) {
 stm+=")as s";
         r = conn_obj.conn_exec(stm);
         jTable1.setModel(DbUtils.resultSetToTableModel(r));
-        
         for(int i=0;i<jTable1.getRowCount();i++)
     {
         if(jTable1.getValueAt(i, 9) != null)
@@ -586,6 +587,9 @@ int key = evt.getKeyCode();
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
+             Font font = jTable1.getFont();
+                font = font.deriveFont(18);
+                jTable1.setFont(font);
             jTable1.print();
         } catch (PrinterException ex) {
             Joptionpane_message(ex.getMessage());

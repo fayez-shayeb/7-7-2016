@@ -85,9 +85,11 @@ import net.proteanit.sql.DbUtils;
 import org.jdesktop.swingx.autocomplete.*;
 import functions.telephone;
 import functions.currency;
+import functions.customer_catagories;
 import functions.item_card;
 import functions.meachanism_to_search_customers_accounts;
 import functions.sale_point;
+import java.awt.MenuItem;
 import java.awt.Robot;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
@@ -394,6 +396,7 @@ public class customers extends javax.swing.JFrame {
             jPanel72 = new javax.swing.JPanel();
             jLabel139 = new javax.swing.JLabel();
             buttonGroup1 = new javax.swing.ButtonGroup();
+            popup_menue_payment_reciever = new javax.swing.JPopupMenu();
             jTabbedPane3 = new javax.swing.JTabbedPane();
             jTabbedPane1 = new javax.swing.JTabbedPane();
             jPanel3 = new javax.swing.JPanel();
@@ -769,6 +772,7 @@ public class customers extends javax.swing.JFrame {
             jMenuItem16 = new javax.swing.JMenuItem();
             jMenuItem17 = new javax.swing.JMenuItem();
             jMenuItem18 = new javax.swing.JMenuItem();
+            jMenuItem27 = new javax.swing.JMenuItem();
             jMenuItem19 = new javax.swing.JMenuItem();
             jMenuItem20 = new javax.swing.JMenuItem();
             jMenuItem11 = new javax.swing.JMenuItem();
@@ -1078,6 +1082,13 @@ public class customers extends javax.swing.JFrame {
             );
 
             searchItemName.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+            searchItemName.addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+                public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                }
+                public void windowLostFocus(java.awt.event.WindowEvent evt) {
+                    searchItemNameWindowLostFocus(evt);
+                }
+            });
 
             jLabel34.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
             jLabel34.setText("اسم الصنف");
@@ -1777,6 +1788,13 @@ public class customers extends javax.swing.JFrame {
                 );
 
                 search_ven_ItemName.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+                search_ven_ItemName.addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+                    public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                    }
+                    public void windowLostFocus(java.awt.event.WindowEvent evt) {
+                        search_ven_ItemNameWindowLostFocus(evt);
+                    }
+                });
 
                 jLabel103.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
                 jLabel103.setText("اسم الصنف");
@@ -3200,6 +3218,11 @@ public class customers extends javax.swing.JFrame {
                 jTextField14.setHorizontalAlignment(javax.swing.JTextField.CENTER);
                 jTextField14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
                 jTextField14.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+                jTextField14.addMouseListener(new java.awt.event.MouseAdapter() {
+                    public void mousePressed(java.awt.event.MouseEvent evt) {
+                        jTextField14MousePressed(evt);
+                    }
+                });
 
                 jLabel15.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
                 jLabel15.setForeground(new java.awt.Color(204, 0, 0));
@@ -3418,11 +3441,6 @@ public class customers extends javax.swing.JFrame {
                 jTable13.setRowHeight(30);
                 //TableColumn date_start= jTable13.getColumnModel().getColumn(3);
                 //date_start.setCellEditor(new DatePickerCellEditor());
-                jTable13.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mousePressed(java.awt.event.MouseEvent evt) {
-                        jTable13MousePressed(evt);
-                    }
-                });
                 jScrollPane13.setViewportView(jTable13);
                 jTable13.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
                 renderer_jTable_obj.Renderer (jTable13);
@@ -6808,6 +6826,14 @@ public class customers extends javax.swing.JFrame {
             });
             jMenu2.add(jMenuItem18);
 
+            jMenuItem27.setText("تصنيفات الزيائن");
+            jMenuItem27.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jMenuItem27ActionPerformed(evt);
+                }
+            });
+            jMenu2.add(jMenuItem27);
+
             jMenuItem19.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
             jMenuItem19.setText("قيد خصم لمورد");
             jMenuItem19.addActionListener(new java.awt.event.ActionListener() {
@@ -9540,7 +9566,7 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
         search_ven_ItemName.setLocationRelativeTo(this);
         search_ven_ItemName.setVisible(true);
         search_ven_ItemName.setState(NORMAL);
-        jTextField4.requestFocus();
+        jTextField25.requestFocus();
     }//GEN-LAST:event_jButton_search_bill_itemActionPerformed
 
     private void jTextField_search_barcodeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField_search_barcodeFocusLost
@@ -10926,21 +10952,8 @@ show_last_row_scroll_jtable(jTable_show_ven_account_details);
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         DefaultTableModel tm = (DefaultTableModel) jTable13.getModel();
-        tm.addRow(new Object[]{jTable13.getRowCount() + 1, "", 0, "", "", get_date(), "", ""});        // TODO add your handling code here:
+        tm.addRow(new Object[]{jTable13.getRowCount() + 1, "", "", "", (String) jComboBox4.getSelectedItem(), get_date(), "", ""});        // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void jTable13MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable13MousePressed
-        if (jTable13.getSelectedColumn() == 5) {
-            jDateChooser4.setDateFormatString("yyyy-MM-dd");
-            int response = JOptionPane.showConfirmDialog(null, jPanel22,
-                "اختر تاريخ الاستحقاق", JOptionPane.OK_OPTION, JOptionPane.PLAIN_MESSAGE);
-
-            if (response == JOptionPane.OK_OPTION) {
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                jTable13.setValueAt(formatter.format(jDateChooser4.getDate()), jTable13.getSelectedRow(), 5);
-            }
-        }
-    }//GEN-LAST:event_jTable13MousePressed
 
     private void jTextField12KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField12KeyReleased
         prepare_payment_sum();
@@ -11448,6 +11461,47 @@ if (which_component_request_searchItemName_vendor == 1) {
         item_card_obj.setVisible(true);
     }//GEN-LAST:event_jMenuItem26ActionPerformed
 
+    private void searchItemNameWindowLostFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_searchItemNameWindowLostFocus
+       searchItemName.hide();
+    }//GEN-LAST:event_searchItemNameWindowLostFocus
+
+    private void search_ven_ItemNameWindowLostFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_search_ven_ItemNameWindowLostFocus
+        search_ven_ItemName.hide();
+    }//GEN-LAST:event_search_ven_ItemNameWindowLostFocus
+
+    private void jTextField14MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField14MousePressed
+if (evt.getButton() == MouseEvent.BUTTON1) {
+    try{
+        popup_menue_payment_reciever.removeAll();
+    r=conn_obj.conn_exec("select catagory_name from customer_catagory ;");
+               while(r.next())
+               {
+                   JMenuItem x= new JMenuItem(r.getString("catagory_name"));
+                popup_menue_payment_reciever.add(x);
+                     x.addActionListener(new java.awt.event.ActionListener() {
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jTextField14.setText(x.getText());
+    }
+               
+          
+});
+                     }
+               popup_menue_payment_reciever.show(evt.getComponent(), evt.getX(), evt.getY());
+    }
+    catch (SQLException ee){
+        Joptionpane_message(ee.getMessage());
+    }
+            
+            
+        } 
+    }//GEN-LAST:event_jTextField14MousePressed
+
+    private void jMenuItem27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem27ActionPerformed
+        customer_catagories cus_catagories=new customer_catagories();
+        cus_catagories.setLocationRelativeTo(this);
+        cus_catagories.setVisible(true);
+    }//GEN-LAST:event_jMenuItem27ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -11763,6 +11817,7 @@ if (which_component_request_searchItemName_vendor == 1) {
     private javax.swing.JMenuItem jMenuItem24;
     private javax.swing.JMenuItem jMenuItem25;
     private javax.swing.JMenuItem jMenuItem26;
+    private javax.swing.JMenuItem jMenuItem27;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
@@ -11969,6 +12024,7 @@ if (which_component_request_searchItemName_vendor == 1) {
     private javax.swing.JTextField jTextField_ven_phone_to_add;
     private javax.swing.JMenuItem modify_record;
     private javax.swing.JMenuItem modify_record_ven;
+    private javax.swing.JPopupMenu popup_menue_payment_reciever;
     public javax.swing.JFrame searchCustomerName;
     private javax.swing.JFrame searchItemName;
     private javax.swing.JFrame search_items_in_customer_bills;
@@ -14682,7 +14738,9 @@ public void return_customer_jTable(JTable table) {
          try {
             float checks_sum = 0;
             float cash=0;
+            
             for (int i = 0; i < jTable13.getRowCount(); i++) {
+                if(!jTable13.getValueAt(i, 2).toString().trim().equals(""))//اذا مربع قيمة الشك لا يساوي صفر يقوم بجمعه
                 checks_sum = checks_sum + Float.valueOf(jTable13.getValueAt(i, 2).toString());
             }
             if(!jTextField12.getText().trim().equals(""))
